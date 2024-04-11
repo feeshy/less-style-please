@@ -30,7 +30,7 @@ A pure text Jekyll blog theme forked from rigggraz's [no_style_please](https://g
 
 ## Usage on Post
 
-example page: [markdown](https://github.com/feeshy/feeshy.github.io/blob/master/example.md) -> [webpage](https://feeshy.github.io/example)
+example page: [markdown](https://github.com/feeshy/less-style-please/blob/master/general/_posts/2024-04-11-example.md) -> [webpage](https://feeshy.github.io/less-style-please/general/example)
 
 ### Basic Post Meta Info
 
