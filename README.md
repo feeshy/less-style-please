@@ -1,17 +1,21 @@
-A pure text Jekyll blog theme forked from rigggraz's [no_style_please](https://github.com/riggraz/no-style-please), with a category-based tree structure for systematically organizing articles on diverse topics, and the ability to index external content to consolidate your entire content ecosystem into one single website.
+# less-style-please
 
-## Design
+Docs Language: 中文 | [English](./README-en.md)
 
-### What Are Kept
+纯文本风格Jekyll博客主题，fork自rigggraz的[no_style_please](https://github.com/riggraz/no-style-please)，具有基于分类的树形结构，可系统地组织关于不同主题的文章，支持手动索引外部平台的内容，可将你的全部创作统一整合为一个网站。
 
-- Minimalist and reserved design style, more suitable for pure text websites
-- Adaptive light and dark theme
+## 设计
 
-### What Are Changed
+### 继承
 
-- Low-saturated color palette
-- Rowing color grades for tables
-- Self hosting web fonts for Simplified Chinese
+- 极简且克制的设计风格，适合主要专注于文本内容的网站
+- 日夜主题
+
+### 新增
+
+- 配色方案改为低饱和度、低对比度风格
+- 表格自适应与隔行变色
+- 自托管的中文webfont
 
 字体搭配分为四个层次：
 
@@ -28,17 +32,17 @@ A pure text Jekyll blog theme forked from rigggraz's [no_style_please](https://g
 
 思源黑体HW (Noto Sans Mono CJK)与文泉驿等宽微米黑均未明显区分`1ilIL`、`0O`的等宽字体，不算特别适合代码显示。但考虑到本博客表格多于代码，等宽字族的设计主要以西文宽度等于0.5、0.6个中文字符为标准，以满足表格中文、数字、英文混排的对齐需求。
 
-## Usage on Post
+## 帖子语法
 
-example page: [markdown](https://github.com/feeshy/less-style-please/blob/master/general/_posts/2024-04-11-example.md) -> [webpage](https://feeshy.github.io/less-style-please/general/example)
+示例页面: [markdown](https://github.com/feeshy/less-style-please/blob/master/general/_posts/2024-04-11-example.md) -> [网页](https://feeshy.github.io/less-style-please/general/example)
 
-### Basic Post Meta Info
+### 基础元数据
 
-A post is always stored and named like the following pattern: `/category/sub-category/_post/yyyy-mm-dd-title.md`
+帖子必须按以下形式存储和命名: `/category/sub-category/_post/yyyy-mm-dd-title.md`
 
-#### Title 
+#### 标题
 
-The title is required in the filename `yyyy-mm-dd-title.md`. Could be overwritten in the front matter:
+文件名 `yyyy-mm-dd-title.md` 已包含帖子标题。可通过front matter中的声明覆盖：
 
 ``` yml
 ---
@@ -46,9 +50,9 @@ title: yyyy-mm-dd
 ---
 ```
 
-#### Date
+#### 日期
 
-A date is already defined in the filename `yyyy-mm-dd-title.md`. Could be overwritten in the front matter:
+文件名 `yyyy-mm-dd-title.md` 已包含创建日期。可通过front matter中的声明覆盖：
 
 ``` yml
 ---
@@ -56,7 +60,7 @@ date: yyyy-mm-dd
 ---
 ```
 
-For further edits after the post is published, add a new syntax in the front matter:
+帖子发布后，如需进一步编辑，请在正文中添加新语法：
 
 ``` yml
 ---
@@ -64,13 +68,13 @@ last_modified_at: yyyy-mm-dd
 ---
 ```
 
-If `last_modified_at` is set, a updated date will be rendered in metadata section of the post. This attribute is also quite useful for sitemap (via [jekyll-sitemap](https://github.com/jekyll/jekyll-sitemap) plugin)
+如果定义了 `last_modified_at`，则更新日期将在帖子的元数据模块中呈现。这个属性对于sitemap也非常实用（需求[j​​ekyll-sitemap](https://github.com/jekyll/jekyll-sitemap)插件）
 
-#### Categories
+#### 分类
 
-Categories could be set with hierarchical directories: `/category/sub-category/_post/yyyy-mm-dd-title.md`
+建议用目录的层级设置类别： `/category/sub-category/_post/yyyy-mm-dd-title.md`
 
-you may also define categories in the front matter of the post:
+如果更喜欢全部帖子混在一块儿的管理方式，也可以在front matter定义类别：
 
 ``` yml
 ---
@@ -78,7 +82,7 @@ categories: [category, sub-category]
 ---
 ```
 
-#### Tags
+#### 标签
 
 ``` yml
 ---
@@ -86,9 +90,9 @@ tags: [tags1, tags2]
 ---
 ```
 
-Set tags on your need. Tags of a post will be rendered on the post-meta section.
+按需设置。帖子的标签会在正文前的元数据模块呈现。
 
-### Layout
+### 样式
 
 ``` yml
 ---
@@ -96,17 +100,17 @@ layout: post
 ---
 ```
 
-There are 5 types of layouts
+本主题定义了有五种样式
 
-- appears on post list
-	- post：sans-serif+黑体, justify aligned, meta data rendered if set (tags, created date, updated date, redirected url)
-	- poetry: EB Garamond+思源宋体, center aligned, dynamic breathe spacing to the top of the page, no meta data
-	- redirect: like page, redirecting hyperlinks and javascripts, no meta data
-- not appears on post list
-	- page：like post, no meta, no toc
-	- archive: the layout of a post list page
+- 出现在文章列表的样式
+	- post：sans-serif+黑体，两端对齐，在正文前渲染元数据（标签、创建日期、更新日期、重定向链接）
+	- poetry: EB Garamond+思源宋体，居中对齐，不渲染元数据，页面顶部有跟随屏幕高度变化的动态“呼吸空间”（解决短诗页面底部过空的问题）
+	- redirect: 以 post 为蓝本，渲染元数据，重定向到 `redirect_to` 定义的地址。可以让站外内容以与 post 相同的优先级排列在文章列表
+- 不出现在文章列表的样式
+	- page：以 post为蓝本, 去掉元数据和目录
+	- archive: 文章列表本身
 
-### Table of Contents
+### 目录
 
 ``` yml
 ---
@@ -114,11 +118,13 @@ toc: true
 ---
 ```
 
-read docs of [jekyll-toc](https://github.com/toshimaru/jekyll-toc)
+请阅读[jekyll-toc](https://github.com/toshimaru/jekyll-toc)文档
 
-### Redirecting
+### 重定向
 
-#### From the Post to a New URL
+#### 从本帖跳转到新URL
+
+在跳出帖用如下语法定义
 
 ``` yml
 ---
@@ -127,15 +133,17 @@ redirect_to: /newdir/newpage
 ---
 ```
 
-providing 3 ways to redirect
+由于Github不支持服务器端的301重定向，这里提供三种客户端重定向方式：
 
-- redirect http refresh meta tag
-- redirect via javascript
-- user manually click on the hyperlink rendered on the webpage
+- 利用 http refresh meta tag 重定向
+- 利用 javascript 重定向
+- 会在正文前渲染一个指向所设定URL的超链接，前两种方式都失效的情况下，用户依旧可以手动点击
 
-This syntax is not only applicable to redirecting pages on the site, but can also be used to redirect articles outside of the site, so that external content may obtain the same metadata index as posts on the site and be displayed in the same post list. It could be quite handy when you want to consolidate all content you posted on different platforms to one single place.
+此语法不仅适用于重定向网站内的页面，还可以用于重定向网站外的文章，以便外部内容可以获得与网站上的帖子相同的元数据索引，并显示在同一帖子列表中。当您想要将在不同平台上发布的所有内容合并到一个地方时，它可能会非常方便。
 
-#### From Old URLs to the Post
+#### 从站内旧URL跳转到本帖
+
+在目标帖用如下语法定义
 
 ``` yml
 ---
@@ -146,9 +154,13 @@ redirect_from:
 ---
 ```
 
-Requiring [jekyll-redirect-from](https://github.com/jekyll/jekyll-redirect-from) plugin. The URL in the first row will be rendered as a hyperlink at the position of the creation date.
+适合修改过目录名称、或者把以前在站外发布的内容重新搬回站内的场景
 
-### Drop Cap
+这个功能依赖 [jekyll-redirect-from](https://github.com/jekyll/jekyll-redirect-from) 插件。同时会在帖子元数据模块中创建日期的位置渲染一个指向第一行URL的超链接。
+
+### 首字下沉
+
+这样的效果
 
 ![](https://i.stack.imgur.com/RpOEO.gif)
 
@@ -158,19 +170,19 @@ dropcap: true
 ---
 ```
 
-### Post Language
+### 指定帖子语言
+
+如果文章使用的语言不是 `_config.yml` 中默认的语言，可以在 front matter 定义 locale：
 
 ``` yml
 ---
-locale: zh-Hant
+locale: en
 ---
 ```
 
-If the post is written in an language other than the default language in `_config.yml`, you may define the locale at front matter.
+### 在 Html 头部插入任何字符串
 
-### Insert Anything to Html Head
-
-Any string of `htmlhead` in the front matter will be inserted to the rendered html file.
+通过 `htmlhead` 语法定义的任意字符串都将插入到渲染的 html 文件头。
 
 ``` yml
 ---
@@ -178,31 +190,31 @@ htmlhead: ""
 ---
 ```
 
-If you want images in the post less wide than 360px, for instance, just type `htmlhead: "<style>img {max-width: 360px;}<style>"` in your front matter.
+例如，如果您希望帖子中的图片宽度不超过 360 像素，只需在 front matter 输入 `htmlhead: “<style>img {max-width: 360px;}<style>”` 
 
-## Site Configuration
+## 站点配置
 
-edit `/_config.yml` root in the root directory for site configurations
+编辑根目录下的 `/_config.yml` 以进行网站配置
 
-### Basic Site Info
+### 站点基础信息
 
-read docs of [jekyll-seo-tag](https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md)
+请阅读 [jekyll-seo-tag](https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md) 文档
 
 ### PWA
 
-#### App Icons & Manifest.json
+#### 图标和Manifest.json
 
-- Create icon package using [real favicon generator](https://realfavicongenerator.net/)
-- Extract the zip package to the root directory of the project
-- Paste the generated html code into `_includes\head.html`
+- 使用 [real favicon generator](https://realfavicongenerator.net/) 创建图标包
+- 将生成的压缩包解压到项目根目录下
+- 将生成的 html 代码粘贴到 `_includes/head.html`
 
 #### Service-Worker.js
 
-read docs of [jekyll-pwa-workbox](https://github.com/souldanger/jekyll-pwa-workbox)
+请阅读 [jekyll-pwa-workbox](https://github.com/souldanger/jekyll-pwa-workbox) 文档
 
-### Archive Page
+### 文章列表
 
-Create an archive page at `/category/index.md` with the following front matter:
+在 `/category/index.md` 创建每个分类的文章列表，使用以下front matter：
 
 ``` yml
 ---
@@ -213,13 +225,11 @@ title: page title
 You could add some content before post list
 ```
 
-Template for archive page are stored at `_layouts/archive.html`
+存档页面的模板存储在 `_layouts/archive.html`
 
-You could set link to the archive page from home page
+### 首页
 
-### Home Page
-
-The content of home page is stored as '/index.md' in the root directory of your project.
+首页内容存储在项目根目录下的 `/index.md` 中。
 
 ``` yml
 ---
@@ -228,10 +238,10 @@ layout: home
 You could add some content before post list
 ```
 
-The menu on home page are stored as `/_data/menu.yml`, read the original docs at [no-style-please](https://github.com/riggraz/no-style-please) for detailed instructions.
+首页的列表存储在 `/_data/menu.yml`，您可以从主页设置到指向存档页面的链接，详细步骤请阅读 [no-style-please](https://github.com/riggraz/no-style-please) 上的原始文档。
 
-### Markdown Parser
+### Markdown 解析器
 
-the default [kramdown-parser-gfm](https://github.com/kramdown/parser-gfm) engine has a bug that renders any unescaped `|` as single row tables, which has exist [for decades](https://stackoverflow.com/questions/23751917/how-do-you-disable-tables-in-kramdown). In both kramdown's and jekyll's repos there are issues mentioning the bug now and then, most of which are closed by timeout. Considering that there is no hope that the bug is being fixed, the default markdown engine in my version of theme is set as [redcarpet](https://github.com/vmg/redcarpet).
+Jekyll默认的 [kramdown-parser-gfm](https://github.com/kramdown/parser-gfm) 引擎有一个bug，会将任何未转义的 `|` 渲染为单行表，该错误已经存在了 [数十年](https: //stackoverflow.com/questions/23751917/how-do-you-disable-tables-in-kramdown）。在 kramdown 和 jekyll 的存储库中，时不时都会出现提及该错误的 issue，其中大多数都因超时而关闭。考虑到该 bug 修复基本无望，我的主题版本中默认的 markdown 引擎设置为 [redcarpet](https://github.com/vmg/redcarpet)。
 
-5 non standard flavored markdown syntax are enabled by default - "tables", "autolink", "strikethrough", "highlight", "footnotes". Read the original docs at [redcarpet](https://github.com/vmg/redcarpet) for more usages.
+默认启用 5 种非标准标记符语法："tables", "autolink", "strikethrough", "highlight", "footnotes"。更多用法请阅读 [redcarpet](https://github.com/vmg/redcarpet) 上的原始文档。

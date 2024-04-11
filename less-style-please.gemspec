@@ -6,7 +6,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["feeshy"]
   spec.email         = [""]
 
-  spec.summary       = "A pure text Jekyll blog theme with a category-based tree structure for systematically organizing articles on diverse topics, and the ability to consolidate your entire content ecosystem into one single website."
+  spec.summary       = "A pure text Jekyll blog theme with a categories-based tree structure for systematically organizing articles on diverse topics, and the ability to index your content from external platforms into one single website"
   spec.homepage      = "https://github.com/feeshy/less-style-please"
   spec.license       = "MIT"
 
