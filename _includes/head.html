@@ -34,7 +34,7 @@
 {%- if page.categories contains "literature" -%}
     {%-include stylesheet-literature.html-%}
 {%-endif-%}
-{%-if page.dropcap or page.categories contains "literature" -%}
+{%-if page.dropcap-%}
     {%-include stylesheet-drop_cap.html-%}
 {%-endif-%}
 {%-if page.layout == "archive" or page.layout == "home" -%}
