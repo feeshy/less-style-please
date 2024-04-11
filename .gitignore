@@ -1,6 +1,7 @@
 *.gem
 .bundle
 .jekyll-cache
+.obsidian
 .sass-cache
 _site
 vendor

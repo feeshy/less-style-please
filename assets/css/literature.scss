@@ -1,0 +1,17 @@
+---
+---
+@media (min-height: 640px) {
+	body>:not(nav) {
+    transform: translateY(calc(100vh / 5 - 128px));
+  }
+}
+
+@import url("/assets/OpenFont/EBGaramond-VariableFont_wght/result.css");
+@import url("/assets/OpenFont/SourceHanSerifCN-VF_wght/result.css");
+
+body {
+  font-family: ccsymbols, "EB Garamond", "Adobe Garamond Pro", "Garamond", "Palatino", "Palatino Linotype", "Source Han Serif SC VF", "Source Han Serif SC", "Noto Serif CJK SC", "Noto Serif SC", "Source Han Serif CN", "Source Han Serif CN VF", serif;
+	font-variant: discretionary-ligatures oldstyle-nums;
+}
+
+h1, h2 { font-feature-settings: "swsh"; }

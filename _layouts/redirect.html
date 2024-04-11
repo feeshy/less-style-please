@@ -1,0 +1,17 @@
+---
+layout: default
+sitemap: false
+---
+
+<nav><a href="/" style="text-decoration: none;">🏠</a> <a href="./" style="text-decoration: none;">🔙</a></nav>
+
+<h1>{{ page.title }}</h1>
+<p><a href="{{ page.redirect.to }}" id="url">点击跳转</a></p>
+
+{{ content }}
+
+<script>
+window.onload=function() {
+  document.location = document.getElementById('url').href
+}
+</script>

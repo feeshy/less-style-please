@@ -1,0 +1,17 @@
+<p class="post-meta">
+
+{%- if page.tags and page.tags != blank -%}
+    🏷️ {{ page.tags | join: ' '}}<br>
+{%- endif -%}
+
+{%- if page.redirect_from and page.redirect_from != blank -%}
+    📅 <a href="{{ page.redirect_from | first }}"><time datetime="{{ page.date }}">{{ page.date | date: site.theme_config.date_format }}</time></a><br>
+{%- else -%}
+    📅 <time datetime="{{ page.date }}">{{ page.date | date: site.theme_config.date_format }}</time><br>
+{%- endif -%}
+
+{%- if page.last_modified_at and page.last_modified_at != blank -%}
+    ✏️ <time datetime="{{ page.last_modified_at }}">{{ page.last_modified_at | date: site.theme_config.date_format }}</time>
+{%- endif -%}
+
+</p>

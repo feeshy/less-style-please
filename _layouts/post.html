@@ -2,14 +2,42 @@
 layout: default
 ---
 
-{%-include back_link.html-%}
+<nav id="top"><a href="/" style="text-decoration: none;">🏠</a> <a href="./" style="text-decoration: none;">🔙</a></nav>
 
 <article>
-  <p class="post-meta">
-    <time datetime="{{ page.date }}">{{ page.date | date: site.theme_config.date_format }}</time>
-  </p>
   
   <h1>{{ page.title }}</h1>
 
+  {%-include post_meta.html-%}
+
+  {%-if page.toc -%}
+    {% toc %}<hr>
+  {%-endif-%}
+  
   {{ content }}
+
 </article>
+
+<footer id="gototop" style="text-align: center; visibility: hidden;"><a href="#top" style="text-decoration: none;">🔝</a></footer>
+
+<script>
+
+  const pageHeight = document.body.scrollHeight;
+  const viewportHeight = window.innerHeight;
+  if (pageHeight > viewportHeight) {
+    document.getElementById('gototop').style.visibility = 'visible';
+  } else {
+    document.getElementById('gototop').style.visibility = 'hidden';
+  }
+
+  function wrap(el, wrapper) {
+      el.parentNode.insertBefore(wrapper, el);
+      wrapper.appendChild(el);
+  }
+  Array.from(document.getElementsByTagName('table')).forEach(el => {
+      const wrapper = document.createElement('section')
+      wrapper.style.overflowX = 'auto';
+      wrap(el, wrapper)
+  })
+
+</script>
