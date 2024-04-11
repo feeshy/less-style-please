@@ -1,5 +1,7 @@
 ---
 layout: archive
+title: 文学性内容
+which_category: literature
 ---
 文学性内容首选字体：[EB Garamond🌐](https://github.com/octaviopardo/EBGaramond12), 思源宋体 (Noto Serif CJK SC)
 

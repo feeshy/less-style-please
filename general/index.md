@@ -1,7 +1,9 @@
 ---
 layout: archive
+title: general
+which_category: general
 ---
-archive page if fully customizable at `/category/index.md`
+archive page is fully customizable at `/category/index.md`
 
 通用内容首选字体：Avenir Next, 苹方
 
