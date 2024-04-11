@@ -15,7 +15,7 @@ entries:
       limit: 5
       show_more: true
       show_more_text: feed
-      show_more_url: /feed.xml
+      show_more_url: ./feed.xml
 
   - title: categories
     entries:
@@ -25,14 +25,14 @@ entries:
         category: general
         show_more: true
         show_more_text: ...
-        show_more_url: /general
+        show_more_url: ./general
     - title: literature
       post_list:
         limit: 2
         category: literature
         show_more: true
         show_more_text: ...
-        show_more_url: /literature
+        show_more_url: ./literature
 
   - title: tips
     entries: 
