@@ -17,7 +17,7 @@ Docs Language: 中文 | [English](./README-en.md)
 - 表格自适应与隔行变色
 - 自托管的中文webfont
 
-![](screenshots/post-light.jpeg)
+![](_screenshots/post-light.jpeg)
 
 字体搭配分为四个层次：
 
@@ -244,6 +244,6 @@ You could add some content before post list
 
 ### Markdown 解析器
 
-Jekyll默认的 [kramdown-parser-gfm](https://github.com/kramdown/parser-gfm) 引擎有一个bug，会将任何未转义的 `|` 渲染为单行表，该错误已经存在了 [数十年](https: //stackoverflow.com/questions/23751917/how-do-you-disable-tables-in-kramdown）。在 kramdown 和 jekyll 的存储库中，时不时都会出现提及该错误的 issue，其中大多数都因超时而关闭。考虑到该 bug 修复基本无望，我的主题版本中默认的 markdown 引擎设置为 [redcarpet](https://github.com/vmg/redcarpet)。
+Jekyll默认的 [kramdown-parser-gfm](https://github.com/kramdown/parser-gfm) 引擎有一个bug，会将任何未转义的 `|` 渲染为单行表，该错误已经存在了 [数十年](https://stackoverflow.com/questions/23751917/how-do-you-disable-tables-in-kramdown）。在 kramdown 和 jekyll 的存储库中，时不时都会出现提及该错误的 issue，其中大多数都因超时而关闭。考虑到该 bug 修复基本无望，我的主题版本中默认的 markdown 引擎设置为 [redcarpet](https://github.com/vmg/redcarpet)。
 
 默认启用 5 种非标准标记符语法："tables", "autolink", "strikethrough", "highlight", "footnotes"。更多用法请阅读 [redcarpet](https://github.com/vmg/redcarpet) 上的原始文档。
