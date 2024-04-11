@@ -17,6 +17,8 @@ Docs Language: 中文 | [English](./README-en.md)
 - 表格自适应与隔行变色
 - 自托管的中文webfont
 
+![](screenshots/post-light.jpeg)
+
 字体搭配分为四个层次：
 
 |                 | 首选字体                                                                                      | 候补字体                                                                                                                                                                            |
