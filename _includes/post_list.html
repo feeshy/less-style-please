@@ -1,8 +1,8 @@
 {%-if site.theme_config.sort_by_updated_date-%}
   {%-if include.category-%}
-    {%-assign posts = site.categories[include.category] | sort: "post.last_modified_at || post.date" | reverse-%}  
+    {%-assign posts = site.categories[include.category] | sort: post.last_modified_at || post.date | reverse-%}  
   {%-else-%}
-    {%-assign posts = site.posts | sort: "post.last_modified_at || post.date" | reverse-%}
+    {%-assign posts = site.posts | sort: post.last_modified_at || post.date | reverse-%}
   {%-endif-%}
 {%-else-%}
   {%-if include.category-%}
