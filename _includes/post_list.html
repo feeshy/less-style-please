@@ -6,14 +6,9 @@
 
 {%-if site.theme_config.sort_by_updated_date-%}
   {%-for post in posts-%}
-    {%-assign sort_date = post.sort_date-%}
-    {%-if post.last_modified_at and post.last_modified_at != blank-%}
-      {%-assign sort_date = post.last_modified_at-%}
-    {%-else-%}
-      {%-assign sort_date = post.date-%}
-    {%- endif -%}
+    {%-assign sort_date = post.last_modified_at | default: post.date-%}
   {%- endfor -%}
-    {%- assign posts = posts | sort: 'sort_date' -%}
+  {%- assign posts = posts | sort: 'sort_date' -%}
 {%-endif-%}
 
 
