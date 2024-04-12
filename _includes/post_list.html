@@ -1,7 +1,7 @@
 {%-if include.category-%}
-  {%-assign posts = site.categories[include.category] | sort: (site.theme_config.sorting_by || post.date)-%}  
+  {%-assign posts = site.categories[include.category] | sort: "(site.theme_config.sorting_by || post.date)" | reverse-%}  
 {%-else-%}
-  {%-assign posts = site.posts | sort: (site.theme_config.sorting_by || post.date) -%}
+  {%-assign posts = site.posts | sort: "(site.theme_config.sorting_by || post.date)" | reverse-%}
 {%-endif-%}
 
 {%-if include.limit and posts.size > include.limit-%}
