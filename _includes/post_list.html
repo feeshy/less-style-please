@@ -6,7 +6,7 @@
 
 {%-if site.theme_config.sort_by_updated_date-%}
   {%-for post in posts-%}
-    {%-assign sort_date = post.last_modified_at | default: post.date-%}
+    {%-assign post.sort_date = post.last_modified_at | default: post.date-%}
   {%- endfor -%}
   {%- assign posts = posts | sort: 'sort_date' -%}
 {%-endif-%}
