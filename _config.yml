@@ -23,6 +23,7 @@ theme_config:
   appearance: "auto" # can be "light", "dark" or "auto"
   date_format: "%y-%m-%d" # customize how date is formatted
   show_description: false # show blog description in home page
+  sorting_by: "post.last_modified_at" # by created date: "page.date", or by updated date first: "page.last_modified_at"
 
 sass:
   style: :compressed
