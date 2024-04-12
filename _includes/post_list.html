@@ -6,11 +6,10 @@
 
 {%-if site.theme_config.sort_by_updated_date-%}
   {%-for post in posts-%}
-    {%-assign sort_date = post.last_modified_at | default: post.date-%}
+    {%-assign sort_date = last_modified_at | default: date-%}
   {%- endfor -%}
-  {%- assign posts = posts | sort: sort_date -%}
+  {%- assign posts = posts | sort: "sort_date" -%}
 {%-endif-%}
-
 
 {%-if include.limit and posts.size > include.limit-%}
   {%-assign limit_exceeded = true-%}
