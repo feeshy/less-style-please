@@ -13,7 +13,7 @@
       {%-assign sort_date = post.date-%}
     {%- endif -%}
   {%- endfor -%}
-    {%- posts | sort: 'sort_date' -%}
+    {%- assign posts = posts | sort: 'sort_date' -%}
 {%-endif-%}
 
 
