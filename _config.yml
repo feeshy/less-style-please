@@ -21,7 +21,7 @@ theme: less-style-please # if you are using GitHub Pages, change it to remote_th
 
 theme_config:
   appearance: "auto" # can be "light", "dark" or "auto"
-  date_format: "%y-%m-%d" # customize how date is formatted
+  date_format: "%Y-%m-%d" # customize how date is formatted
   show_description: false # show blog description in home page
   sort_by_updated_date: true # if set true, the post list will sort posts by last_modified_at first, by date as fallback
 
