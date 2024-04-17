@@ -2,23 +2,24 @@
 layout: default
 ---
 
-<nav id="top"><a href="{{ site.baseurl }}" style="text-decoration: none;">🏠</a></nav>
+<nav id="top"><a href="{{ site.baseurl | default: '/' }}">🏠</a></nav>
+<nav id="gototop" style="position: fixed; right: 5vw; bottom: 5vh; visibility: hidden;"><a href="#top">🔝</a></nav>
 
 <article>
   
   <h1>{{ page.title }}</h1>
   
+  {%-if page.toc-%}
+    {% toc %}<hr>
+  {%-endif-%}
+
   {{ content }}
 
 </article>
 
-<footer id="gototop" style="text-align: center; visibility: hidden;"><a href="#top" style="text-decoration: none;">🔝</a></footer>
-
 <script>
 
-  const pageHeight = document.body.scrollHeight;
-  const viewportHeight = window.innerHeight;
-  if (pageHeight > viewportHeight) {
+  if (document.body.scrollHeight > window.innerHeight) {
     document.getElementById('gototop').style.visibility = 'visible';
   } else {
     document.getElementById('gototop').style.visibility = 'hidden';

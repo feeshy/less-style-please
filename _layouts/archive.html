@@ -2,7 +2,8 @@
 layout: default
 ---
 
-<nav><a href="{{ site.baseurl }}" style="text-decoration: none;">🏠</a> <a href="../" style="text-decoration: none;">🔙</a></nav>
+<nav><a href="{{ site.baseurl | default: '/' }}">🏠</a> <a href="../">🔙</a></nav>
+<nav id="gototop" style="position: fixed; right: 5vw; bottom: 5vh; visibility: hidden;"><a href="#top">🔝</a></nav>
 
 <h1>{{ page.title }}</h1>
 
@@ -11,7 +12,9 @@ layout: default
 {%-include post_list.html category=page.which_category-%}
 
 <script>
-    if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/service-worker.js');
+    if (document.body.scrollHeight > window.innerHeight) {
+        document.getElementById('gototop').style.visibility = 'visible';
+    } else {
+        document.getElementById('gototop').style.visibility = 'hidden';
     }
 </script>
