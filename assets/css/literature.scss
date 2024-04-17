@@ -1,7 +1,7 @@
 ---
 ---
 @media (min-height: 640px) {
-	body>:not(nav) {
+	main>:not(nav) {
     transform: translateY(calc(100vh / 5 - 128px));
   }
 }
