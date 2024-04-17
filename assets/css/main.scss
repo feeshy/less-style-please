@@ -10,7 +10,7 @@
 @import url("../OpenFont/LXGWWenKaiLite-Regular/result.css");
 
 body {
-    font-family: ccsymbols, "Avenir Next", "Segoe UI", "HarmonyOS Sans", "Clear Sans", "PingFang SC", "Source Han Sans SC VF", "Noto Sans CJK SC", "Source Han Sans SC", "Source Han Sans CN VF", "Noto Sans SC", "Source Han Sans CN", "Sarasa Gothic SC", sans-serif;
+    font-family: "CCSymbols", "Avenir Next", "Segoe UI", "HarmonyOS Sans", "Clear Sans", "PingFang SC", "Source Han Sans SC VF", "Noto Sans CJK SC", "Source Han Sans SC", "Source Han Sans CN VF", "Noto Sans SC", "Source Han Sans CN", "Sarasa Gothic SC", sans-serif;
 	font-synthesis: weight;
 	font-kerning: normal;
 }
@@ -20,7 +20,7 @@ em {
 }
 
 .post-meta, time, .footnotes, q, blockquote {
-    font-family: ccsymbols, "Ysabeau", "LXGW WenKai", "LXGW Bright", "LXGW WenKai Lite", "STXihei", "Hiragino Sans GB", sans-serif;
+    font-family: "CCSymbols", "Ysabeau", "LXGW WenKai", "LXGW Bright", "LXGW WenKai Lite", "STXihei", "Hiragino Sans GB", sans-serif;
 }
 
 time {
@@ -28,6 +28,6 @@ time {
 }
 
 code, th, td {
-	font-family: ccsymbols, "Sarasa Mono SC", "Ubuntu Mono", "Inconsolata", "Iosevka", "JetBrains Mono", "Monaco", "Source Code Pro", "Source Han Sans HW SC", "Noto Sans Mono CJK SC", "Wenquanyi Micro Hei Mono", monospace;
+	font-family: "CCSymbols", "Sarasa Mono SC", "Ubuntu Mono", "Inconsolata", "Iosevka", "JetBrains Mono", "Monaco", "Source Code Pro", "Source Han Sans HW SC", "Noto Sans Mono CJK SC", "Wenquanyi Micro Hei Mono", monospace;
 	font-variant-numeric: tabular-nums lining-nums slashed-zero;
 }
