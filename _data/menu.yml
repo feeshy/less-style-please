@@ -26,6 +26,7 @@ entries:
         show_more: true
         show_more_text: ...
         show_more_url: ./general
+      url: ./general
     - title: literature
       post_list:
         limit: 2
