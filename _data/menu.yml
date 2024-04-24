@@ -21,19 +21,16 @@ entries:
     entries:
     - title: general
       post_list:
-        limit: 2
+        limit: 3
         category: general
-        show_more: true
-        show_more_text: ...
-        show_more_url: ./general
+        show_more: false
       url: ./general
     - title: literature
+      url: ./literature
       post_list:
-        limit: 2
+        limit: 3
         category: literature
-        show_more: true
-        show_more_text: ...
-        show_more_url: ./literature
+        show_more: false
 
   - title: tips
     entries: 
