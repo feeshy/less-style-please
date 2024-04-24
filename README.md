@@ -104,12 +104,13 @@ layout: post
 
 本主题定义了有五种样式
 
-- 出现在文章列表的样式
+- 会出现在文章列表的样式
 	- post：sans-serif+黑体，两端对齐，在正文前渲染元数据（标签、创建日期、更新日期、重定向链接）
-	- poetry: EB Garamond+思源宋体，居中对齐，不渲染元数据，页面顶部有跟随屏幕高度变化的动态“呼吸空间”（解决短诗页面底部过空的问题）
-	- redirect: 以 post 为蓝本，渲染元数据，重定向到 `redirect_to` 定义的地址。可以让站外内容以与 post 相同的优先级排列在文章列表
+	- poetry: EB Garamond+思源宋体，居中对齐，不渲染元数据
+	- redirect: 以 page 为蓝本，重定向到 `redirect_to` 定义的地址。_posts目录内，可以让站外内容以与 post 相同的优先级排列在文章列表
 - 不出现在文章列表的样式
-	- page：以 post为蓝本, 去掉元数据和目录
+    - page：以 post为蓝本, 去掉元数据和目录
+ 	- redirect: 以 page 为蓝本，重定向到 `redirect_to` 定义的地址。不放置在_posts目录内，可以作为不外显的跳转页使用
 	- archive: 文章列表本身
 
 ### 目录
@@ -192,7 +193,7 @@ htmlhead: ""
 ---
 ```
 
-例如，如果您希望帖子中的图片宽度不超过 360 像素，只需在 front matter 输入 `htmlhead: “<style>img {max-width: 360px;}<style>”` 
+例如，如果您希望帖子不要被搜索引擎收录，只需在 front matter 输入 `htmlhead: "<meta name='robots' content='noindex'>"` 
 
 ## 站点配置
 

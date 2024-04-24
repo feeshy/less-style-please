@@ -89,10 +89,11 @@ There are 5 types of layouts
 
 - appears on post list
 	- post：sans-serif+黑体, justify aligned, meta data rendered if set (tags, created date, updated date, redirected url)
-	- poetry: EB Garamond+思源宋体, center aligned, dynamic breathe spacing to the top of the page, no meta data
+	- poetry: EB Garamond+思源宋体, center aligned, no meta data
 	- redirect: like page, redirecting hyperlinks and javascripts, no meta data
 - not appears on post list
 	- page：like post, no meta, no toc
+	- redirect: like page, redirecting hyperlinks and javascripts, no meta data
 	- archive: the layout of a post list page
 
 ### Table of Contents
@@ -167,7 +168,7 @@ htmlhead: ""
 ---
 ```
 
-If you want images in the post less wide than 360px, for instance, just type `htmlhead: "<style>img {max-width: 360px;}<style>"` in your front matter.
+If you want the post excluded from search engine, for instance, just type `htmlhead: "<meta name='robots' content='noindex'>"` in your front matter.
 
 ## Site Configuration
 
