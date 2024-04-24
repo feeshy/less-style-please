@@ -4,22 +4,20 @@
   {%-assign posts = site.posts-%}
 {%-endif-%}
 
-{%-if site.theme_config.sort_by_updated_date-%}
-  {%-for post in posts-%}
-    {%-assign page.sort_date = last_modified_at | default: date-%}
-  {%- endfor -%}
-  {%- assign posts = posts | sort: "sort_date" -%}
-{%-endif-%}
+{%-for post in posts-%}
+  {%-assign page.sort_date = last_modified_at | default: date-%}
+{%- endfor -%}
+{%- assign sorted_posts = posts | sort: "sort_date" -%}
 
-{%-if include.limit and posts.size > include.limit-%}
+{%-if include.limit and sorted_posts.size > include.limit-%}
   {%-assign limit_exceeded = true-%}
 {%-else-%}
   {%-assign limit_exceeded = false-%}
 {%-endif-%}
 
-{%- if posts.size > 0 -%}
+{%- if sorted_posts.size > 0 -%}
   <ul>
-    {%- for post in posts limit: include.limit -%}
+    {%- for post in sorted_posts limit: include.limit -%}
         <li>
           <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
         </li>
