@@ -4,8 +4,8 @@
   {%-assign posts = site.posts-%}
 {%-endif-%}
 
-{%-if site.theme_config.sort_by_updated_date-%}
-  {%- assign posts = posts | sort: "last_modified_at" -%}
+{%-if site.theme_config.sort_by_modified_date-%}
+  {%- assign posts = posts | sort: "last_modified_at","last" -%}
 {%-endif-%}
 
 {%-if include.limit and posts.size > include.limit-%}
