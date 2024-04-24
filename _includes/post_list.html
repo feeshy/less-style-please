@@ -5,11 +5,10 @@
 {%-endif-%}
 
 {%-if site.theme_config.sort_by_updated_date-%}
-  {% comment %} {%-for post in posts-%}
-    {%-assign post.sort_date = post.last_modified_at | default: post.date-%}
+  {%-for post in posts-%}
+    {%-assign page.sort_date = last_modified_at | default: date-%}
   {%- endfor -%}
-  {%- assign posts = posts | sort: "sort_date" -%} {% endcomment %}
-  {%assign posts = posts | sort: "last_modified_at","last" %}
+  {%- assign posts = posts | sort: "sort_date" -%}
 {%-endif-%}
 
 {%-if include.limit and posts.size > include.limit-%}
