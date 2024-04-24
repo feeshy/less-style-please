@@ -23,7 +23,7 @@ theme_config:
   appearance: "auto" # can be "light", "dark" or "auto"
   date_format: "%Y-%m-%d" # customize how date is formatted
   show_description: false # show blog description in home page
-  sort_by_modified_date: true # if set true, the post list will sort posts by page.last_modified_at instead of page.date
+  sort_by_modified_date: true # sort posts by page.last_modified_at instead of page.date. You will have to set last_modified_date for every post
 
 sass:
   style: :compressed
@@ -55,7 +55,6 @@ pwa:
     - index.html
 
 plugins:
-  - jekyll-last-modified-at
   - jekyll-seo-tag
   - jekyll-toc
   - jekyll-target-blank

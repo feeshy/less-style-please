@@ -14,7 +14,6 @@ Gem::Specification.new do |spec|
 
   spec.add_runtime_dependency "jekyll", "~> 3.9"
   spec.add_runtime_dependency "redcarpet", "~> 3.6"
-  spec.add_runtime_dependency "jekyll-last-modified-at", "~> 1.3"
   spec.add_runtime_dependency "jekyll-seo-tag", "~>2.8.0"
   spec.add_runtime_dependency "jekyll-toc", "~>0.18.0"
   spec.add_runtime_dependency "jekyll-target-blank", "~>2.0", ">= 2.0.2"
