@@ -3,6 +3,7 @@
 source "https://rubygems.org"
 
 gem "redcarpet"
+gem "jekyll-last-modified-at"
 gem "jekyll-seo-tag"
 gem "jekyll-toc"
 gem "jekyll-target-blank"
