@@ -29,8 +29,6 @@ theme: less-style-please
 
 theme_config:
   appearance: "auto" # can be "light", "dark" or "auto"
-  back_home_img: false # true: uses the following image; false: uses the following text
-  back_home_img_src: "/favicon.svg" # customize image for homepage link
   back_home_text: "home" # customize text for homepage link
   go_to_top_text: "🔝" # customize text for go to top button
   date_format: "%Y-%m-%d" # customize how date is formatted

@@ -1,10 +1,4 @@
-<a href="{{ site.baseurl | default: '/' }}">
-    {%-if site.back_home_img-%}
-        <img src="{{ site.back_home_img_src | default: '/favicon.svg' | relative_url }}" style="display:inline-block; height:1em; width:1em;">
-    {%-else-%}
-        {{site.back_home_text}}
-    {%-endif-%}
-</a>
+<a href="{{ site.baseurl | default: '/' }}">{{site.back_home_text}}</a>
 
 {%-if page.categories and page.categories != blank -%}
     &nbsp;>&nbsp;
