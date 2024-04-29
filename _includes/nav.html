@@ -1,0 +1,16 @@
+<a href="{{ site.baseurl | default: '/' }}">
+    {%-if site.back_home_img-%}
+        <img src="{{ site.back_home_img_src | default: '/favicon.svg' | relative_url }}" style="display:inline-block; height:1em; width:1em;">
+    {%-else-%}
+        {{site.back_home_text}}
+    {%-endif-%}
+</a>
+
+{%-if page.categories and page.categories != blank -%}
+    &nbsp;>&nbsp;
+    {%- assign hierarchy = '/' -%}
+    {%-for category in page.categories-%}
+        {%-assign hierarchy = hierarchy | append: category | append: '/' -%}
+        <a href="{{ hierarchy | relative_url }}">{{ category }}</a>&nbsp;>&nbsp;
+    {%-endfor-%}
+{%-endif-%}

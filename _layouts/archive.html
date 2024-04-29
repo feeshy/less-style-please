@@ -1,20 +1,19 @@
----
-layout: default
----
+<!DOCTYPE html>
+<html lang="{{ page.locale | default: site.locale }}">
 
-<nav><a href="{{ site.baseurl | default: '/' }}">🏠</a> <a href="../">🔙</a></nav>
-<nav id="gototop" style="position: fixed; right: 5vw; bottom: 5vh; visibility: hidden;"><a href="#top">🔝</a></nav>
+<head>
+  {%-include head.html-%}
+  <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/post_list.css">
+</head>
 
-<h1>{{ page.title }}</h1>
+<body a="{{ site.theme_config.appearance | default: 'auto' }}">
+  <main class="page-content" aria-label="Content">
+    <nav>{%-include nav.html-%}</nav>
+    <h1>{{ page.title }}</h1>
+    {{ content }}
+    {%-include post_list.html category=page.which_category-%}
+    {%-include footer.html-%}
+  </main>
+</body>
 
-{{ content }}
-
-{%-include post_list.html category=page.which_category-%}
-
-<script>
-    if (document.body.scrollHeight > window.innerHeight) {
-        document.getElementById('gototop').style.visibility = 'visible';
-    } else {
-        document.getElementById('gototop').style.visibility = 'hidden';
-    }
-</script>
+</html>

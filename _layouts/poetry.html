@@ -1,13 +1,21 @@
----
-layout: default
----
+<!DOCTYPE html>
+<html lang="{{ page.locale | default: site.locale }}">
 
-<nav id="top"><a href="{{ site.baseurl | default: '/' }}">🏠</a> <a href="./">🔙</a></nav>
+<head>
+  {%-include head.html-%}
+  <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/literature.css">
+  <style>article p {text-align: center;}</style>
+</head>
 
-<article style="text-align: center;">
-  
-  <h1>{{ page.title }}</h1>
+<body a="{{ site.theme_config.appearance | default: 'auto' }}">
+  <main class="page-content" aria-label="Content">
+    <nav>{%-include nav.html-%}</nav>
+    <article>
+      <h1>{{ page.title }}</h1>
+      {{ content }}
+    </article>
+    {%-include footer.html-%}
+  </main>
+</body>
 
-  {{ content }}
-
-</article>
+</html>

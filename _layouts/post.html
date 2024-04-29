@@ -1,49 +1,24 @@
----
-layout: default
----
+<!DOCTYPE html>
+<html lang="{{ page.locale | default: site.locale }}">
 
-<nav id="top"><a href="{{ site.baseurl | default: '/' }}">🏠</a> <a href="./">🔙</a></nav>
-<nav id="gototop" style="position: fixed; right: 5vw; bottom: 5vh; visibility: hidden;">🔝</nav>
+<head>
+  {%-include head.html-%}
+  <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/post.css">
+</head>
 
-<article>
-  
-  <h1>{{ page.title }}</h1>
+<body a="{{ site.theme_config.appearance | default: 'auto' }}">
+  <main class="page-content" aria-label="Content">
+    <nav>{%-include nav.html-%}</nav>
+    <article>
+      <h1>{{ page.title }}</h1>
+      {%-include post_meta.html-%}
+      {%-if page.toc-%}
+        {% toc %}<hr>
+      {%-endif-%}
+      {{ content }}
+    </article>
+    {%-include footer.html-%}
+  </main>
+</body>
 
-  {%-include post_meta.html-%}
-
-  {%-if page.toc-%}
-    {% toc %}<hr>
-  {%-endif-%}
-  
-  {{ content }}
-
-</article>
-
-<script>
-
-  window.addEventListener('scroll', function() {
-    if (window.scrollY > 200) {
-      document.getElementById('gototop').style.visibility = 'visible';
-    } else {
-      document.getElementById('gototop').style.visibility = 'hidden';
-    }
-  });
-
-  document.getElementById('gototop').addEventListener('click', function() {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  });
-
-  function wrap(el, wrapper) {
-    el.parentNode.insertBefore(wrapper, el);
-    wrapper.appendChild(el);
-  }
-  Array.from(document.getElementsByTagName('table')).forEach(el => {
-    const wrapper = document.createElement('section')
-    wrapper.style.overflowX = 'auto';
-    wrap(el, wrapper)
-  })
-
-</script>
+</html>

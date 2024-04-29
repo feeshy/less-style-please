@@ -14,13 +14,25 @@ locale: zh-Hans # language of the site
 
 permalink: /:categories/:title
 
-favicon: "android-chrome-512x512.png" # name+extension of favicon (which must be put on the root folder)
+# generate modern light-dark svg+xml favicon at https://realfavicongenerator.net/svg-favicon/
+# generate png icons pack at https://realfavicongenerator.net/
+# generate chrome maskable icons at https://maskable.app/editor/
+favicon_legacy: "/favicon.ico" # legacy 'favicon.ico' at the root folder of your site, it is highly recommended not changing this name
+favicon_svg_xml: "/favicon.svg" # name+extension of modern vector favicon
+favicon_ios: "/apple-touch-icon.png" # icon for Safari
+webmanifest: "/site.webmanifest" # icon config file for Chrome. and don't forget to check the favicon names at webmanifest.
+ms_tile_color: "#da532c" # hex background for windows 8.1~10 tile. and don't forget to configure your tile icons at "/browserconfig.xml"
+
 # goat_counter: "yoursitename" # put your GoatCounter name if you want to use GoatCounter analytics
 
-theme: less-style-please # if you are using GitHub Pages, change it to remote_theme: riggraz/no-style-please
+theme: less-style-please
 
 theme_config:
   appearance: "auto" # can be "light", "dark" or "auto"
+  back_home_img: false # true: uses the following image; false: uses the following text
+  back_home_img_src: "/favicon.svg" # customize image for homepage link
+  back_home_text: "home" # customize text for homepage link
+  go_to_top_text: "🔝" # customize text for go to top button
   date_format: "%Y-%m-%d" # customize how date is formatted
   show_description: false # show blog description in home page
   sort_by_modified_date: false # sort posts by page.last_modified_at instead of page.date. You have to set last_modified_date for every post

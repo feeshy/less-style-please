@@ -1,48 +1,47 @@
-<!-- generate icons and codes via https://realfavicongenerator.net/ -->
-
 <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/manifest.json">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#ffffff">
-<link rel="shortcut icon" href="/favicon.ico">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="msapplication-TileColor" content="#ffffff">
-<meta name="msapplication-config" content="/browserconfig.xml">
-<meta name="theme-color" content="#ffffff">
+<link rel="apple-touch-icon" sizes="180x180" href="{{ site.favicon_ios | relative_url }}">
+<link rel="icon" sizes="32x32" href="{{ site.favicon_legacy | relative_url }}">
+<link rel="icon" type="image/svg+xml" href="{{ site.favicon_svg_xml | relative_url }}">
+<link rel="manifest" href="{{ site.webmanifest | relative_url }}">
+<meta name="msapplication-TileColor" content="{{ site.ms_tile_color | default: '#888888' }}">
 
 <title>
-    {%- if page.title -%}
+{%- if page.title -%}
     {{ page.title }}
-    {%- else -%}
+{%- else -%}
     {{ site.title }}
-    {%- endif -%}
+{%- endif -%}
 </title>
 
 {%-seo title=false-%}
-{%-feed_meta-%}
+{% feed_meta %}
 
 {%- if page.redirect.to -%}
 <meta http-equiv="refresh" content="1; url={{ page.redirect.to }}">
 {%- endif -%}
 
-<link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}">
+<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/main.css">
+
 {%- if page.categories contains "literature" -%}
-    {%-include stylesheet-literature.html-%}
-{%-endif-%}
-{%-if page.dropcap-%}
-    {%-include stylesheet-drop_cap.html-%}
-{%-endif-%}
-{%-if page.layout == "archive" or page.layout == "home" -%}
-    {%-include stylesheet-post_list.html-%}
-{%-endif-%}
-{%-if page.layout == "post" or page.layout == "page" -%}
-    {%-include stylesheet-post.html-%}
-{%-endif-%}
-{%-if page.htmlhead -%}
-    {{ page.htmlhead }}
-{%-endif-%}
+<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/literature.css">
+{%- endif -%}
+
+{%- if page.dropcap -%}
+<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/drop_cap.css">
+{%- endif -%}
+
+<script src="{{ site.baseurl }}/assets/js/main.js" async></script>
+
+{%- if page.custom_js -%}
+{%- for js_file in page.custom_js -%}
+<script type="text/javascript" src="{{ site.baseurl }}/assets/js/{{ js_file }}.js" async></script>
+{%- endfor -%}
+{%- endif -%}
+
+{%- if page.htmlhead -%}
+{{ page.htmlhead }}
+{%- endif -%}
