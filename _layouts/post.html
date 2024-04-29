@@ -3,7 +3,7 @@ layout: default
 ---
 
 <nav id="top"><a href="{{ site.baseurl | default: '/' }}">🏠</a> <a href="./">🔙</a></nav>
-<nav id="gototop" style="position: fixed; right: 5vw; bottom: 5vh; visibility: hidden;"><a href="#top">🔝</a></nav>
+<nav id="gototop" style="position: fixed; right: 5vw; bottom: 5vh; visibility: hidden;">🔝</nav>
 
 <article>
   
@@ -21,20 +21,29 @@ layout: default
 
 <script>
 
-  if (document.body.scrollHeight > window.innerHeight) {
-    document.getElementById('gototop').style.visibility = 'visible';
-  } else {
-    document.getElementById('gototop').style.visibility = 'hidden';
-  }
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > 200) {
+      document.getElementById('gototop').style.visibility = 'visible';
+    } else {
+      document.getElementById('gototop').style.visibility = 'hidden';
+    }
+  });
+
+  document.getElementById('gototop').addEventListener('click', function() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
 
   function wrap(el, wrapper) {
-      el.parentNode.insertBefore(wrapper, el);
-      wrapper.appendChild(el);
+    el.parentNode.insertBefore(wrapper, el);
+    wrapper.appendChild(el);
   }
   Array.from(document.getElementsByTagName('table')).forEach(el => {
-      const wrapper = document.createElement('section')
-      wrapper.style.overflowX = 'auto';
-      wrap(el, wrapper)
+    const wrapper = document.createElement('section')
+    wrapper.style.overflowX = 'auto';
+    wrap(el, wrapper)
   })
 
 </script>
