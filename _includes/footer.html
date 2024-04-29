@@ -1,4 +1,4 @@
-<nav id="gototop" style="position: fixed; right: 5vw; bottom: 5vh; visibility: hidden;">🔝</nav>
+<nav id="gototop" style="position: fixed; right: 5vw; bottom: 5vh; visibility: hidden;">{{ site.theme_config.back_home_text | default: "🔝" }}</nav>
 <script>
 window.addEventListener('scroll', function() {
     if (window.scrollY > 200) {
