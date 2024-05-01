@@ -1,6 +1,6 @@
 title: less style, please! # name of the site
 author: # name of site's author
-url: https://feeshy.github.io/less-style-please/ # root address of the site
+url: https://feeshy.github.io/ # root address of the site
 baseurl: "/less-style-please/" # subpath of the site, e.g. "/blog" (leave it blank "" if you're site shouldn't use a subpath)
 description: > # description of the site (multiple lines allowed)
 locale: zh-Hans # language of the site
