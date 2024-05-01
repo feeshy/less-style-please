@@ -20,6 +20,10 @@
 {%-seo title=false-%}
 {% feed_meta %}
 
+{%- if page.noindex -%}
+<meta name='robots' content='noindex'>
+{%- endif -%}
+
 {%- if page.redirect.to -%}
 <meta http-equiv="refresh" content="1; url={{ page.redirect.to }}">
 {%- endif -%}
@@ -42,6 +46,6 @@
 {%- endfor -%}
 {%- endif -%}
 
-{%- if page.htmlhead -%}
-{{ page.htmlhead }}
+{%- if page.custom_head -%}
+{{ page.custom_head }}
 {%- endif -%}

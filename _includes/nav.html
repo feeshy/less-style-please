@@ -1,10 +1,11 @@
-<a href="{{ site.baseurl | default: '/' }}">{{ site.theme_config.back_home_text }}</a>
-
-{%-if page.categories and page.categories != blank -%}
-    &nbsp;>&nbsp;
-    {%- assign hierarchy = '/' -%}
-    {%-for category in page.categories-%}
-        {%-assign hierarchy = hierarchy | append: category | append: '/' -%}
-        <a href="{{ hierarchy | relative_url }}">{{ category }}</a>&nbsp;>&nbsp;
-    {%-endfor-%}
-{%-endif-%}
+<nav>
+    <a href="{{ site.baseurl | default: '/' }}">{{ site.theme_config.back_home_text }}</a>
+    {%-if page.categories and page.categories != blank -%}
+        &nbsp;>&nbsp;
+        {%- assign hierarchy = '/' -%}
+        {%-for category in page.categories-%}
+            {%-assign hierarchy = hierarchy | append: category | append: '/' -%}
+            <a href="{{ hierarchy | relative_url }}">{{ category }}</a>&nbsp;>&nbsp;
+        {%-endfor-%}
+    {%-endif-%}
+</nav>

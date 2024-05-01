@@ -8,7 +8,7 @@
 
 <body a="{{ site.theme_config.appearance | default: 'auto' }}">
   <main class="page-content" aria-label="Content">
-    <nav>{%-include nav.html-%}</nav>
+    {%-include nav.html-%}
     <h1>{{ page.title }}</h1>
     {{ content }}
     {%-include post_list.html category=page.which_category-%}

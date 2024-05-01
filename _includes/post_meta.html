@@ -1,19 +1,16 @@
 <p class="post-meta">
-
-{%- if page.tags and page.tags != blank -%}
-    🏷️&nbsp;{{ page.tags | join: ' '}}<br>
-{%- endif -%}
-
-{%- if page.last_modified_at and page.last_modified_at != blank -%}
-    ✏️&nbsp;
-{%- else -%}
-    📅&nbsp;
-{%- endif -%}
-
-{%- if page.redirect_from and page.redirect_from != blank -%}
-    <a href="{{ page.redirect_from | first }}"><time datetime="{{ page.last_modified_at | default: page.date }}">{{ page.last_modified_at | default: page.date | date: site.theme_config.date_format }}</time></a>
-{%- else -%}
-    <time datetime="{{ page.last_modified_at | default: page.date }}">{{ page.last_modified_at | default: page.date | date: site.theme_config.date_format }}</time>
-{%- endif -%}
-
+    {%- if page.tags and page.tags != blank -%}
+        🏷️&nbsp;{{ page.tags | join: ' '}}
+    {%- endif -%}
+    <br>
+    {%- if page.last_modified_at and page.last_modified_at != blank -%}
+        <span title="updated on">✏️&nbsp;</span>
+    {%- else -%}
+        <span title="published on">📅&nbsp;</span>
+    {%- endif -%}
+    {%- if page.redirect_from and page.redirect_from != blank -%}
+        <a href="{{ page.redirect_from | first }}"><time datetime="{{ page.last_modified_at | default: page.date }}">{{ page.last_modified_at | default: page.date | date: site.theme_config.date_format }}</time></a>
+    {%- else -%}
+        <time datetime="{{ page.last_modified_at | default: page.date }}">{{ page.last_modified_at | default: page.date | date: site.theme_config.date_format }}</time>
+    {%- endif -%}
 </p>

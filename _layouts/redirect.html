@@ -1,5 +1,7 @@
 ---
 sitemap: false
+noindex: true
+canonical_url: ${redirect_to}
 ---
 <!DOCTYPE html>
 <html lang="{{ page.locale | default: site.locale }}">
@@ -11,9 +13,9 @@ sitemap: false
 
 <body a="{{ site.theme_config.appearance | default: 'auto' }}">
   <main class="page-content" aria-label="Content">
-    <nav>{%-include nav.html-%}</nav>
+    {%-include nav.html-%}
     <h1>{{ page.title }}</h1>
-    <p><a href="{{ page.redirect.to }}" id="url">点击跳转<br>Click to continue...</a></p>
+    <blockquote><a href="{{ page.redirect.to }}" id="url">点击跳转<br>Click to continue...</a></blockquote>
     {{ content }}
   </main>
 </body>
