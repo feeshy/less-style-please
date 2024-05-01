@@ -1,10 +1,6 @@
 ---
 layout: archive
-title: general
+title: 默认分类
 which_category: general
 ---
-archive page is fully customizable at `/category/index.md`
-
-通用内容首选字体：Avenir Next, 苹方
-
-候补字体：Segoe UI, HarmonyOS Sans, [Clear Sans🌐](https://github.com/intel/clear-sans), 思源黑体 (Noto Sans CJK SC), 思源黑体 CN (Noto Sans SC), 更纱黑体, sans-serif
+edit this text at `/category/index.md`

@@ -1,8 +1,8 @@
 # less-style-please
 
-Docs Language: 中文 | [English](./README-en.md)
+Docs Language: 中文 | [English](/README-en.md)
 
-纯文本风格Jekyll博客主题，fork自rigggraz的[no_style_please](https://github.com/riggraz/no-style-please)，具有基于分类的树形结构，可系统地组织关于不同主题的文章，支持手动索引外部平台的内容，可将你的全部创作统一整合为一个网站。
+纯文本风格Jekyll博客主题，fork自rigggraz的no_style_please[^riggraz]，具有基于分类的树形结构，可系统地组织关于不同主题的文章，支持手动索引外部平台的内容，可将你的全部创作统一整合为一个网站。
 
 ## 设计
 
@@ -11,13 +11,11 @@ Docs Language: 中文 | [English](./README-en.md)
 - 极简且克制的设计风格，适合主要专注于文本内容的网站
 - 日夜主题
 
-### 新增
+### 改进
 
-- 配色方案改为低饱和度、低对比度风格
+- 配色方案改为低饱和度、低对比度的风格
 - 表格自适应与隔行变色
 - 自托管的中文webfont
-
-![](_screenshots/post-light.jpeg)
 
 字体搭配分为四个层次：
 
@@ -36,7 +34,7 @@ Docs Language: 中文 | [English](./README-en.md)
 
 ## 帖子语法
 
-示例页面: [markdown](https://github.com/feeshy/less-style-please/blob/master/general/_posts/2024-04-11-example.md) -> [网页](https://feeshy.github.io/less-style-please/general/example)
+示例页面: [markdown](/general/_posts/2024-04-11-example.md) -> [网页](https://feeshy.github.io/less-style-please/general/example)
 
 ### 基础元数据
 
@@ -70,7 +68,7 @@ last_modified_at: yyyy-mm-dd
 ---
 ```
 
-如果定义了 `last_modified_at`，则更新日期将在帖子的元数据模块中呈现。这个属性对于sitemap也非常实用（需求[j​​ekyll-sitemap](https://github.com/jekyll/jekyll-sitemap)插件）
+如果定义了 `last_modified_at`，则更新日期将在帖子的元数据模块中呈现。这个属性对于sitemap[^sitemap]也非常实用
 
 #### 分类
 
@@ -105,23 +103,21 @@ layout: post
 本主题定义了有五种样式
 
 - 会出现在文章列表的样式
-	- post：sans-serif+黑体，两端对齐，在正文前渲染元数据（标签、创建日期、更新日期、重定向链接）
-	- poetry: EB Garamond+思源宋体，居中对齐，不渲染元数据
-	- redirect: 以 page 为蓝本，重定向到 `redirect_to` 定义的地址。_posts目录内，可以让站外内容以与 post 相同的优先级排列在文章列表
+	- post：两端对齐，在正文前渲染元数据（标签、创建日期、更新日期、重定向链接）
+	- poetry: 居中对齐，不渲染元数据
+	- redirect: 以 page 为蓝本，重定向到 `redirect_to` 定义的地址。放置在`_posts`目录内，可以让站外内容以与 post 相同的优先级排列在文章列表
 - 不出现在文章列表的样式
     - page：以 post为蓝本, 去掉元数据和目录
- 	- redirect: 以 page 为蓝本，重定向到 `redirect_to` 定义的地址。不放置在_posts目录内，可以作为不外显的跳转页使用
+ 	- redirect: 以 page 为蓝本，重定向到 `redirect_to` 定义的地址。不放置在`_posts`目录内，可以作为不外显的跳转页使用
 	- archive: 文章列表本身
 
-### 目录
+### 目录[^toc]
 
 ``` yml
 ---
 toc: true
 ---
 ```
-
-请阅读[jekyll-toc](https://github.com/toshimaru/jekyll-toc)文档
 
 ### 重定向
 
@@ -159,11 +155,19 @@ redirect_from:
 
 适合修改过目录名称、或者把以前在站外发布的内容重新搬回站内的场景
 
-这个功能依赖 [jekyll-redirect-from](https://github.com/jekyll/jekyll-redirect-from) 插件。同时会在帖子元数据模块中创建日期的位置渲染一个指向第一行URL的超链接。
+这个功能依赖jekyll-redirect-from插件[^redirect]。同时会在帖子元数据模块中创建日期的位置渲染一个指向第一行URL的超链接。
+
+### 阻止搜索引擎编入索引
+
+> noindex 是一个包含 meta 标记或 HTTP 响应标头的规则集，用于防止支持 noindex 规则的搜索引擎（例如 Google）将内容编入索引。当 Googlebot 抓取该网页并发现该标记或标头时，Google 就会完全阻止该网页出现在 Google 搜索结果中，不论是否有其他网站链接到该网页。
+
+``` yml
+---
+noindex: true
+---
+```
 
 ### 首字下沉
-
-这样的效果
 
 ![](https://i.stack.imgur.com/RpOEO.gif)
 
@@ -185,15 +189,15 @@ locale: en
 
 ### 在 Html 头部插入任何字符串
 
-通过 `htmlhead` 语法定义的任意字符串都将插入到渲染的 html 文件头。
+通过 `custom_head` 语法定义的任意字符串都将插入到渲染的 html 文件头。
 
 ``` yml
 ---
-htmlhead: ""
+custom_head: ""
 ---
 ```
 
-例如，如果您希望帖子不要被搜索引擎收录，只需在 front matter 输入 `htmlhead: "<meta name='robots' content='noindex'>"` 
+例如，如果您希望帖子不要被搜索引擎收录，只需在 front matter 输入 `custom_head: "<meta name='robots' content='noindex'>"` 
 
 ## 站点配置
 
@@ -201,19 +205,30 @@ htmlhead: ""
 
 ### 站点基础信息
 
-请阅读 [jekyll-seo-tag](https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md) 文档
+请阅读 [jekyll-seo-tag](https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md) 文档[^seo]
 
 ### PWA
 
 #### 图标和Manifest.json
 
-- 使用 [real favicon generator](https://realfavicongenerator.net/) 创建图标包
-- 将生成的压缩包解压到项目根目录下
-- 将生成的 html 代码粘贴到 `_includes/head.html`
+- 从您的设计软件中导出应用图标（或使用在线工具生成它们）
+  - 矢量图标 `favicon.svg` 🛠️[在线生成](https://realfavicongenerator.net/svg-favicon/)
+  - 32x32 `favicon.ico`, iOS使用的 180x180 png 🛠️[在线生成](https://realfavicongenerator.net/)
+  - chrome PWA 使用的 192x192 and 512x512 png 🛠️[在线生成](https://maskable.app/editor/)
+- 将图标放在项目的根目录下
+- 在 `_config.yml` 按实际情况修改图标的文件名
+
+``` yml
+favicon_legacy: "/favicon.ico" # legacy 'favicon.ico' at the root folder of your site, it is highly recommended not changing this name
+favicon_svg_xml: "/favicon.svg" # name+extension of modern vector favicon
+favicon_ios: "/apple-touch-icon.png" # icon for Safari
+webmanifest: "/site.webmanifest" # icon config file for Chrome. and don't forget to check the favicon names at webmanifest.
+ms_tile_color: "#da532c" # hex background for windows 8.1~10 tile. and don't forget to configure your tile icons at "/browserconfig.xml"
+```
 
 #### Service-Worker.js
 
-请阅读 [jekyll-pwa-workbox](https://github.com/souldanger/jekyll-pwa-workbox) 文档
+请阅读jekyll-pwa-workbox文档[^pwa]
 
 ### 文章列表
 
@@ -225,7 +240,7 @@ layout: archive
 which_category: category name
 title: page title
 ---
-You could add some content before post list
+[optional]you could add some content here, it will be rendered before post list
 ```
 
 存档页面的模板存储在 `_layouts/archive.html`
@@ -238,13 +253,24 @@ You could add some content before post list
 ---
 layout: home
 ---
-You could add some content before post list
+[optional]you could add some content here, it will be rendered after menu
 ```
 
-首页的列表存储在 `/_data/menu.yml`，您可以从主页设置到指向存档页面的链接，详细步骤请阅读 [no-style-please](https://github.com/riggraz/no-style-please) 上的原始文档。
+首页的列表存储在 `/_data/menu.yml`，您可以从主页设置到指向存档页面的链接，详细步骤请阅读 [no-style-please](https://github.com/riggraz/no-style-please) 上的原始文档[^riggraz]。
 
 ### Markdown 解析器
 
-Jekyll默认的 [kramdown-parser-gfm](https://github.com/kramdown/parser-gfm) 引擎有一个bug，会将任何未转义的 `|` 渲染为单行表，该错误已经存在了 [数十年](https://stackoverflow.com/questions/23751917/how-do-you-disable-tables-in-kramdown）。在 kramdown 和 jekyll 的存储库中，时不时都会出现提及该错误的 issue，其中大多数都因超时而关闭。考虑到该 bug 修复基本无望，我的主题版本中默认的 markdown 引擎设置为 [redcarpet](https://github.com/vmg/redcarpet)。
+Jekyll默认的kramdown[^kramdown]引擎有一个bug，会将任何未转义的 `|` 渲染为单行表，该错误已经存在了 [数十年](https://stackoverflow.com/questions/23751917/how-do-you-disable-tables-in-kramdown）。在 kramdown 和 jekyll 的存储库中，时不时都会出现提及该错误的 issue，其中大多数都因超时而关闭。考虑到该 bug 修复基本无望，我的主题版本中默认的 markdown 引擎设置为redcarpet[^redcarpet]。
 
-默认启用 5 种非标准标记符语法："tables", "autolink", "strikethrough", "highlight", "footnotes"。更多用法请阅读 [redcarpet](https://github.com/vmg/redcarpet) 上的原始文档。
+默认启用 6 种非标准标记符语法："tables", "autolink", "strikethrough", "highlight", "footnotes", "with_toc_data"。更多用法请阅读redcarpet[^redcarpet]上的原始文档。
+
+---
+
+[^riggraz]: [no_style_please](https://github.com/riggraz/no-style-please)
+[^sitemap]: [jekyll-sitemap](https://github.com/jekyll/jekyll-sitemap)
+[^toc]: [jekyll-toc](https://github.com/toshimaru/jekyll-toc)
+[^redirect]: [jekyll-redirect-from](https://github.com/jekyll/jekyll-redirect-from)
+[^seo]: [jekyll-seo-tag](https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md)
+[^pwa]: [jekyll-pwa-workbox](https://github.com/souldanger/jekyll-pwa-workbox)
+[^kramdown]: [kramdown-parser-gfm](https://github.com/kramdown/parser-gfm)
+[^redcarpet]: [redcarpet](https://github.com/vmg/redcarpet)

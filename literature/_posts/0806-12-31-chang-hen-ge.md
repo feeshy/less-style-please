@@ -6,8 +6,6 @@ locale: zh-Hant
 last_modified_at: 2019-07-13
 ---
 
-<iframe style="border: 0; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/album=520012298/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/track=600099668/transparent=true/" seamless><a href="https://feeshy.bandcamp.com/album/ends-of-nihil">ends of nihil by feeshy</a></iframe>
-
 漢皇重色思傾國，御宇多年求不得。
 
 楊家有女初長成，養在深閨人未識。
