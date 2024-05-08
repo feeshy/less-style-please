@@ -9,7 +9,7 @@
         <span title="published on">📅</span>&nbsp;
     {%- endif -%}
     {%- if page.redirect_from and page.redirect_from != blank -%}
-        <a href="{{ page.redirect_from.first | default: page.redirect_from }}"><time datetime="{{ page.last_modified_at | default: page.date }}">{{ page.last_modified_at | default: page.date | date: site.theme_config.date_format }}</time></a>
+        <a href="{{ page.redirect_from.first | default: page.redirect_from | relative_url }}"><time datetime="{{ page.last_modified_at | default: page.date }}">{{ page.last_modified_at | default: page.date | date: site.theme_config.date_format }}</time></a>
     {%- else -%}
         <time datetime="{{ page.last_modified_at | default: page.date }}">{{ page.last_modified_at | default: page.date | date: site.theme_config.date_format }}</time>
     {%- endif -%}

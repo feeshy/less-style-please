@@ -10,7 +10,6 @@
 <meta name="msapplication-TileColor" content="{{ site.ms_tile_color | default: '#888888' }}">
 
 {% seo %}
-{% feed_meta %}
 
 {%- if page.noindex -%}
 <meta name='robots' content='noindex'>
@@ -19,6 +18,8 @@
 {%- if page.redirect.to -%}
 <meta http-equiv="refresh" content="1; url={{ page.redirect.to }}">
 {%- endif -%}
+
+{% feed_meta %}
 
 <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/main.css">
 
