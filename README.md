@@ -4,12 +4,14 @@ Docs Language: 中文 | [English](/README-en.md)
 
 纯文本风格Jekyll博客主题，fork自rigggraz的no_style_please[^riggraz]，具有基于分类的树形结构，可系统地组织关于不同主题的文章，支持手动索引外部平台的内容，可将你的全部创作统一整合为一个网站。
 
+![](https://feeshy.github.io/less-style-please/assets/img/example.png)
+
 ## 设计
 
 ### 继承
 
 - 极简且克制的设计风格，适合主要专注于文本内容的网站
-- 日夜主题
+- 动态明暗主题
 
 ### 改进
 
@@ -185,6 +187,14 @@ dropcap: true
 ---
 locale: en
 ---
+```
+
+### 表情包
+
+使用html语法，将表情包指定为sticker的类
+
+```html
+<img class="sticker" src="">
 ```
 
 ### 在 Html 头部插入任何字符串

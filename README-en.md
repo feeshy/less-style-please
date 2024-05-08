@@ -4,6 +4,8 @@ Docs Language: [中文](/README.md) | English
 
 A pure text Jekyll blog theme forked from rigggraz's no_style_please[^riggraz], with a category-based tree structure for systematically organizing articles on diverse topics, and the ability to manually index external content to consolidate your entire content ecosystem into one single website.
 
+![](https://feeshy.github.io/less-style-please/assets/img/example.png)
+
 ## Design
 
 ### What Are Kept
@@ -13,7 +15,7 @@ A pure text Jekyll blog theme forked from rigggraz's no_style_please[^riggraz], 
 
 ### What Are Changed
 
-- Low-saturated color palette
+- Low-saturated color palette for both light and dark themes
 - Rowing color grades for tables
 - Self hosting web fonts for Simplified Chinese
 
@@ -165,6 +167,14 @@ locale: zh-Hant
 ```
 
 If the post is written in an language other than the default language in `_config.yml`, you may define the locale at front matter.
+
+### inline stickers
+
+use html syntax
+
+```html
+<img class="sticker" src="sticker_url_here">
+```
 
 ### Insert Anything to Html Head
 
