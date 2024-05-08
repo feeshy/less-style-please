@@ -1,7 +1,5 @@
 ---
 sitemap: false
-noindex: true
-canonical_url: ${redirect_to}
 ---
 <!DOCTYPE html>
 <html lang="{{ page.locale | default: site.locale }}">
@@ -9,13 +7,14 @@ canonical_url: ${redirect_to}
 <head>
   {%-include head.html-%}
   <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/post.css">
+  <meta name='robots' content='noindex'>
 </head>
 
 <body a="{{ site.theme_config.appearance | default: 'auto' }}">
   <main class="page-content" aria-label="Content">
     {%-include nav.html-%}
     <h1>{{ page.title }}</h1>
-    <blockquote><a href="{{ page.redirect.to }}" id="url">点击跳转<br>Click to continue...</a></blockquote>
+    <blockquote><a href="{{ page.redirect_to }}" id="url">点击跳转<br>Click to continue...</a></blockquote>
     {{ content }}
   </main>
 </body>
