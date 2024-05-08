@@ -4,12 +4,12 @@
     {%- endif -%}
     <br>
     {%- if page.last_modified_at and page.last_modified_at != blank -%}
-        <span title="updated on">✏️&nbsp;</span>
+        <span title="updated on">✏️</span>&nbsp;
     {%- else -%}
-        <span title="published on">📅&nbsp;</span>
+        <span title="published on">📅</span>&nbsp;
     {%- endif -%}
     {%- if page.redirect_from and page.redirect_from != blank -%}
-        <a href="{{ page.redirect_from | first }}"><time datetime="{{ page.last_modified_at | default: page.date }}">{{ page.last_modified_at | default: page.date | date: site.theme_config.date_format }}</time></a>
+        <a href="{{ page.redirect_from.first | default: page.redirect_from }}"><time datetime="{{ page.last_modified_at | default: page.date }}">{{ page.last_modified_at | default: page.date | date: site.theme_config.date_format }}</time></a>
     {%- else -%}
         <time datetime="{{ page.last_modified_at | default: page.date }}">{{ page.last_modified_at | default: page.date | date: site.theme_config.date_format }}</time>
     {%- endif -%}

@@ -17,9 +17,7 @@
 {%- if posts.size > 0 -%}
   <ul>
     {%- for post in posts limit: include.limit -%}
-        <li>
-          <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-        </li>
+      <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
     {%- endfor -%}
     {%- if include.show_more and limit_exceeded -%}
       <li><a href="{{ include.show_more_url }}">{{ include.show_more_text | default: "..." }}</a></li>

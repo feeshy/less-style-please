@@ -2,17 +2,19 @@
 <html lang="{{ page.locale | default: site.locale }}">
 
 <head>
-  {%-include head.html-%}
-  <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/post_list.css">
+
+{% include head.html %}
+<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/post_list.css">
+
 </head>
 
 <body>
   <main class="page-content" aria-label="Content">
-    {%-include nav.html-%}
+    {% include nav.html %}
     <h1>{{ page.title }}</h1>
     {{ content }}
-    {%-include post_list.html category=page.which_category-%}
-    {%-include footer.html-%}
+    {% include post_list.html category=page.which_category %}
+    {% include footer.html %}
   </main>
 </body>
 
