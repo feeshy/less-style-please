@@ -1,54 +1,40 @@
+// color scheme
 
-// -------------- THEME SWITCHER -------------- //
-@mixin dark-appearance {
-  filter: invert(1);
-  img {
-    filter: invert(1);
-
-    &.ioda { filter: invert(0); }
-  }
+@media (prefers-color-scheme: light) {
+  body { background-color: white; color: black; }
+  td { border-color: white; }
+  thead>tr, tbody>tr:nth-child(even) { background-color: #eeeeee; }
+  tbody>tr:nth-child(odd), blockquote, #toc { background-color: #f7f7f7; }
+  blockquote { border-left-color: #eeeeee; }
+  a:hover { color: darkslategray; }
+  code { color: lightcoral; }
+  code, div>pre { background-color: aliceblue; }
 }
-
-body[a="dark"] { @include dark-appearance; }
 
 @media (prefers-color-scheme: dark) {
-  body[a="auto"] { @include dark-appearance; }
+  body { background-color: #1c1c1c; color: white; }
+  td { border-color: #1c1c1c; }
+  thead>tr, tbody>tr:nth-child(even) { background-color: #101010; }
+  tbody>tr:nth-child(odd), blockquote, #toc { background-color: #282828; }
+  blockquote { border-left-color: #101010; }
+  a:hover { color: lightslategray; }
+  code { color: springgreen; }
+  code, div>pre { background-color: black; }
 }
 
-// -------------------------------------------- //
+a { color: inherit; }
+mark { color: inherit; background-color: #7f7f7f7f;}
+:target { background-color: #7f7f7f10; }
 
-// bg color is also needed in html in order to
-// block body's background propagation
-// see: https://stackoverflow.com/a/61265706
-html, body { background: white; }
+// layout
 
 html { height: 100%; }
 
 body {
-  color: black;
   margin: 0;
   min-height: 100%;
   overflow-wrap: break-word;
 }
-
-a { color: black; }
-a:hover { color: slategray; }
-nav a, footer a { text-decoration: none; }
-
-.post-meta { text-align: right; }
-footer {text-align: center;}
-
-h1, h2 { margin-top: 3rem; }
-h3, h4 { margin-top: 2rem; }
-h5, h6 { margin-top: 1rem; }
-
-hr { margin: 2rem 0; }
-
-p { margin: 1rem 0; }
-
-li { margin: 0.4rem 0; }
-
-*:target { background: #f6f6f6; }
 
 main {
   max-width: 640px;
@@ -56,12 +42,38 @@ main {
   padding: 4rem 2rem;
 }
 
+h1 { margin-top: 3rem; }
+h2, h3 { margin-top: 2rem; }
+h4, h5, h6 { margin-top: 1rem; }
+
+h2 {text-align: center;}
 hr {
+  margin: 2rem 0;
   text-align: center;
   border: 0;
-
   &:before { content: '/////' }
   &:after { content: attr(data-content) '/////' }
+}
+
+ul#toc {
+  max-height: 40vh;
+  overflow-y: auto;
+  font-size: smaller;
+}
+
+p { margin: 1em 0; text-align: justify; }
+p.post-meta { text-align: right; }
+li { margin: 0.4em 0; }
+
+footer {text-align: center;}
+nav a, footer a { text-decoration: none; }
+
+blockquote {
+  margin: 0;
+  padding: 1em;
+  border-left-style: solid;
+  border-left-width: 0.75em;
+  p { margin: 0; }
 }
 
 table {
@@ -69,56 +81,18 @@ table {
   border-collapse: collapse;
 }
 
-tbody>tr:nth-child(even) {
-  background: #e9e9e9;
-}
-
-tbody>tr:nth-child(odd) {
-  background: #f6f6f6;
-}
-
-th {
-  background: #e9e9e9;
-  text-align: center;
-}
-
-td {
-  border: solid white;
-}
-
 th, td {
   padding: 0.3rem 0.5em;
   border-width: 0 medium;
 }
-td:first-child {
-  border-left-width: 0;
-}
-td:last-child {
-  border-right-width: 0;
-}
+th { text-align: center; }
+td { border-style: solid; }
+td:first-child { border-left-width: 0; }
+td:last-child { border-right-width: 0; }
 
-code {
-  color: lightcoral;
-  padding: 0.1em;
-  background: aliceblue;
-  border-radius: 0.17em;
-}
-
-div.highlight>pre {
-  display: block;
-  overflow-x: auto;
-  white-space: pre-wrap;
+div>pre {
+  overflow: auto;
   padding: 1rem;
-  background: aliceblue;
-}
-
-blockquote {
-  margin: 0;
-  padding: 1rem;
-  background: #f6f6f6;
-  border-left: 0.75em solid #e9e9e9;
-
-  p { margin: 0; }
 }
 
 img, video, iframe {
@@ -126,8 +100,7 @@ img, video, iframe {
   display: block;
   margin: 0 auto;
 }
-
-img.emotion {
+img.sticker {
   display: inline-block;
   height: 1em;
 }

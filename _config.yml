@@ -28,7 +28,6 @@ ms_tile_color: "#da532c" # hex background for windows 8.1~10 tile. and don't for
 theme: less-style-please
 
 theme_config:
-  appearance: "auto" # can be "light", "dark" or "auto"
   back_home_text: "home" # customize text for homepage link
   go_to_top_text: "🔝" # customize text for go to top button
   date_format: "%Y-%m-%d" # customize how date is formatted

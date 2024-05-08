@@ -2,19 +2,18 @@
 <html lang="{{ page.locale | default: site.locale }}">
 
 <head>
-  {%-include head.html-%}
+  {% include head.html %}
   <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/literature.css">
-  <style>article p {text-align: center;}</style>
 </head>
 
-<body a="{{ site.theme_config.appearance | default: 'auto' }}">
+<body>
   <main class="page-content" aria-label="Content">
-    {%-include nav.html-%}
+    {% include nav.html %}
     <article>
       <h1>{{ page.title }}</h1>
       {{ content }}
     </article>
-    {%-include footer.html-%}
+    {% include footer.html %}
   </main>
 </body>
 
