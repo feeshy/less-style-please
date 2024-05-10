@@ -244,11 +244,12 @@ custom_head: ""
 - 在 `_config.yml` 按实际情况修改图标的文件名
 
 ``` yml
-favicon_legacy: "/favicon.ico" # legacy 'favicon.ico' at the root folder of your site, it is highly recommended not changing this name
-favicon_svg_xml: "/favicon.svg" # name+extension of modern vector favicon
-favicon_ios: "/apple-touch-icon.png" # icon for Safari
-webmanifest: "/site.webmanifest" # icon config file for Chrome. and don't forget to check the favicon names at webmanifest.
-ms_tile_color: "#da532c" # hex background for windows 8.1~10 tile. and don't forget to configure your tile icons at "/browserconfig.xml"
+favicon:
+  ico: "/favicon.ico" # legacy 'favicon.ico' at the root folder of your site, it is highly recommended not changing this name
+  svg: "/favicon.svg" # name+extension of modern vector favicon
+  ios: "/maskable-180x180.png" # icon for Safari
+ms_tile_color: "#da532c" # hex background for windows 8.1~10 tile
+webmanifest: "/site.webmanifest" # icon config file path for Chrome
 ```
 
 #### Service-Worker.js
@@ -267,8 +268,6 @@ title: page title
 ---
 [optional]you could add some content here, it will be rendered before post list
 ```
-
-存档页面的模板存储在 `_layouts/archive.html`
 
 ### 首页
 

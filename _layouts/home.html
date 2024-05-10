@@ -3,13 +3,14 @@
 
 <head>
 {%-include head.html-%}
+<style>li a {text-decoration: none;}</style>
 </head>
 
 <body>
   <main class="page-content" aria-label="Content">
     <header>
       {%-if site.show_logo-%}
-        <h1 style="display: inline-flex; flex-direction: row; align-items: center;"><img src="{{ site.favicon_svg | relative_url }}" style="height:1.5em; width: 1.5em;">{{ site.title }}</h1>
+        <h1 style="display: inline-flex; flex-direction: row; align-items: center;"><img src="{{ site.favicon.svg | relative_url }}" style="height:1.5em; width: 1.5em;"> {{ site.title }}</h1>
       {%-else-%}
         <h1>{{ site.title }}</h1>
       {%-endif-%}

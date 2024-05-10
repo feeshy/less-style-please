@@ -1,6 +1,14 @@
 ---
 ---
 @import "color-scheme";
+{%- if site.background_image.size > 0 -%}
+@media (prefers-color-scheme: light) {
+  body { background-image: url("{{ site.background_image.light }}"); }
+}
+@media (prefers-color-scheme: dark) {
+  body { background-image: url("{{ site.background_image.dark }}"); }
+}
+{%- endif -%}
 @import "layout";
 @import url("../OpenFont/CCSymbols.css");
 @import url("../OpenFont/ClearSans/result.css");

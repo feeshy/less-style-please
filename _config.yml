@@ -27,11 +27,12 @@ baseurl: "/less-style-please" # subpath of the site, e.g. "/blog" (leave it blan
 # generate png icons pack at https://realfavicongenerator.net/
 # generate maskable chrome icons at https://maskable.app/editor/
 
-favicon_legacy: "/favicon.ico" # legacy 'favicon.ico' at the root folder of your site, it is highly recommended not changing this name
-favicon_svg: "/favicon.svg" # name+extension of modern vector favicon, adaptive for light/dark switching
-favicon_ios: "/apple-touch-icon.png" # icon for Safari on iOS
-webmanifest: "/site.webmanifest" # icon config file path for Chrome
+favicon:
+  ico: "/favicon.ico" # legacy 'favicon.ico' at the root folder of your site, it is highly recommended not changing this name
+  svg: "/favicon.svg" # name+extension of modern vector favicon
+  ios: "/maskable-180x180.png" # icon for Safari
 ms_tile_color: "#da532c" # hex background for windows 8.1~10 tile
+webmanifest: "/site.webmanifest" # icon config file path for Chrome
 
 # pwa
 
@@ -50,14 +51,18 @@ pwa:
   precache_glob_ignores: # Optional
     - index.html
 
-# theme settings
+# theme config
 
 theme: less-style-please
 show_logo: false # show the svg favicon in home page
 show_description: false # show blog description in home page
 sort_by_modified_date: false # sort posts by modified date rather than published date. Attention: You will have to set last_modified_date for every post
-back_home_text: "home" # customize text for homepage link
-go_to_top_text: "🔝" # customize text for go to top button
+# background_image: # path to background images for light and dark mode
+#   light: ""
+#   dark: ""
+nav:
+  back_home: "home" # customize text for homepage link
+  go_to_top: "🔝" # customize text for go to top button
 date_format: "%Y-%m-%d" # customize how date is formatted at https://strftime.net/
 copyright: "by" # available values: "all-rights-reserved", "by-nc-nd", "by-nd", "by-nc-sa", "by-nc", "by-sa", "by", "public-domain". choose here https://chooser-beta.creativecommons.org/
 # goat_counter: "yoursitename" # put your GoatCounter name if you want to use GoatCounter analytics
