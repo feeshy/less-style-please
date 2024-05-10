@@ -1,5 +1,6 @@
 ---
 layout: post
+author: "Riccardo Graziosi"
 custom_js: mouse_coords
 ---
 

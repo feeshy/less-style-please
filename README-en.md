@@ -168,6 +168,20 @@ locale: zh-Hant
 
 If the post is written in an language other than the default language in `_config.yml`, you may define the locale at front matter.
 
+### Copyright Disclaimer
+
+Copyright disclaimers are automatically generated at the bottom of the page. If the article uses a copyright license other than the defaulted value in `_config.yml`, you can define the license in front matter:
+
+``` yml
+---
+copyright: public-domain
+---
+```
+
+available values: ```"all-rights-reserved", "by-nc-nd", "by-nc-sa", "by-nc", "by-sa", "by", "public-domain"```
+
+The [Creative Commons license](https://creativecommons.org/share-your-work/cclicenses/) will automatically redirect to the appropriate version of the official translation based on the language of the post
+
 ### inline stickers
 
 use html syntax

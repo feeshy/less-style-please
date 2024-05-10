@@ -5,4 +5,4 @@ title: post with no date on filename
 tags: example
 ---
 
-check if this works
+post with no date on filename will not be rendered on post list

@@ -2,8 +2,8 @@
 layout: poetry
 title: 長恨歌
 author: 白居易
+copyright: public-domain
 locale: zh-Hant
-last_modified_at: 2019-07-13
 ---
 
 漢皇重色思傾國，御宇多年求不得。

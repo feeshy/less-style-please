@@ -109,7 +109,7 @@ layout: post
 	- poetry: 居中对齐，不渲染元数据
 	- redirect: 以 page 为蓝本，重定向到 `redirect_to` 定义的地址。放置在`_posts`目录内，可以让站外内容以与 post 相同的优先级排列在文章列表
 - 不出现在文章列表的样式
-    - page：以 post为蓝本, 去掉元数据和目录
+  - page：以 post为蓝本, 去掉元数据
  	- redirect: 以 page 为蓝本，重定向到 `redirect_to` 定义的地址。不放置在`_posts`目录内，可以作为不外显的跳转页使用
 	- archive: 文章列表本身
 
@@ -178,7 +178,6 @@ noindex: true
 dropcap: true
 ---
 ```
-
 ### 指定帖子语言
 
 如果文章使用的语言不是 `_config.yml` 中默认的语言，可以在 front matter 定义 locale：
@@ -188,6 +187,19 @@ dropcap: true
 locale: en
 ---
 ```
+### 版权协议
+
+主题会自动在页面底部渲染文章的版权声明。如果文章使用的版权协议不是 `_config.yml` 中默认的协议，可以在 front matter 定义本文章所使用的 copyright：
+
+``` yml
+---
+copyright: public-domain
+---
+```
+
+支持的协议包括: ```"all-rights-reserved", "by-nc-nd", "by-nc-sa", "by-nc", "by-sa", "by", "public-domain"```
+
+其中[Creative Commons协议](https://creativecommons.org/share-your-work/cclicenses/)会根据页面的语言自动跳转到相应版本的官方译文
 
 ### 表情包
 

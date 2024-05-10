@@ -1,5 +1,6 @@
 ---
 layout: post
+author: "Riccardo Graziosi"
 tags: example
 ---
 
