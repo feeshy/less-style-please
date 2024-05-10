@@ -12,8 +12,8 @@ sitemap: false
 </head>
 
 <body>
+  {% include nav.html %}
   <main class="page-content" aria-label="Content">
-    {% include nav.html %}
     <h1>{{ page.title | default: 'redirecting...'}}</h1>
     <blockquote><a href="{{ page.redirect.to | relative_url}}" id="url">点击跳转<br>Click to continue</a></blockquote>
     {{ content }}

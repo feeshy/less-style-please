@@ -1,5 +1,6 @@
 title: less style, please! # name of the site
-author: # name of site's author
+author: feeshy # name of site's author
+copyright: "by" # available values: "all-rights-reserved", "by-nc-nd", "by-nc-sa", "by-nc", "by-sa", "by", "public-domain"
 url: https://feeshy.github.io # root address of the site
 baseurl: "/less-style-please" # subpath of the site, e.g. "/blog" (leave it blank "" if you're site shouldn't use a subpath)
 description: > # description of the site (multiple lines allowed)
@@ -32,7 +33,7 @@ theme_config:
   go_to_top_text: "🔝" # customize text for go to top button
   date_format: "%Y-%m-%d" # customize how date is formatted
   show_description: false # show blog description in home page
-  sort_by_modified_date: false # sort posts by page.last_modified_at instead of page.date. You have to set last_modified_date for every post
+  sort_by_modified_date: false # sort posts by page.last_modified_at instead of page.date. Attention: You have to set last_modified_date for every post
 
 sass:
   style: :compressed

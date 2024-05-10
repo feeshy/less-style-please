@@ -1,4 +1,4 @@
-<nav><a href="{{ site.baseurl | default: '/' }}">{{ site.theme_config.back_home_text }}</a>
+<nav id="top" style="position: fixed; left: 5vw; top: 5vh;"><a href="{{ site.baseurl | default: '/' }}">{{ site.theme_config.back_home_text }}</a>
     {%-if page.categories and page.categories != blank -%}
         &nbsp;&gt;&nbsp;
         {%- assign hierarchy = '/' -%}
@@ -8,3 +8,20 @@
         {%-endfor-%}
     {%-endif-%}
 </nav>
+
+<nav id="gototop" style="position: fixed; right: 5vw; bottom: 5vh; visibility: hidden;">{{ site.theme_config.go_to_top_text | default: "🔝" }}</nav>
+<script>
+window.addEventListener('scroll', function() {
+    if (window.scrollY > 200) {
+        document.getElementById('gototop').style.visibility = 'visible';
+    } else {
+        document.getElementById('gototop').style.visibility = 'hidden';
+    }
+})
+document.getElementById('gototop').addEventListener('click', function() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    })
+})
+</script>

@@ -5,19 +5,22 @@
 <head>
 
 {% include head.html %}
-<style>article p {text-align: center;}</style>
+<style>article, article p {text-align: center;}</style>
 
 </head>
 
 <body>
+  {% include nav.html %}
   <main class="page-content" aria-label="Content">
-    {% include nav.html %}
     <article>
       <h1>{{ page.title }}</h1>
       {{ content }}
     </article>
-    {% include footer.html %}
   </main>
+  {% include copyright.html %}
+  {%-if site.goat_counter and jekyll.environment == "production"-%}
+   {% include goat_counter.html %}
+  {%-endif-%}
 </body>
 
 </html>
