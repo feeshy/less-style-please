@@ -1,0 +1,26 @@
+body {
+  font-family: "CCSymbols", "Avenir Next", "Segoe UI", "HarmonyOS Sans", "Clear Sans", "PingFang SC", "Source Han Sans SC VF", "Noto Sans CJK SC", "Source Han Sans SC", "Source Han Sans CN VF", "Noto Sans SC", "Source Han Sans CN", "Sarasa Gothic SC", sans-serif;
+  font-synthesis: weight;
+  font-kerning: normal;
+}
+
+blockquote, q, footer, .post-meta, .footnotes {
+  font-family: "CCSymbols", "Ysabeau", "LXGW WenKai", "LXGW Bright", "LXGW WenKai Lite", "STXihei", "Hiragino Sans GB", sans-serif;
+}
+
+code, th, td {
+  font-family: "CCSymbols", "Sarasa Mono SC", "Ubuntu Mono", "Inconsolata", "Iosevka", "JetBrains Mono", "Monaco", "Source Code Pro", "Source Han Sans HW SC", "Noto Sans Mono CJK SC", "Wenquanyi Micro Hei Mono", monospace;
+  font-variant-numeric: tabular-nums lining-nums slashed-zero;
+}
+
+.post-list { 
+  font-variant-numeric: tabular-nums;
+}
+
+time {
+  font-variant-numeric: tabular-nums oldstyle-nums;
+}
+
+em {
+  font-synthesis: style;
+}

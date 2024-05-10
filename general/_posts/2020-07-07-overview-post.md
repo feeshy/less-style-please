@@ -1,6 +1,7 @@
 ---
 layout: post
 author: "Riccardo Graziosi"
+locale: en
 tags: example
 ---
 

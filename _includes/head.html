@@ -1,4 +1,9 @@
 <meta charset="utf-8">
+
+{%- if page.redirect.to -%}
+<meta http-equiv="refresh" content="1; url={{ page.redirect.to }}">
+{%- endif -%}
+
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -11,32 +16,28 @@
 
 {% seo %}
 
-{%- if page.noindex -%}
+{%- if page.noindex or layout.noindex -%}
 <meta name='robots' content='noindex'>
-{%- endif -%}
-
-{%- if page.redirect.to -%}
-<meta http-equiv="refresh" content="1; url={{ page.redirect.to }}">
 {%- endif -%}
 
 {% feed_meta %}
 
+<script type="text/javascript" src="{{ site.baseurl }}/assets/js/main.js" async></script>
+
+{%- if page.custom_js -%}
+{%- for js_url in page.custom_js -%}
+<script type="text/javascript" src="{{ js_url }}" async></script>
+{%- endfor -%}
+{%- endif -%}
+
 <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/main.css">
 
-{%- if page.categories contains "literature" -%}
+{%- if page.fonts contains "literature" -%}
 <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/literature.css">
 {%- endif -%}
 
 {%- if page.dropcap -%}
-<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/drop_cap.css">
-{%- endif -%}
-
-<script src="{{ site.baseurl }}/assets/js/main.js" async></script>
-
-{%- if page.custom_js -%}
-{%- for js_file in page.custom_js -%}
-<script type="text/javascript" src="{{ site.baseurl }}/assets/js/{{ js_file }}.js" async></script>
-{%- endfor -%}
+<style>article>p:nth-of-type(1):first-letter { initial-letter: 2; font-feature-settings: "swsh"; }</style>
 {%- endif -%}
 
 {%- if page.custom_head -%}

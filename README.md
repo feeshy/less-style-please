@@ -180,13 +180,16 @@ dropcap: true
 ```
 ### 指定帖子语言
 
-如果文章使用的语言不是 `_config.yml` 中默认的语言，可以在 front matter 定义 locale：
+如果文章使用的语言不是 `_config.yml` 中默认的语言，可以在 front matter 定义 lang 与 locale
 
 ``` yml
 ---
-locale: en
+lang: zh-yue
+locale: zh-yue_HK
 ---
 ```
+标准 [language codes](https://www.w3schools.com/tags/ref_language_codes.asp) & [territory codes](https://www.w3schools.com/tags/ref_country_codes.asp)
+
 ### 版权协议
 
 主题会自动在页面底部渲染文章的版权声明。如果文章使用的版权协议不是 `_config.yml` 中默认的协议，可以在 front matter 定义本文章所使用的 copyright：
@@ -197,7 +200,7 @@ copyright: public-domain
 ---
 ```
 
-支持的协议包括: ```"all-rights-reserved", "by-nc-nd", "by-nc-sa", "by-nc", "by-sa", "by", "public-domain"```
+支持的协议包括: ```"all-rights-reserved", "by-nc-nd", "by-nd", "by-nc-sa", "by-nc", "by-sa", "by", "public-domain"```
 
 其中[Creative Commons协议](https://creativecommons.org/share-your-work/cclicenses/)会根据页面的语言自动跳转到相应版本的官方译文
 

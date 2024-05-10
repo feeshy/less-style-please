@@ -1,0 +1,24 @@
+@media (prefers-color-scheme: light) {
+  body { background-color: white; color: black; }
+  td { border-color: white; }
+  thead>tr, tbody>tr:nth-child(even) { background-color: #eeeeee; }
+  tbody>tr:nth-child(odd), blockquote, #toc { background-color: #f7f7f7; }
+  blockquote { border-left-color: #eeeeee; }
+  code { color: lightcoral; }
+  code, div>pre { background-color: aliceblue; }
+}
+
+@media (prefers-color-scheme: dark) {
+  body { background-color: #1c1c1c; color: white; }
+  td { border-color: #1c1c1c; }
+  thead>tr, tbody>tr:nth-child(even) { background-color: #101010; }
+  tbody>tr:nth-child(odd), blockquote, #toc { background-color: #282828; }
+  blockquote { border-left-color: #101010; }
+  code { color: springgreen; }
+  code, div>pre { background-color: black; }
+}
+
+a { color: inherit; }
+a:hover { color: lightslategray; }
+mark { color: white; background-color: lightslategray;}
+:target { background-color: #7f7f7f10; }

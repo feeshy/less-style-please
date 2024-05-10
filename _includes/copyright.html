@@ -3,17 +3,17 @@
 {%- assign copyright = page.copyright | default: site.copyright -%}
 
 {%- if copyright == "all-rights-reserved" -%}
-    © {{ page.date | date:"%Y" }}-{{ "now" | date:"%Y" }} {{ page.author | default:site.author }}. All Rights Reserved.
+  © {{ page.date | date:"%Y" }}-{{ "now" | date:"%Y" }} {{ page.author | default:site.author }}. All Rights Reserved.
 {%- endif -%}
 
 {%- if copyright == "by" or copyright == "by-sa" or copyright == "by-nc" or copyright == "by-nc-sa" or copyright == "by-nd" or copyright == "by-nc-nd" -%}
-    <span display="inline-block;">🅭<a href="{{ page.canonical_url }}">{{ page.date | date: "%Y" }}-{{ "now" | date: "%Y" }} {{ page.author | default: site.author }}</a>. </span>
-    <span display="inline-block;">Some Rights Reserved. </span>
-    <span display="inline-block;">Licensed Under <a href="https://creativecommons.org/licenses/{{ copyright | downcase }}/4.0/deed.{{ page.locale | default:site.locale }}" target="_blank">CC {{ copyright | upcase }} 4.0</a></span>
+  <span>🅭 <a href="{{ page.canonical_url }}">{{ page.date | date: "%Y" }}-{{ "now" | date: "%Y" }} {{ page.author | default: site.author }}</a>. </span>
+  <span>Some Rights Reserved. </span>
+  <span>Licensed Under <a href="https://creativecommons.org/licenses/{{ copyright | downcase }}/4.0/deed.{{ page.lang | default:site.lang }}" target="_blank">CC {{ copyright | upcase }} 4.0</a></span>
 {%- endif -%}
 
 {%- if copyright == "public-domain" -%}
-    🅮 the content on this page is in public domain.
+  🅮 the content on this page is in public domain.
 {%- endif -%}
 
 </footer>

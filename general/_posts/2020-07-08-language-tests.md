@@ -2,6 +2,7 @@
 layout: post
 title: "Language Tests"
 author: "Riccardo Graziosi"
+locale: en
 last_modified_at: 2024-04-11
 tags: example
 dropcap: true

@@ -160,13 +160,16 @@ dropcap: true
 
 ### Post Language
 
+If the post is written in an language other than the default language in `_config.yml`, you may define the lang at front matter.
+
 ``` yml
 ---
-locale: zh-Hant
+lang: zh-yue
+locale: zh-yue_HK
 ---
 ```
 
-If the post is written in an language other than the default language in `_config.yml`, you may define the locale at front matter.
+standard [language codes](https://www.w3schools.com/tags/ref_language_codes.asp) & [territory codes](https://www.w3schools.com/tags/ref_country_codes.asp)
 
 ### Copyright Disclaimer
 
@@ -178,7 +181,7 @@ copyright: public-domain
 ---
 ```
 
-available values: ```"all-rights-reserved", "by-nc-nd", "by-nc-sa", "by-nc", "by-sa", "by", "public-domain"```
+available values: ```"all-rights-reserved", "by-nc-nd", "by-nd", "by-nc-sa", "by-nc", "by-sa", "by", "public-domain"```
 
 The [Creative Commons license](https://creativecommons.org/share-your-work/cclicenses/) will automatically redirect to the appropriate version of the official translation based on the language of the post
 

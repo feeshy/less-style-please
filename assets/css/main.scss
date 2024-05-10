@@ -1,32 +1,10 @@
 ---
 ---
-@import "less-style-please";
-
+@import "color-scheme";
+@import "layout";
 @import url("../OpenFont/CCSymbols.css");
 @import url("../OpenFont/ClearSans/result.css");
 @import url("../OpenFont/UbuntuMono/googlefonts.css");
 @import url("../OpenFont/Ysabeau-VariableFont_wght/result.css");
 @import url("../OpenFont/LXGWWenKaiLite-Regular/result.css");
-
-body {
-    font-family: "CCSymbols", "Avenir Next", "Segoe UI", "HarmonyOS Sans", "Clear Sans", "PingFang SC", "Source Han Sans SC VF", "Noto Sans CJK SC", "Source Han Sans SC", "Source Han Sans CN VF", "Noto Sans SC", "Source Han Sans CN", "Sarasa Gothic SC", sans-serif;
-	font-synthesis: weight;
-	font-kerning: normal;
-}
-
-em {
-    font-synthesis: style;
-}
-
-.post-meta, footer, .footnotes, q, blockquote {
-    font-family: "CCSymbols", "Ysabeau", "LXGW WenKai", "LXGW Bright", "LXGW WenKai Lite", "STXihei", "Hiragino Sans GB", sans-serif;
-}
-
-time {
-	font-variant-numeric: tabular-nums oldstyle-nums;
-}
-
-code, th, td {
-	font-family: "CCSymbols", "Sarasa Mono SC", "Ubuntu Mono", "Inconsolata", "Iosevka", "JetBrains Mono", "Monaco", "Source Code Pro", "Source Han Sans HW SC", "Noto Sans Mono CJK SC", "Wenquanyi Micro Hei Mono", monospace;
-	font-variant-numeric: tabular-nums lining-nums slashed-zero;
-}
+@import "typeface-general";

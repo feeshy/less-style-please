@@ -1,5 +1,5 @@
-<nav id="top" style="position: absolute; left: 5vw; top: 5vh;"><a href="{{ site.baseurl | default: '/' }}">{{ site.theme_config.back_home_text }}</a>
-    {%-if page.categories and page.categories != blank -%}
+<nav id="top" style="position: absolute; left: 5vw; top: 5vh;"><a href="{{ site.baseurl | default: '/' }}">{{ site.back_home_text }}</a>
+    {%-if page.categories.size > 0 -%}
         &nbsp;&gt;&nbsp;
         {%- assign hierarchy = '/' -%}
         {%-for category in page.categories-%}
@@ -9,7 +9,7 @@
     {%-endif-%}
 </nav>
 
-<nav id="gototop" style="position: fixed; right: 5vw; bottom: 5vh; visibility: hidden;">{{ site.theme_config.go_to_top_text | default: "🔝" }}</nav>
+<nav id="gototop" style="position: fixed; right: 5vw; bottom: 5vh; visibility: hidden;">{{ site.go_to_top_text | default: "🔝" }}</nav>
 <script>
 window.addEventListener('scroll', function() {
     if (window.scrollY > 200) {

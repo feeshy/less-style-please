@@ -1,16 +1,24 @@
-<p class="post-meta">
-    {%- if page.tags and page.tags != blank -%}
-        🏷️&nbsp;{{ page.tags | join: ' '}}
+<header class="post-meta">
+
+    {%- if page.tags.size > 0 -%}
+        🏷️&nbsp;
+        {%- for tag in page.tags -%}
+          <span><!--a href='{{ site.baseurl }}/archive?tags={{ tag }}'-->{{ tag }}<!--/a-->&nbsp;</span>
+        {%- endfor -%}
     {%- endif -%}
+
     <br>
-    {%- if page.last_modified_at and page.last_modified_at != blank -%}
+
+    {%- if page.last_modified_at.size > 0 -%}
         <span title="updated on">✏️</span>&nbsp;
     {%- else -%}
         <span title="published on">📅</span>&nbsp;
     {%- endif -%}
-    {%- if page.redirect_from and page.redirect_from != blank -%}
-        <a href="{{ page.redirect_from.first | default: page.redirect_from | relative_url }}"><time datetime="{{ page.last_modified_at | default: page.date }}">{{ page.last_modified_at | default: page.date | date: site.theme_config.date_format }}</time></a>
+
+    {%- if page.redirect_from.size > 0 -%}
+        <a href="{{ page.redirect_from.first | default: page.redirect_from | relative_url }}"><time datetime="{{ page.last_modified_at | default: page.date }}">{{ page.last_modified_at | default: page.date | date: site.date_format }}</time></a>
     {%- else -%}
-        <time datetime="{{ page.last_modified_at | default: page.date }}">{{ page.last_modified_at | default: page.date | date: site.theme_config.date_format }}</time>
+        <time datetime="{{ page.last_modified_at | default: page.date }}">{{ page.last_modified_at | default: page.date | date: site.date_format }}</time>
     {%- endif -%}
-</p>
+
+</header>
