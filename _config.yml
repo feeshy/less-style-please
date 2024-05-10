@@ -5,6 +5,7 @@
 
 lang: zh-Hans # default language tag of the site. 
 locale: zh_CN # og:locale of the format language_TERRITORY.
+author: "your name" # name of site's author
 title: less style, please! # name of the site
 description: > # description of the site (multiple lines allowed)
   Write an awesome description for your new site here. You can edit
@@ -20,21 +21,38 @@ baseurl: "/less-style-please" # subpath of the site, e.g. "/blog" (leave it blan
 #   baidu: 1234
 #   facebook: 1234
 
-# author info
+# favicon & app icon
 
-author: "your name" # name of site's author
+# generate modern svg favicon at https://realfavicongenerator.net/svg-favicon/
+# generate png icons pack at https://realfavicongenerator.net/
+# generate maskable chrome icons at https://maskable.app/editor/
+
+favicon_legacy: "/favicon.ico" # legacy 'favicon.ico' at the root folder of your site, it is highly recommended not changing this name
+favicon_svg: "/favicon.svg" # name+extension of modern vector favicon, adaptive for light/dark switching
+favicon_ios: "/apple-touch-icon.png" # icon for Safari on iOS
+webmanifest: "/site.webmanifest" # icon config file path for Chrome
+ms_tile_color: "#da532c" # hex background for windows 8.1~10 tile
+
+# pwa
+
+pwa:
+  # enabled: false # set false to temporarily disable this plugin
+  sw_src_filepath: service-worker.js # Optional
+  sw_dest_filename: service-worker.js # Optional
+  dest_js_directory: assets/js # Required
+  precache_recent_posts_num: 0 # Optional
+  precache_glob_directory: / # Optional
+  precache_glob_patterns: # Optional
+    - "assets/background/*.{png,svg,gif}"
+    - "assets/css/*.{css}"
+    - "assets/js/*.{js}"
+    - "assets/OpenFont/**/*.{eot,ttf,woff,woff2}"
+  precache_glob_ignores: # Optional
+    - index.html
 
 # theme settings
 
 theme: less-style-please
-# generate modern svg favicon at https://realfavicongenerator.net/svg-favicon/
-# generate png icons pack at https://realfavicongenerator.net/
-# generate maskable chrome icons at https://maskable.app/editor/
-favicon_legacy: "/favicon.ico" # legacy 'favicon.ico' at the root folder of your site, it is highly recommended not changing this name
-favicon_svg_xml: "/favicon.svg" # name+extension of modern vector favicon, adaptive for light/dark switching
-favicon_ios: "/apple-touch-icon.png" # icon for Safari on iOS
-webmanifest: "/site.webmanifest" # icon config file path for Chrome
-ms_tile_color: "#da532c" # hex background for windows 8.1~10 tile
 show_logo: false # show the svg favicon in home page
 show_description: false # show blog description in home page
 sort_by_modified_date: false # sort posts by modified date rather than published date. Attention: You will have to set last_modified_date for every post
@@ -46,6 +64,7 @@ copyright: "by" # available values: "all-rights-reserved", "by-nc-nd", "by-nd", 
 
 # defaults
 
+permalink: /:categories/:title
 defaults:
   -
     scope:
@@ -72,24 +91,6 @@ defaults:
       path: literature
     values:
       fonts: literature # this activates an alternative set of serif typefaces
-      dropcap: true # enable drop cap by default for pages
-
-# pwa
-
-pwa:
-  # enabled: false # set false for temporarily disabling this plugin
-  sw_src_filepath: service-worker.js # Optional
-  sw_dest_filename: service-worker.js # Optional
-  dest_js_directory: assets/js # Required
-  precache_recent_posts_num: 0 # Optional
-  precache_glob_directory: / # Optional
-  precache_glob_patterns: # Optional
-    - "assets/background/*.{png,svg,gif}"
-    - "assets/css/*.{css}"
-    - "assets/js/*.{js}"
-    - "assets/OpenFont/**/*.{eot,ttf,woff,woff2}"
-  precache_glob_ignores: # Optional
-    - index.html
 
 # build settings
 
@@ -102,8 +103,6 @@ toc:
 sass:
   sass_dir: _sass
   style: compressed
-
-permalink: /:categories/:title
 feed:
   posts_limit: 10 # max number of posts on feed
 
