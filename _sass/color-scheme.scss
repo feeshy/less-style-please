@@ -1,3 +1,5 @@
+html { color-scheme: light dark; }
+
 @media (prefers-color-scheme: light) {
   body { background-color: white; color: black; }
   td { border-color: white; }

@@ -22,11 +22,11 @@
 
 {% feed_meta %}
 
-<script type="text/javascript" src="{{ site.baseurl }}/assets/js/main.js" async></script>
+<script type="text/javascript" src="{{ site.baseurl }}/assets/js/main.js" defer></script>
 
 {%- if page.custom_js -%}
 {%- for js_url in page.custom_js -%}
-<script type="text/javascript" src="{{ js_url }}" async></script>
+<script type="text/javascript" src="{{ js_url }}" defer></script>
 {%- endfor -%}
 {%- endif -%}
 
