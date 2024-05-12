@@ -19,7 +19,6 @@
       {%-endif-%}
     </header>
     {%-include menu_item.html collection=site.data.menu.entries-%}
-    {{ content }}
   </main>
   {%-if site.goat_counter and jekyll.environment == "production"-%}
     {% include goat_counter.html %}
