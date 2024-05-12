@@ -110,14 +110,26 @@ toc: true
 
 #### From the Post to a New URL
 
+Defined in front matter with the following syntax (you can control its filename and directory to determine whether it appears in the list of posts)
+
 ``` yml
 ---
 layout: redirect
-redirect_to: /newdir/newpage
+redirect_to: /destination/url/here
+canonical_url: https://www.example.com/destination/url/here
 ---
 ```
 
-Considering server-side 301 redirecting is not supported by github pages, three client-side ways to redirect is provided:
+can also be used with the permalink syntax
+
+```yml
+---
+permalink: /url/to/redirect/from
+---
+```
+```
+
+Considering server-side 301 redirecting is not supported by github pages, three alternative ways to redirect is provided:
 
 - redirect via http refresh meta tag
 - redirect via javascript

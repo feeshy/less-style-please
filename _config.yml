@@ -83,14 +83,12 @@ defaults:
       type: posts
     values:
       layout: post
-      toc: true # enable toc by default for posts
   -
     scope:
       path: ""
       type: pages
     values:
       layout: page
-      toc: true # enable toc by default for pages
   -
     scope:
       path: literature

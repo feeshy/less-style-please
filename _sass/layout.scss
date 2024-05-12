@@ -39,6 +39,7 @@ footer, footer p { text-align: center; }
 span {display: inline-block;}
 
 nav a, footer a, .post-list a { text-decoration: none; }
+nav { z-index: 999; }
 
 blockquote {
   margin: 0;

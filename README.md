@@ -125,16 +125,25 @@ toc: true
 
 #### 从本帖跳转到新URL
 
-在跳出帖用如下语法定义
+在front matter用如下语法定义（你可以通过控制它的文件名和目录，来决定它是否会出现在帖子列表）
 
 ``` yml
 ---
 layout: redirect
-redirect_to: /newdir/newpage
+redirect_to: /destination/url/here
+canonical_url: https://www.example.com/destination/url/here
 ---
 ```
 
-由于Github不支持服务器端的301重定向，这里提供三种客户端重定向方式：
+还可搭配permalink语法
+
+```yml
+---
+permalink: /url/to/redirect/from
+---
+```
+
+由于Github不支持服务器端的301重定向，这里会使用三种替代的重定向方式：
 
 - 利用 http refresh meta tag 重定向
 - 利用 javascript 重定向
