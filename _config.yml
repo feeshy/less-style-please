@@ -37,7 +37,7 @@ webmanifest: "/site.webmanifest" # icon config file path for Chrome
 # pwa
 
 pwa:
-  # enabled: false # set false to temporarily disable this plugin
+  enabled: false # set false to temporarily disable this plugin
   sw_src_filepath: service-worker.js # Optional
   sw_dest_filename: service-worker.js # Optional
   dest_js_directory: assets/js # Required
@@ -53,7 +53,9 @@ pwa:
 
 # theme config
 
-theme: less-style-please
+theme: less-style-please # if you use it as a local theme
+# remote_theme: feeshy/less-style-please # if you use it as a remote theme on github
+
 show_logo: false # show the svg favicon in home page and archive page
 show_description: false # show blog description in home page
 sort_by_modified_date: false # sort posts by modified date rather than published date. Attention: You will have to set last_modified_date for every post
@@ -73,17 +75,6 @@ permalink: /:categories/:title
 defaults:
   -
     scope:
-      path: "*/index.md"
-      type: pages
-    values:
-      layout: archive
-  -
-    scope:
-      path: "assets"
-    values:
-      sitemap: false
-  -
-    scope:
       path: ""
       type: posts
     values:
@@ -96,9 +87,22 @@ defaults:
       layout: page
   -
     scope:
-      path: literature
+      path: "*/index.md"
+      type: pages
     values:
-      fonts: literature # this activates an alternative set of serif typefaces
+      layout: archive
+  -
+    scope:
+      path: "assets"
+    values:
+      sitemap: false
+  -
+    scope:
+      path: literature
+      type: posts
+    values:
+      fonts: serif # this activates an alternative set of serif typefaces
+      dropcap: true # this activates a drop cap effect
 
 # build settings
 
@@ -117,10 +121,11 @@ feed:
 # plugins
 
 plugins:
+  # - jekyll-remote-theme # enable this if you use it as a remote theme
   - jekyll-seo-tag
-  - jekyll-toc
   - jekyll-target-blank
   - jekyll-sitemap
   - jekyll-feed
+  - jekyll-toc
   - jekyll-pwa-workbox
   - jekyll-redirect-from
