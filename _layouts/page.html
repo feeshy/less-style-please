@@ -2,7 +2,7 @@
 <html lang="{{ page.lang | default: site.lang }}">
 
 <head>
-{% include head.html %}
+  {% include head.html %}
 </head>
 
 <body>
@@ -10,14 +10,11 @@
   <main class="page-content" aria-label="Content">
     <article>
       <h1>{{ page.title }}</h1>
-      {% if page.toc -%}
-        <aside>{% toc %}</aside>
-      {%- endif %}
       {{ content }}
     </article>
   </main>
   {%-if site.goat_counter and jekyll.environment == "production"-%}
-   {% include goat_counter.html %}
+  {% include goat_counter.html %}
   {%-endif-%}
 </body>
 
