@@ -4,7 +4,7 @@ Docs Language: 中文 | [English](#en)
 
 纯文本风格Jekyll博客主题，fork自rigggraz的no_style_please[^riggraz]，具有基于分类的树形结构，可系统地组织关于不同主题的文章，支持手动索引外部平台的内容，可将你的全部创作统一整合为一个网站。
 
-![](https://feeshy.github.io/less-style-please/assets/img/example.png)
+![](example.png)
 
 ## 安装
 
@@ -341,7 +341,7 @@ The English doc is translate via Gemini Pro and verified by feeshy.
 
 A pure text Jekyll blog theme forked from rigggraz's no_style_please[^riggraz], with a category-based tree structure for systematically organizing articles on diverse topics, and the ability to manually index external content to consolidate your entire content ecosystem into one single website.
 
-![](https://feeshy.github.io/less-style-please/assets/img/example.png)
+![](example.png)
 
 
 ## Install
