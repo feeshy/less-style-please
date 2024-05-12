@@ -2,18 +2,25 @@
 <html lang="{{ page.lang | default: site.lang }}">
 
 <head>
-{% include head.html %}
+  {% include head.html %}
 </head>
 
 <body>
   {% include nav.html %}
   <main class="page-content" aria-label="Content">
-    <h1>{{ page.title }}</h1>
-    {{ content }}
+    <header>
+      {%-if site.show_logo-%}
+      <h1 style="display: inline-flex; flex-direction: row; align-items: center;"><img
+          src="{{ site.favicon.svg | relative_url }}" style="height:1.5em; width: 1.5em;">&nbsp;{{ page.title }}</h1>
+      {%-else-%}
+      <h1>{{ page.title }}</h1>
+      {%-endif-%}
+      {{ content }}
+    </header>
     {% include post_list.html category=page.which_category %}
   </main>
   {%-if site.goat_counter and jekyll.environment == "production"-%}
-   {% include goat_counter.html %}
+  {% include goat_counter.html %}
   {%-endif-%}
 </body>
 

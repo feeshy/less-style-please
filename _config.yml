@@ -54,7 +54,7 @@ pwa:
 # theme config
 
 theme: less-style-please
-show_logo: false # show the svg favicon in home page
+show_logo: false # show the svg favicon in home page and archive page
 show_description: false # show blog description in home page
 sort_by_modified_date: false # sort posts by modified date rather than published date. Attention: You will have to set last_modified_date for every post
 # background_image: # path to background images for light and dark mode
@@ -77,6 +77,11 @@ defaults:
       type: pages
     values:
       layout: archive
+  -
+    scope:
+      path: "assets"
+    values:
+      sitemap: false
   -
     scope:
       path: ""
