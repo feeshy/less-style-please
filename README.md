@@ -16,11 +16,15 @@ Docs Language: 中文 | [English](#en)
 
 ### 作为远程主题
 
-复制 `_config.yml` 文件到你的Github Pages仓库，按需设置。找到以下两行代码，取消注释
+复制 `_config.yml` `Gemfile` 文件到你的Github Pages仓库，按需设置。找到以下几行代码，取消注释
 
-```
+```yml
 # remote_theme: feeshy/less-style-please
 # - jekyll-remote-theme # enable this if you use it as a remote theme
+```
+
+```gemfile
+# gem "jekyll-remote-theme" # enable this if you use remote theme
 ```
 
 在你的 GH Pages 仓库网页，依次找到 Settings > Pages > Build and deployment，选择 Github Actions
@@ -354,14 +358,17 @@ A pure text Jekyll blog theme forked from rigggraz's no_style_please[^riggraz], 
 
 ### Install as a Remote Theme on Github Pages
 
-Copy the `_config.yml` file to your Github Pages repository and set it up as desired. Find the following two lines of code and uncomment them:
+Copy the `_config.yml` & `Gemfile` file to your Github Pages repository and set it up as desired. Find the following two lines of code and uncomment them:
 
-```
+```yml
 # remote_theme: feeshy/less-style-please
 # - jekyll-remote-theme # enable this if you use it as a remote theme
 ```
 
-In your GH Pages repo, browse to Settings > Pages > Build and deployment and select GitHub Actions
+```gemfile
+# gem "jekyll-remote-theme" # enable this if you use remote theme
+```
+In your GH Pages repo, browse to Settings > Pages > Build and deployment, select GitHub Actions, commit changes
 
 ### Install as a Local Theme
 
