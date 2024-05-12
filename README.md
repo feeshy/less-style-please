@@ -1,10 +1,35 @@
-# less-style-please
+# 中文
 
-Docs Language: 中文 | [English](/README-en.md)
+Docs Language: 中文 | [English](#en)
 
 纯文本风格Jekyll博客主题，fork自rigggraz的no_style_please[^riggraz]，具有基于分类的树形结构，可系统地组织关于不同主题的文章，支持手动索引外部平台的内容，可将你的全部创作统一整合为一个网站。
 
 ![](https://feeshy.github.io/less-style-please/assets/img/example.png)
+
+## 安装
+
+| | 远程主题 | 本地主题 |
+|-|-|-|
+|运行环境|Github Pages|不限|
+|主题更新|编译时自动|手动|
+|修改定制|❌|✅|
+
+### 作为远程主题
+
+复制 `_config.yml` 文件到你的Github Pages仓库，按需设置。找到以下两行代码，取消注释
+
+```
+# remote_theme: feeshy/less-style-please
+# - jekyll-remote-theme # enable this if you use it as a remote theme
+```
+
+在你的 GH Pages 仓库网页，依次找到 Settings > Pages > Build and deployment，选择 Github Actions
+
+### 作为本地主题
+
+
+- Github Pages：点击 Use this template
+- 其他环境：[下载源码](https://github.com/feeshy/less-style-please/releases)
 
 ## 设计
 
@@ -109,7 +134,7 @@ layout: post
 	- poetry: 居中对齐，不渲染元数据
 	- redirect: 以 page 为蓝本，重定向到 `redirect_to` 定义的地址。放置在`_posts`目录内，可以让站外内容以与 post 相同的优先级排列在文章列表
 - 不出现在文章列表的样式
-  - page：以 post为蓝本, 去掉元数据
+  - page：以 post为蓝本, 去掉元数据与标题
  	- redirect: 以 page 为蓝本，重定向到 `redirect_to` 定义的地址。不放置在`_posts`目录内，可以作为不外显的跳转页使用
 	- archive: 文章列表本身
 
@@ -178,15 +203,24 @@ noindex: true
 ---
 ```
 
-### 首字下沉
+### 文学字体与首字下沉
 
-![](https://i.stack.imgur.com/RpOEO.gif)
+用以下语法启用[文学性字体集合](#改进)（可在 `_config.yml` 中配置默认启用该字体集合的帖子目录）
+
+``` yml
+---
+fonts: serif
+---
+```
+用以下语法启用首字下沉效果
 
 ``` yml
 ---
 dropcap: true
 ---
 ```
+![](https://i.stack.imgur.com/RpOEO.gif)
+
 ### 指定帖子语言
 
 如果文章使用的语言不是 `_config.yml` 中默认的语言，可以在 front matter 定义 lang 与 locale
@@ -296,6 +330,327 @@ layout: home
 Jekyll默认的kramdown[^kramdown]引擎有一个bug，会将任何未转义的 `|` 渲染为单行表，该错误已经存在了 [数十年](https://stackoverflow.com/questions/23751917/how-do-you-disable-tables-in-kramdown）。在 kramdown 和 jekyll 的存储库中，时不时都会出现提及该错误的 issue，其中大多数都因超时而关闭。考虑到该 bug 修复基本无望，我的主题版本中默认的 markdown 引擎设置为redcarpet[^redcarpet]。
 
 默认启用 6 种非标准标记符语法："tables", "autolink", "strikethrough", "highlight", "footnotes", "with_toc_data"。更多用法请阅读redcarpet[^redcarpet]上的原始文档。
+
+---
+
+# en
+
+Docs Language: [中文](/#中文) | English
+
+The English doc is translate via Gemini Pro and verified by feeshy.
+
+A pure text Jekyll blog theme forked from rigggraz's no_style_please[^riggraz], with a category-based tree structure for systematically organizing articles on diverse topics, and the ability to manually index external content to consolidate your entire content ecosystem into one single website.
+
+![](https://feeshy.github.io/less-style-please/assets/img/example.png)
+
+
+## Install
+
+| | remotely | locally |
+|-|-|-|
+| Operating environment | Github Pages | Unlimited |
+| Theme updates | Automatically at building | manually |
+| mods on source codes | ❌ | ✅ |
+
+### Install as a Remote Theme on Github Pages
+
+Copy the `_config.yml` file to your Github Pages repository and set it up as desired. Find the following two lines of code and uncomment them:
+
+```
+# remote_theme: feeshy/less-style-please
+# - jekyll-remote-theme # enable this if you use it as a remote theme
+```
+
+In your GH Pages repo, browse to Settings > Pages > Build and deployment and select GitHub Actions
+
+### Install as a Local Theme
+
+- Github Pages: click 'Use this template'
+- Other environments: fork the project or [download the source code](https://github.com/feeshy/less-style-please/releases)
+
+## Design
+
+### What Are Kept
+
+- Minimalist and reserved design style, ideal for pure text websites
+- Adaptive light and dark theme
+
+### What Are Changed
+
+- Low-saturated color palette for both light and dark themes
+- Rowing color grades for tables
+- Self hosting web fonts for Simplified Chinese
+
+## Usage on Post
+
+example page: [markdown](/general/_posts/2020-07-07-overview-post.md) -> [webpage](https://feeshy.github.io/less-style-please/general/overview-post)
+
+### Basic Post Meta Info
+
+A post is always supposed to be stored in the following naming pattern: `/category/sub-category/_post/yyyy-mm-dd-title.md`
+
+#### Title 
+
+The title is required in the filename `yyyy-mm-dd-title.md`. Could be overwritten in the front matter:
+
+``` yml
+---
+title: yyyy-mm-dd
+---
+```
+
+#### Date
+
+A date is already defined in the filename `yyyy-mm-dd-title.md`. Could be overwritten in the front matter:
+
+``` yml
+---
+date: yyyy-mm-dd
+---
+```
+
+For further edits after the post is published, add a new syntax in the front matter:
+
+``` yml
+---
+last_modified_at: yyyy-mm-dd
+---
+```
+
+If `last_modified_at` is set, a updated date will be rendered in metadata section of the post. This attribute is also quite useful for sitemap[^jekyll-sitemap]
+
+#### Categories
+
+Categories could be set with hierarchical directories: `/category/sub-category/_post/yyyy-mm-dd-title.md`
+
+you may also define categories in the front matter of the post:
+
+``` yml
+---
+categories: [category, sub-category]
+---
+```
+
+#### Tags
+
+``` yml
+---
+tags: [tags1, tags2]
+---
+```
+
+Set tags on your need. Tags of a post will be rendered on the post-meta section.
+
+### Layout
+
+``` yml
+---
+layout: post
+---
+```
+
+There are 5 types of layouts
+
+- appears on post list
+	- post：justify aligned, meta data rendered if set (tags, created date, updated date, redirected url)
+	- poetry: center aligned, w/o meta data
+	- redirect: like page, w/ redirecting hyperlinks and javascripts and noindex meta tag, w/o meta data
+- not appears on post list
+	- page：like post, w/o meta data
+	- redirect: like page, w/ redirecting hyperlinks and javascripts and noindex meta tag, w/o meta data
+	- archive: the layout of a post list page
+
+### Table of Contents[^toc]
+
+``` yml
+---
+toc: true
+---
+```
+
+### Redirecting
+
+#### From the Post to a New URL
+
+Defined in front matter with the following syntax (you can control its filename and directory to determine whether it appears in the list of posts)
+
+``` yml
+---
+layout: redirect
+redirect_to: /destination/url/here
+canonical_url: https://www.example.com/destination/url/here
+---
+```
+
+can also be used with the permalink syntax
+
+```yml
+---
+permalink: /url/to/redirect/from
+---
+```
+```
+
+Considering server-side 301 redirecting is not supported by github pages, three alternative ways to redirect is provided:
+
+- redirect via http refresh meta tag
+- redirect via javascript
+- user manually click on the hyperlink rendered on the webpage
+
+This syntax is not only applicable to redirecting pages on the site, but can also be used to redirect articles outside of the site, so that external content may obtain the same metadata index as posts on the site and be displayed in the same post list. It could be quite handy when you want to consolidate all content you posted on different platforms to one single place.
+
+#### From Old URLs to the Post
+
+``` yml
+---
+redirect_from:
+  - https://example.com/oldurl
+  - /old-dir/old-url-1
+  - /old-dir/old-url-2
+---
+```
+
+Requiring jekyll-redirect-from plugin[^redirect]. The URL in the first row will be rendered as a hyperlink at the position of the creation date.
+
+### Exclude the Post from Search Results
+
+> noindex is a rule set with either a <meta> tag or HTTP response header and is used to prevent indexing content by [search engines that support the noindex rule](https://developers.google.com/search/docs/crawling-indexing/block-indexing), such as Google. When Googlebot crawls that page and extracts the tag or header, Google will drop that page entirely from Google Search results, regardless of whether other sites link to it.
+
+``` yml
+---
+noindex: true
+---
+```
+
+### Serif Font set and Drop Cap
+
+Enable the [Literary Font Set](#改进) by entering the following syntax on front matter (configure `_config.yml` to set the default post directories to enable this font set)
+
+``` yml
+---
+fonts: serif
+---
+```
+and you can enable drop caps on demand:
+
+``` yml
+---
+dropcap: true
+---
+```
+![](https://i.stack.imgur.com/RpOEO.gif)
+
+
+### Post Language
+
+If the post is written in an language other than the default language in `_config.yml`, you may define the lang at front matter.
+
+``` yml
+---
+lang: zh-yue
+locale: zh-yue_HK
+---
+```
+
+standard [language codes](https://www.w3schools.com/tags/ref_language_codes.asp) & [territory codes](https://www.w3schools.com/tags/ref_country_codes.asp)
+
+### Copyright Disclaimer
+
+Copyright disclaimers are automatically generated at the bottom of the page. If the article uses a copyright license other than the defaulted value in `_config.yml`, you can define the license in front matter:
+
+``` yml
+---
+copyright: public-domain
+---
+```
+
+available values: ```"all-rights-reserved", "by-nc-nd", "by-nd", "by-nc-sa", "by-nc", "by-sa", "by", "public-domain"```
+
+The [Creative Commons license](https://creativecommons.org/share-your-work/cclicenses/) will automatically redirect to the appropriate version of the official translation based on the language of the post
+
+### inline stickers
+
+use html syntax
+
+```html
+<img class="sticker" src="sticker_url_here">
+```
+
+### Insert Anything to Html Head
+
+Any string of `custom_head` in the front matter will be inserted to the rendered html file.
+
+``` yml
+---
+custom_head: ""
+---
+```
+
+If you want the post excluded from search engine, for instance, just type `custom_head: "<meta name='robots' content='noindex'>"` in your front matter.
+
+## Site Configuration
+
+edit `/_config.yml` root in the root directory for site configurations
+
+### Basic Site Info
+
+read docs of [jekyll-seo-tag]((https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md)[^seo-tag]
+
+### PWA
+
+#### App Icons & Web Manifest
+
+- Export app icons from your designer software (or generate them with online tools)
+  - a modern light-dark vector `favicon.svg` 🛠️[online tool](https://realfavicongenerator.net/svg-favicon/)
+  - a 32x32 `favicon.ico` for old browser, a 180x180 png for iOS 🛠️[online tool](https://realfavicongenerator.net/)
+  - 192x192 and 512x512 maskable pngs for chrome PWA 🛠️[online tool](https://maskable.app/editor/)
+- Put the icons in the root directory of the project
+- edit `_config.yml` on your need
+
+``` yml
+favicon:
+  ico: "/favicon.ico" # legacy 'favicon.ico' at the root folder of your site, it is highly recommended not changing this name
+  svg: "/favicon.svg" # name+extension of modern vector favicon
+  ios: "/maskable-180x180.png" # icon for Safari
+ms_tile_color: "#da532c" # hex background for windows 8.1~10 tile
+webmanifest: "/site.webmanifest" # icon config file path for Chrome
+```
+
+#### Service-Worker.js
+
+read docs of jekyll-pwa-workbox[^pwa]
+
+### Archive Page
+
+Create an archive page at `/category/index.md` with the following front matter:
+
+``` yml
+---
+layout: archive
+which_category: category name
+title: page title
+---
+[optional]you could add some content here, it will be rendered before post list
+```
+
+### Home Page
+
+The content of home page is stored as `/index.md` in the root directory of your project.
+
+``` yml
+---
+layout: home
+---
+[optional]you could add some content here, it will be rendered after menu
+```
+
+The menu on home page are stored as `/_data/menu.yml`. You could set link to the archive page from home page, read [the original docs](https://github.com/riggraz/no-style-please)[^riggraz] for detailed instructions.
+
+## Markdown Parser
+
+the default kramdown parser[^kramdown] has a bug that renders any unescaped `|` as single row tables, which has exist [for decades](https://stackoverflow.com/questions/23751917/how-do-you-disable-tables-in-kramdown). In both kramdown's and jekyll's repos there are issues mentioning the bug now and then, most of which are closed by timeout. Considering that there is no hope that the bug is being fixed, the default markdown engine in my version of theme is set as redcarpet[^redcarpet].
+
+6 non standard flavored markdown syntax are enabled by default - "tables", "autolink", "strikethrough", "highlight", "footnotes", "with_toc_data". Read [the original docs](https://github.com/vmg/redcarpet?tab=readme-ov-file)[^redcarpet] for more usages.
 
 ---
 
