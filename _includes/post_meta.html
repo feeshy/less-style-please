@@ -9,7 +9,7 @@
 
     <br>
 
-    {%- if page.last_modified_at.size > 0 -%}
+    {%- if page.last_modified_at and page.last_modified_at != blank -%}
         <span title="updated on">✏️</span>&nbsp;
     {%- else -%}
         <span title="published on">📅</span>&nbsp;
