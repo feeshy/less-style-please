@@ -10,9 +10,9 @@ Docs Language: 中文 | [English](#en)
 
 | | 远程主题 | 本地主题 |
 |-|-|-|
-|运行环境|Github Pages|不限|
-|主题更新|编译时自动|手动|
-|修改定制|❌|✅|
+| 运行环境 | Github Actions | 不限 |
+| 主题更新 | 编译时自动 | 手动 |
+| 修改定制 | 限于_config.yml | 完全 |
 
 ### 作为远程主题
 
@@ -352,9 +352,9 @@ A pure text Jekyll blog theme forked from rigggraz's no_style_please[^riggraz], 
 
 | | remotely | locally |
 |-|-|-|
-| Operating environment | Github Pages | Unlimited |
+| Operating environment | Github Actions | Unlimited |
 | Theme updates | Automatically at building | manually |
-| mods on source codes | ❌ | ✅ |
+| mods on source codes | limited to _config.yml | Full |
 
 ### Install as a Remote Theme on Github Pages
 
