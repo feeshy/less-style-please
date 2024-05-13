@@ -1,5 +1,9 @@
 ---
 ---
 @import url("../OpenFont/EBGaramond-VariableFont_wght/result.css");
+
+{%- if site.chinese_webfonts -%}
 @import url("../OpenFont/SourceHanSerifCN-VF_wght/result.css");
+{%- endif -%}
+
 @import "typeface-literature";

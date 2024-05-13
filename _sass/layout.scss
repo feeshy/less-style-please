@@ -39,6 +39,7 @@ p { text-align: justify; }
 footer, footer p { text-align: center; }
 span {display: inline-block;}
 
+a { text-decoration-thickness: from-font; }
 nav a, footer a, .post-list a { text-decoration: none; }
 nav { z-index: 999; }
 

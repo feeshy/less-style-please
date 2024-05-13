@@ -59,6 +59,7 @@ theme: less-style-please # if you use it as a local theme
 show_logo: false # show the svg favicon in home page and archive page
 show_description: false # show blog description in home page
 sort_by_modified_date: false # sort posts by modified date rather than published date. Attention: You will have to set last_modified_date for every post
+chinese_webfonts: true # by disabling this, page loading speed will be increased significantly
 # background_image: # path to background images for light and dark mode
 #   light: ""
 #   dark: ""
