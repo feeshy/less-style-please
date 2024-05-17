@@ -24,7 +24,7 @@
     </header>
     {%- assign taglist = "" | split: '' -%}
     {%- for post in site.posts -%}
-    {%- taglist | concat: page.tags -%}
+    {%- assign taglist = taglist | concat: page.tags -%}
     {%- endfor -%}
     {%- for tag in taglist -%}
     <ul class="{{ tag }}" style="display: none;">
