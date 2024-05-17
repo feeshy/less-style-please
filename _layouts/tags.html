@@ -21,7 +21,6 @@
       {%-else-%}
       <h1><span id="title"></span></h1>
       {%-endif-%}
-      {{ content }}
     </header>
     {%- if site.sort_by_modified_date -%}
     {%- assign posts = site.posts | sort: "last_modified_at","last" -%}
@@ -32,7 +31,14 @@
     {%- for post in posts -%} {%- if post.tags.size > 0 -%}
     {%- assign taglist = taglist | concat: post.tags -%}
     {%- endif -%} {%- endfor -%}
-    {%- if taglist.size > 0 -%} {%- for tag in taglist -%}
+    {%- if taglist.size > 0 -%}
+    {%- assign taglist = taglist | uniq | sort_natural -%}
+    <p>
+      {%- for tag in taglist -%}
+      <span><a href='?tag={{ tag }}'>{{ tag }}</a>&nbsp;</span>
+      {%- endfor -%}
+    </p>
+    {%- for tag in taglist -%}
     <ul id="{{ tag }}" style="display: none;">
       {%- if site.sort_by_modified_date -%}
       {%- assign cposts = site.tags[tag] | sort: "last_modified_at","last" -%}
@@ -43,7 +49,8 @@
       <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
       {%- endfor -%}
     </ul>
-    {%- endfor -%} {%- endif -%}
+    {%- endfor -%}
+    {%- endif -%}
   </main>
   {%-if site.goat_counter and jekyll.environment == "production"-%}
   {% include goat_counter.html %}
