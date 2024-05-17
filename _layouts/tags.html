@@ -51,7 +51,7 @@
     for (var i = 0; i < aParams.length; i++) {
       var sParameterName = aParams[i].split('=');
       if (sParameterName[0] == sParam) {
-        return sParameterName[1];
+        return decodeURIComponent(sParameterName[1]);
       }
     }
   }
