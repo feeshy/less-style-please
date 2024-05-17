@@ -1,3 +1,6 @@
+---
+noindex: true
+---
 <!DOCTYPE html>
 <html lang="{{ page.lang | default: site.lang }}">
 
@@ -74,7 +77,7 @@
       document.getElementById(tag).style.display = 'unset';
       document.getElementById('title').innerHTML = tag;
     } else {
-      document.getElementById('title').innerHTML = 'Illegal Tag Query';
+      document.getElementById('title').innerHTML = 'Tags';
     }
   }
 </script>
