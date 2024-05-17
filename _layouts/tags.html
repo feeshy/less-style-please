@@ -22,7 +22,11 @@
       {%-endif-%}
       {{ content }}
     </header>
-    {%-for tag in site.tags -%}
+    {%- assign taglist = "" | split: '' -%}
+    {%- for post in site.posts -%}
+    {%- taglist | concat: page.tags -%}
+    {%- endfor -%}
+    {%- for tag in taglist -%}
     <ul class="{{ tag }}" style="display: none;">
       {%- for post in site.tags[tag] -%}
       <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
