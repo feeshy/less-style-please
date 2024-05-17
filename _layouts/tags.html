@@ -23,28 +23,34 @@
       {%-endif-%}
       {{ content }}
     </header>
-    {%- assign taglist = "" | split: '' -%}
-    {%- for post in site.posts -%}
-    {%- if post.tags -%}
-    {%- assign taglist = taglist | concat: post.tags -%}
+    {%- if site.sort_by_modified_date -%}
+    {%- assign posts = site.posts | sort: "last_modified_at","last" -%}
+    {%- else -%}
+    {%- assign posts = site.posts -%}
     {%- endif -%}
-    {%- endfor -%}
-    {%- for tag in taglist -%}
+    {%- assign taglist = "" | split: '' -%}
+    {%- for post in posts -%} {%- if post.tags.size > 0 -%}
+    {%- assign taglist = taglist | concat: post.tags -%}
+    {%- endif -%} {%- endfor -%}
+    {%- if taglist.size > 0 -%} {%- for tag in taglist -%}
     <ul id="{{ tag }}" style="display: none;">
-      {%- for post in site.tags[tag] -%}
-      {%- if post.tags -%}
-      <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
+      {%- if site.sort_by_modified_date -%}
+      {%- assign cposts = site.tags[tag] | sort: "last_modified_at","last" -%}
+      {%- else -%}
+      {%- assign cposts = site.tags[tag] -%}
       {%- endif -%}
+      {%- for post in cposts -%}
+      <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
       {%- endfor -%}
     </ul>
-    {%- endfor -%}
+    {%- endfor -%} {%- endif -%}
   </main>
   {%-if site.goat_counter and jekyll.environment == "production"-%}
   {% include goat_counter.html %}
   {%-endif-%}
 </body>
 
-<script>
+<script> // codes copied from TaoAlpha https://taoalpha.github.io/blog/2015/06/01/tech-jekyll-tag-page/
   function getUrlParameter(sParam) {
     var rParams = window.location.search.substring(1);
     var aParams = rParams.split('&');
@@ -63,7 +69,7 @@
     } else {
       document.getElementById('title').innerHTML = 'Illegal Tag Query';
     }
-  };
+  }
 </script>
 
 </html>

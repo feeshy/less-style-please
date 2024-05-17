@@ -1,11 +1,15 @@
-{%-if include.category-%}
-  {%-assign posts = site.categories[include.category]-%}  
-{%-else-%}
-  {%-assign posts = site.posts-%}
-{%-endif-%}
-
 {%-if site.sort_by_modified_date-%}
-  {%- assign posts = posts | sort: "last_modified_at","last" -%}
+  {%-if include.category-%}
+    {%-assign posts = site.categories[include.category] | sort: "last_modified_at","last"-%}
+  {%-else-%}
+    {%-assign posts = site.posts | sort: "last_modified_at","last"-%}
+  {%-endif-%}
+{%-else-%}
+  {%-if include.category-%}
+    {%-assign posts = site.categories[include.category]-%}
+  {%-else-%}
+    {%-assign posts = site.posts-%}
+  {%-endif-%}
 {%-endif-%}
 
 {%-if include.limit and posts.size > include.limit-%}
@@ -15,12 +19,12 @@
 {%-endif-%}
 
 {%- if posts.size > 0 -%}
-  <ul class="post-list">
-    {%- for post in posts limit: include.limit -%}
-      <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
-    {%- endfor -%}
-    {%- if include.show_more and limit_exceeded -%}
-      <li><a href="{{ include.show_more_url | relative_url }}">{{ include.show_more_text | default: "..." }}</a></li>
-    {%- endif -%}
-  </ul>
+<ul class="post-list">
+  {%- for post in posts limit: include.limit -%}
+  <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
+  {%- endfor -%}
+  {%- if include.show_more and limit_exceeded -%}
+  <li><a href="{{ include.show_more_url | relative_url }}">{{ include.show_more_text | default: "..." }}</a></li>
+  {%- endif -%}
+</ul>
 {%- endif -%}
