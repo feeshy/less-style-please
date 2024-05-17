@@ -16,20 +16,25 @@
     <header>
       {%-if site.show_logo-%}
       <h1 style="display: inline-flex; flex-direction: row; align-items: center;"><img
-          src="{{ site.favicon.svg | relative_url }}" style="height:1.5em; width: 1.5em;">&nbsp;{{ page.title }}</h1>
+          src="{{ site.favicon.svg | relative_url }}" style="height:1.5em; width: 1.5em;">&nbsp;<span id="title"></span>
+      </h1>
       {%-else-%}
-      <h1>{{ page.title }}</h1>
+      <h1><span id="title"></span></h1>
       {%-endif-%}
       {{ content }}
     </header>
     {%- assign taglist = "" | split: '' -%}
     {%- for post in site.posts -%}
+    {%- if post.tags -%}
     {%- assign taglist = taglist | concat: post.tags -%}
+    {%- endif -%}
     {%- endfor -%}
     {%- for tag in taglist -%}
-    <ul class="{{ tag }}" style="display: none;">
+    <ul id="{{ tag }}" style="display: none;">
       {%- for post in site.tags[tag] -%}
+      {%- if post.tags -%}
       <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
+      {%- endif -%}
       {%- endfor -%}
     </ul>
     {%- endfor -%}
@@ -52,11 +57,11 @@
   }
   window.onload = function () {
     var tag = getUrlParameter('tag');
-    if (tag && document.getElementById('tag-' + tag)) {
-      document.getElementById('tag-' + tag).style.display = 'unset';
-      document.getElementById('tagTitle').innerHTML = tag;
+    if (tag && document.getElementById(tag)) {
+      document.getElementById(tag).style.display = 'unset';
+      document.getElementById('title').innerHTML = tag;
     } else {
-      document.getElementById('tagTitle').innerHTML = 'Illegal Tag Query';
+      document.getElementById('title').innerHTML = 'Illegal Tag Query';
     }
   };
 </script>
