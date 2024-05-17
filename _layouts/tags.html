@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang }}">
+
+<head>
+  {%-include head.html-%}
+  <style>li a { text-decoration: none; }</style>
+</head>
+
+<body>
+  {% include nav.html %}
+  <main class="page-content" aria-label="Content">
+    <header>
+    {%-if site.show_logo-%}
+      <h1 style="display: inline-flex; flex-direction: row; align-items: center;"><img src="{{ site.favicon.svg | relative_url }}" style="height:1.5em; width: 1.5em;">&nbsp;{{ page.title }}</h1>
+    {%-else-%}
+      <h1>{{ page.title }}</h1>
+    {%-endif-%}
+      {{ content }}
+    </header>
+    {% comment %} {%- assign taglist = "" | split: '' -%}
+    {%- for post in site.posts -%}
+      {%- taglist | concat: page.tags -%}
+    {%- endfor -%}
+    {%-for tag in taglist -%} {% endcomment %}
+    {%-for tag in site.tags -%}
+      <ul class="{{ tag }}" style="display: none;">
+        {%- for post in site.tags[tag] -%}
+        <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
+        {%- endfor -%}
+      </ul>
+    {%- endfor -%}
+  </main>
+  {%-if site.goat_counter and jekyll.environment == "production"-%}
+  {% include goat_counter.html %}
+  {%-endif-%}
+</body>
+
+<script>
+  function getUrlParameter(sParam) {
+    var rParams = window.location.search.substring(1);
+    var aParams = rParams.split('&');
+    for (var i = 0; i < aParams.length; i++) {
+      var sParameterName = aParams[i].split('=');
+      if (sParameterName[0] == sParam) {
+        return sParameterName[1];
+      }
+    }
+  }
+  window.onload = function () {
+    var tag = getUrlParameter('tag');
+    if (tag && document.getElementById('tag-' + tag)) {
+      document.getElementById('tag-' + tag).style.display = 'unset';
+      document.getElementById('tagTitle').innerHTML = tag;
+    } else {
+      document.getElementById('tagTitle').innerHTML = 'Illegal Tag Query';
+    }
+  };
+</script>
+
+</html>
