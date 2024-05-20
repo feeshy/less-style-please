@@ -25,32 +25,34 @@ for (const el of document.getElementsByTagName('table')) {
 // copyright disclaimer
 
 document.addEventListener('copy', function (event) {
-  // get copied length
-  const selectedLength = window.getSelection().toString().length;
-  if (selectedLength > 50) {
-    // get copied text
+  // get copied text
+  const selectedText = window.getSelection().toString();
+  if (selectedText.length > 50) {
+    // get copied rich text
     const tempElement = document.createElement('div');
     tempElement.appendChild(
       window.getSelection().getRangeAt(0).cloneContents()
     );
-    const selectedText = tempElement.innerHTML;
+    const selectedRichText = tempElement.innerHTML;
     tempElement.remove();
     //
     const canonicalURL = document.querySelector('link[rel="canonical"]').href;
     const copyrightFooter = document.querySelector('footer#copyright');
     if (copyrightFooter) {
       // get copyright text
+      const copyrightText = copyrightFooter.textContent;
+      // get copyright rich text
       const tempElement = document.createElement('p');
       tempElement.innerHTML = copyrightFooter.innerHTML;
-      const copyrightText = tempElement.outerHTML;
+      const copyrightRichText = tempElement.outerHTML;
       tempElement.remove();
       // set clipboard
-      event.clipboardData.setData('text/html', selectedText + '\n' + copyrightText);
-      event.clipboardData.setData('text/plain', selectedText.toString() + '\n' + canonicalURL.toString() + '\n' + copyrightText.toString());
+      event.clipboardData.setData('text/html', selectedRichText + '\n' + copyrightRichText);
+      event.clipboardData.setData('text/plain', selectedText + '\n' + canonicalURL + '\n' + copyrightText);
     } else {
       // set clipboard
-      event.clipboardData.setData('text/html', selectedText + '\n' + canonicalURL);
-      event.clipboardData.setData('text/plain', selectedText.toString() + '\n' + canonicalURL.toString());
+      event.clipboardData.setData('text/html', selectedRichText + '\n' + canonicalURL);
+      event.clipboardData.setData('text/plain', selectedText + '\n' + canonicalURL);
     }
     event.preventDefault();
   }
