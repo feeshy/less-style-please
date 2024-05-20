@@ -40,7 +40,7 @@ document.addEventListener('copy', function (event) {
     const copyrightFooter = document.querySelector('footer#copyright');
     if (copyrightFooter) {
       // get copyright text
-      const copyrightText = copyrightFooter.textContent;
+      const copyrightText = copyrightFooter.innerText;
       // get copyright rich text
       const tempElement = document.createElement('p');
       tempElement.innerHTML = copyrightFooter.innerHTML;
