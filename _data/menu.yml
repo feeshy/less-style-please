@@ -3,7 +3,7 @@
 
 entries:
 
-  - title: github repo
+  - title: about
     entries:
     - title: less-style-please (this theme)
       url: https://github.com/feeshy/less-style-please
@@ -13,21 +13,28 @@ entries:
   - title: 最新
     post_list:
       limit: 5
-      show_more: true
+      show_more: false
       show_more_text: feed
-      show_more_url: ./feed.xml
-
+      show_more_url: feed.xml
+   
   - title: 分类
     entries:
     - title: 默认分类
-      url: ./general
+      url: general
       post_list:
         limit: 3
         category: general
         show_more: false
     - title: 文学分类
-      url: ./literature
+      url: literature
       post_list:
         limit: 3
         category: literature
         show_more: false
+
+  - title: 归档
+    entries: 
+    - title: 标签
+      url: tags
+    - title: RSS
+      url: feed.xml
