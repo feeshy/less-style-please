@@ -24,11 +24,7 @@ noindex: true
       </h1>
       {{ content }}
     </header>
-    <ul class="post-list">
-      {% for post in page.posts %}
-      <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
-      {% endfor %}
-    </ul>
+    {% include post_list.html %}
   </main>
   {%-if site.goat_counter and jekyll.environment == "production"-%}
   {% include goat_counter.html %}
