@@ -76,6 +76,15 @@ copyright: "by" # available values: "all-rights-reserved", "by-nc-nd", "by-nd", 
 # defaults
 
 permalink: /:categories/:title
+jekyll-archives:
+  enabled: [year, tag, category]
+  layout: archive
+  permalinks:
+    year: '/:year/'
+    month: '/:year/:month/'
+    day: '/:year/:month/:day/'
+    tag: '/tag/:name/'
+    category: '/category/:name/'
 defaults:
   -
     scope:
@@ -128,6 +137,7 @@ plugins:
   # - jekyll-remote-theme # enable this if you use it as a remote theme
   - jekyll-seo-tag
   - jekyll-target-blank
+  - jekyll-archives
   - jekyll-sitemap
   - jekyll-feed
   - jekyll-toc
