@@ -4,23 +4,42 @@
   <summary>Tags</summary>
   {%- assign taglist = site.tags | map: first | sort_natural -%}
   {% for tag in taglist -%}
-  <span>&nbsp;<a href="?tag={{ tag[0] }}">{{ tag[0] }}&nbsp;[{{ tag[1] | size }}]</a></span>
+  <span>&nbsp;<a href="{{ site.baseurl }}/tag/{{ tag[0] }}">{{ tag[0] }}&nbsp;[{{ tag[1] | size }}]</a></span>
   {%- endfor %}
 </details>
 
 <div>
   {%- for tag in taglist -%}
   <ul id="{{ tag }}" class="post-list" style="display: none;">
-    {%- if site.sort_by_modified_date -%}
-    {%- assign cposts = site.tags[tag] | sort: "last_modified_at","last" -%}
-    {%- else -%}
-    {%- assign cposts = site.tags[tag] -%}
-    {%- endif -%}
-    {% for post in cposts -%}
+    {% for post in site.tags[tag] -%}
     <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
     {%- endfor %}
   </ul>
   {%- endfor -%}
 </div>
+
+<script> // function modified from TaoAlpha https://taoalpha.github.io/blog/2015/06/01/tech-jekyll-tag-page/
+  function getUrlParameter(sParam) {
+    var rParams = window.location.search.substring(1);
+    var aParams = rParams.split('&');
+    for (var i = 0; i < aParams.length; i++) {
+      var sParameterName = aParams[i].split('=');
+      if (sParameterName[0] == sParam) {
+        return decodeURIComponent(sParameterName[1]);
+      }
+    }
+  }
+  window.onload = function () {
+    var tag = getUrlParameter('tag');
+    if (tag && document.getElementById(tag)) {
+      document.getElementById('title').innerHTML = tag;
+      document.getElementById('taglist').open = false;
+      document.getElementById(tag).style.display = 'unset';
+    } else {
+      document.getElementById('title').innerHTML = 'Tags';
+      document.getElementById('taglist').open = true;
+    }
+  }
+</script>
 
 {%- endif -%}

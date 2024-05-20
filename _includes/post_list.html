@@ -1,16 +1,8 @@
-{%-if site.sort_by_modified_date-%}
-  {%-if include.category-%}
-    {%-assign posts = site.categories[include.category] | sort: "last_modified_at","last"-%}
-  {%-else-%}
-    {%-assign posts = site.posts | sort: "last_modified_at","last"-%}
-  {%-endif-%}
-{%-else-%}
   {%-if include.category-%}
     {%-assign posts = site.categories[include.category]-%}
   {%-else-%}
     {%-assign posts = site.posts-%}
   {%-endif-%}
-{%-endif-%}
 
 {%-if include.limit and posts.size > include.limit-%}
   {%-assign limit_exceeded = true-%}

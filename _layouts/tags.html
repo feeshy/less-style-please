@@ -13,39 +13,24 @@ noindex: true
   <main class="page-content" aria-label="Content">
     <header>
       <h1 style="display: inline-flex; flex-direction: row; align-items: center;">
-        {% include show_logo.html %}
-        <span id="title">Tags</span>
+        {%-include logo.html-%}
+        <span>{{ page.title }}</span>
       </h1>
+      {{ content }}
     </header>
-    {% include tag_list.html %}
+    {%- if site.tags.size > 0 -%}
+    <ul class="post-list">
+      {%- for tag in site.tags -%}
+      {%- assign taglist = site.tags | map: first | sort_natural -%}
+      <li><a href="{{ site.baseurl }}/tag/{{ tag[0] }}">{{ tag[0] }}&nbsp;[{{ tag[1] | size }}]</a></span>
+      {%- endfor -%}
+      {% assign fruits = "orange,apple,peach" | split: ',' %}
+    </ul>
+    {%- endif -%}
   </main>
   {%-if site.goat_counter and jekyll.environment == "production"-%}
   {% include goat_counter.html %}
   {%-endif-%}
 </body>
-
-<script> // function modified from TaoAlpha https://taoalpha.github.io/blog/2015/06/01/tech-jekyll-tag-page/
-  function getUrlParameter(sParam) {
-    var rParams = window.location.search.substring(1);
-    var aParams = rParams.split('&');
-    for (var i = 0; i < aParams.length; i++) {
-      var sParameterName = aParams[i].split('=');
-      if (sParameterName[0] == sParam) {
-        return decodeURIComponent(sParameterName[1]);
-      }
-    }
-  }
-  window.onload = function () {
-    var tag = getUrlParameter('tag');
-    if (tag && document.getElementById(tag)) {
-      document.getElementById('title').innerHTML = tag;
-      document.getElementById('taglist').open = false;
-      document.getElementById(tag).style.display = 'unset';
-    } else {
-      document.getElementById('title').innerHTML = 'Tags';
-      document.getElementById('taglist').open = true;
-    }
-  }
-</script>
 
 </html>

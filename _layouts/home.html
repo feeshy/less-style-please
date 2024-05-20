@@ -9,11 +9,11 @@
   <main class="page-content" aria-label="Content">
     <header>
       <h1 style="display: inline-flex; flex-direction: row; align-items: center;">
-        {% include show_logo.html %}
-        <span>{{ page.title }}</span>
+        {%-include logo.html-%}
+        <span>{{ page.title | default: site.title }}</span>
       </h1>
       {%-if site.show_description-%}
-      <p>{{ site.description }}</p>
+      {{ site.description }}
       {%-endif-%}
     </header>
     {%-include menu_item.html collection=site.data.menu.entries-%}

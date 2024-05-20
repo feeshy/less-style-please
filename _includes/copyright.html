@@ -3,11 +3,12 @@
 {%- assign copyright = page.copyright | default: site.copyright -%}
 
 {%- if copyright == "all-rights-reserved" -%}
-  © {{ page.date | date:"%Y" }}-{{ "now" | date:"%Y" }} {{ page.author | default:site.author }}. All Rights Reserved.
+  <span>©&nbsp;{%- if page.redirect_from.size > 0 -%}<a href="{{ page.redirect_from.first | default: page.redirect_from | relative_url }}">{%- endif -%}{{ page.date | date: "%Y" }}{%- if page.redirect_from.size > 0 -%}</a>{%- endif -%}-<a href="{{ page.canonical_url }}">{{ "now" | date: "%Y" }}&nbsp;{{ page.author | default: site.author }}</a>. </span>
+  <span>All Rights Reserved. </span>
 {%- endif -%}
 
 {%- if copyright == "by" or copyright == "by-sa" or copyright == "by-nc" or copyright == "by-nc-sa" or copyright == "by-nd" or copyright == "by-nc-nd" -%}
-  <span>🅭 <a href="{{ page.canonical_url }}">{{ page.date | date: "%Y" }}-{{ "now" | date: "%Y" }} {{ page.author | default: site.author }}</a>. </span>
+  <span>🅭&nbsp;{%- if page.redirect_from.size > 0 -%}<a href="{{ page.redirect_from.first | default: page.redirect_from | relative_url }}">{%- endif -%}{{ page.date | date: "%Y" }}{%- if page.redirect_from.size > 0 -%}</a>{%- endif -%}-<a href="{{ page.canonical_url }}">{{ "now" | date: "%Y" }}&nbsp;{{ page.author | default: site.author }}</a>. </span>
   <span>Some Rights Reserved. </span>
   <span>Licensed Under <a href="https://creativecommons.org/licenses/{{ copyright | downcase }}/4.0/deed.{{ page.lang | default:site.lang }}" target="_blank">CC {{ copyright | upcase }} 4.0</a></span>
 {%- endif -%}

@@ -1,3 +1,6 @@
+---
+noindex: true
+---
 <!DOCTYPE html>
 <html lang="{{ page.lang | default: site.lang }}">
 
@@ -10,17 +13,20 @@
   <main class="page-content" aria-label="Content">
     <header>
       <h1 style="display: inline-flex; flex-direction: row; align-items: center;">
-        {% include show_logo.html %}
-        <span>{{ page.title }}</span>
+        {%-include logo.html-%}
+        <span>
+          {%- if page.title.size >0 -%}
+          {{ page.title }}
+          {%-else-%}
+          {{ page.date | date: "%Y" }}年
+          {%-endif-%}
+        </span>
       </h1>
       {{ content }}
     </header>
     <ul class="post-list">
       {% for post in page.posts %}
-      <li>
-        <span class="post-date">{{ post.date | date: "%b %-d, %Y" }}</span>
-        <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
-      </li>
+      <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
       {% endfor %}
     </ul>
   </main>
