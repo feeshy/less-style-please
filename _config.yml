@@ -77,7 +77,7 @@ copyright: "by" # available values: "all-rights-reserved", "by-nc-nd", "by-nd", 
 
 permalink: /:categories/:title
 jekyll-archives:
-  enabled: [year, tag, category]
+  enabled: [year, tags, categories]
   layout: archive
   permalinks:
     year: '/:year/'
