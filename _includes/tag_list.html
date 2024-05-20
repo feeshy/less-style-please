@@ -1,0 +1,26 @@
+{%- if site.tags.size > 0 -%}
+
+<details id="taglist" class="post-meta">
+  <summary>Tags</summary>
+  {%- assign taglist = site.tags | map: first | sort_natural -%}
+  {% for tag in taglist -%}
+  <span>&nbsp;<a href="?tag={{ tag[0] }}">{{ tag[0] }}&nbsp;[{{ tag[1] | size }}]</a></span>
+  {%- endfor %}
+</details>
+
+<div>
+  {%- for tag in taglist -%}
+  <ul id="{{ tag }}" class="post-list" style="display: none;">
+    {%- if site.sort_by_modified_date -%}
+    {%- assign cposts = site.tags[tag] | sort: "last_modified_at","last" -%}
+    {%- else -%}
+    {%- assign cposts = site.tags[tag] -%}
+    {%- endif -%}
+    {% for post in cposts -%}
+    <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
+    {%- endfor %}
+  </ul>
+  {%- endfor -%}
+</div>
+
+{%- endif -%}

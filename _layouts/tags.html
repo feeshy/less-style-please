@@ -5,62 +5,26 @@ noindex: true
 <html lang="{{ page.lang | default: site.lang }}">
 
 <head>
-  {%-include head.html-%}
-  <style>
-    li a {
-      text-decoration: none;
-    }
-  </style>
+  {% include head.html %}
 </head>
 
 <body>
   {% include nav.html %}
   <main class="page-content" aria-label="Content">
     <header>
-      {%-if site.show_logo-%}
-      <h1 style="display: inline-flex; flex-direction: row; align-items: center;"><img
-          src="{{ site.favicon.svg | relative_url }}" style="height:1.5em; width: 1.5em;">&nbsp;<span id="title"></span>
+      <h1 style="display: inline-flex; flex-direction: row; align-items: center;">
+        {% include show_logo.html %}
+        <span id="title">Tags</span>
       </h1>
-      {%-else-%}
-      <h1><span id="title"></span></h1>
-      {%-endif-%}
     </header>
-    {%- if site.sort_by_modified_date -%}
-    {%- assign posts = site.posts | sort: "last_modified_at","last" -%}
-    {%- else -%}
-    {%- assign posts = site.posts -%}
-    {%- endif -%}
-    {%- assign taglist = "" | split: '' -%}
-    {%- for post in posts -%} {%- if post.tags.size > 0 -%}
-    {%- assign taglist = taglist | concat: post.tags -%}
-    {%- endif -%} {%- endfor -%}
-    {%- if taglist.size > 0 -%}
-    {%- assign taglist = taglist | uniq | sort_natural -%}
-    <p>
-      {%- for tag in taglist -%}
-      <span><a href='?tag={{ tag }}'>{{ tag }}</a>&nbsp;</span>
-      {%- endfor -%}
-    </p>
-    {%- for tag in taglist -%}
-    <ul id="{{ tag }}" style="display: none;">
-      {%- if site.sort_by_modified_date -%}
-      {%- assign cposts = site.tags[tag] | sort: "last_modified_at","last" -%}
-      {%- else -%}
-      {%- assign cposts = site.tags[tag] -%}
-      {%- endif -%}
-      {%- for post in cposts -%}
-      <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
-      {%- endfor -%}
-    </ul>
-    {%- endfor -%}
-    {%- endif -%}
+    {% include tag_list.html %}
   </main>
   {%-if site.goat_counter and jekyll.environment == "production"-%}
   {% include goat_counter.html %}
   {%-endif-%}
 </body>
 
-<script> // codes copied from TaoAlpha https://taoalpha.github.io/blog/2015/06/01/tech-jekyll-tag-page/
+<script> // function modified from TaoAlpha https://taoalpha.github.io/blog/2015/06/01/tech-jekyll-tag-page/
   function getUrlParameter(sParam) {
     var rParams = window.location.search.substring(1);
     var aParams = rParams.split('&');
@@ -74,10 +38,12 @@ noindex: true
   window.onload = function () {
     var tag = getUrlParameter('tag');
     if (tag && document.getElementById(tag)) {
-      document.getElementById(tag).style.display = 'unset';
       document.getElementById('title').innerHTML = tag;
+      document.getElementById('taglist').open = false;
+      document.getElementById(tag).style.display = 'unset';
     } else {
       document.getElementById('title').innerHTML = 'Tags';
+      document.getElementById('taglist').open = true;
     }
   }
 </script>
