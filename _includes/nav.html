@@ -1,27 +1,28 @@
 <nav id="top" style="position: absolute; left: 5vw; top: 5vh;"><a href="{{ site.baseurl | default: '/' }}">{{ site.nav.back_home | default: "home" }}</a>
-    {%-if page.categories.size > 0 -%}
-        &nbsp;&gt;&nbsp;
-        {%- assign hierarchy = '/' -%}
-        {%-for category in page.categories-%}
-            {%-assign hierarchy = hierarchy | append: category | append: '/' -%}
-            <a href="{{ hierarchy | relative_url }}">{{ category }}</a>&nbsp;&gt;&nbsp;
-        {%-endfor-%}
-    {%-endif-%}
+  {%-if page.categories.size > 0 -%}
+  &nbsp;&gt;&nbsp;
+  {%- assign hierarchy = '/' -%}
+  {%-for category in page.categories-%}
+  {%-assign hierarchy = hierarchy | append: category | append: '/' -%}
+  <a href="{{ hierarchy | relative_url }}">{{ category }}</a>&nbsp;&gt;&nbsp;
+  {%-endfor-%}
+  {%-endif-%}
 </nav>
 
-<nav id="gototop" style="position: fixed; right: 5vw; bottom: 5vh; visibility: hidden;">{{ site.nav.go_to_top | default: "🔝" }}</nav>
+<nav id="gototop" style="position: fixed; right: 5vw; bottom: 5vh; visibility: hidden;">{{ site.nav.go_to_top | default:
+  "🔝" }}</nav>
 <script>
-window.addEventListener('scroll', function() {
+  window.addEventListener('scroll', function () {
     if (window.scrollY > 200) {
-        document.getElementById('gototop').style.visibility = 'visible';
+      document.getElementById('gototop').style.visibility = 'visible';
     } else {
-        document.getElementById('gototop').style.visibility = 'hidden';
+      document.getElementById('gototop').style.visibility = 'hidden';
     }
-})
-document.getElementById('gototop').addEventListener('click', function() {
+  })
+  document.getElementById('gototop').addEventListener('click', function () {
     window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
+      top: 0,
+      behavior: 'smooth'
     })
-})
+  })
 </script>

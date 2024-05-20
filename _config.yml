@@ -73,7 +73,7 @@ copyright: "by" # available values: "all-rights-reserved", "by-nc-nd", "by-nd", 
 
 permalink: /:categories/:title
 jekyll-archives:
-  enabled: [year, tags, categories]
+  enabled: [year, tags]
   layout: archive
   permalinks: # if you changed this, don't forget to change the codes in '_includes/post_meta.html' as well
     year: '/:year/'

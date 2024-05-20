@@ -22,7 +22,7 @@ noindex: true
     <ul class="post-list">
       {%- for tag in site.tags -%}
       {%- assign taglist = site.tags | map: first | sort_natural -%}
-      <li><a href="{{ site.baseurl }}/tag/{{ tag[0] }}">{{ tag[0] }}&nbsp;[{{ tag[1] | size }}]</a></span>
+      <li><a href="{{ site.baseurl }}/tag/{{ tag[0] }}">{{ tag[0] }}<sup>[{{ tag[1] | size }}]</sup></a></span>
       {%- endfor -%}
       {% assign fruits = "orange,apple,peach" | split: ',' %}
     </ul>

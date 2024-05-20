@@ -1,16 +1,16 @@
 <header class="post-meta">
 
-    {%- if page.tags.size > 0 -%}
-    🏷️
-    {%- for tag in page.tags -%}
-    <span>&nbsp;<a href='{{ site.baseurl }}/tag/{{ tag }}'>{{ tag }}</a></span>
-    {%- endfor -%}
-    {%- endif -%}
-    <br>
-    {%- if page.last_modified_at and page.last_modified_at != blank -%}
-    <span>✏️&nbsp;<a href="{{ site.baseurl }}/{{ page.date | date: %Y }}/"><time datetime="{{ page.last_modified_at }}" title="updated on">{{ page.last_modified_at | date: site.date_format }}</time></a></span>
-    {%- else -%}
-    <span>📅&nbsp;<a href="{{ site.baseurl }}/{{ page.date | date: %Y }}/"><time datetime="{{ page.date }}" title="published on">{{ page.date | date: site.date_format }}</time></a></span>
-    {%- endif -%}
+  {%- if page.tags.size > 0 -%}
+  🏷️
+  {%- for tag in page.tags -%}
+  <span>&nbsp;<a href='{{ site.baseurl }}/tag/{{ tag }}'>{{ tag }}</a></span>
+  {%- endfor -%}
+  {%- endif -%}
+  <br>
+  {%- if page.last_modified_at and page.last_modified_at != blank -%}
+  <span>✏️&nbsp;<a href="{{ site.baseurl }}/{{ page.date | date: %Y }}/"><time datetime="{{ page.last_modified_at }}" title="updated on">{{ page.last_modified_at | date: site.date_format }}</time></a></span>
+  {%- else -%}
+  <span>📅&nbsp;<a href="{{ site.baseurl }}/{{ page.date | date: %Y }}/"><time datetime="{{ page.date }}" title="published on">{{ page.date | date: site.date_format }}</time></a></span>
+  {%- endif -%}
 
 </header>
