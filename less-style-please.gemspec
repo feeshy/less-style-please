@@ -17,6 +17,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency "jekyll-seo-tag", "~>2.8.0"
   spec.add_runtime_dependency "jekyll-toc", "~>0.18.0"
   spec.add_runtime_dependency "jekyll-target-blank", "~>2.0", ">= 2.0.2"
+  spec.add_runtime_dependency "jekyll-archives", "~> 2.2", ">= 2.2.1"
   spec.add_runtime_dependency "jekyll-sitemap", "~>1.4.0"
   spec.add_runtime_dependency "jekyll-feed", "~>0.17.0"
   spec.add_runtime_dependency "jekyll-pwa-workbox", "~>5.1", ">= 5.1.41"
