@@ -310,6 +310,7 @@ webmanifest: "/site.webmanifest" # icon config file path for Chrome
 ``` yml
 ---
 layout: archive
+categories: category name
 title: page title
 ---
 [optional]you could add some content here, it will be rendered before post list
@@ -646,6 +647,7 @@ Create an archive page at `/category/index.md` with the following front matter:
 ``` yml
 ---
 layout: archive
+categories: category name
 title: page title
 ---
 [optional]you could add some content here, it will be rendered before post list
