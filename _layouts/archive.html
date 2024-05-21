@@ -24,7 +24,7 @@ noindex: true
       </h1>
       {{ content }}
     </header>
-    {% include post_list.html category=page.category %}
+    {% include post_list.html category=page.categories %}
   </main>
   {%-if site.goat_counter and jekyll.environment == "production"-%}
   {% include goat_counter.html %}
