@@ -310,7 +310,6 @@ webmanifest: "/site.webmanifest" # icon config file path for Chrome
 ``` yml
 ---
 layout: archive
-which_category: category name
 title: page title
 ---
 [optional]you could add some content here, it will be rendered before post list
