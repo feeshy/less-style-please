@@ -19,7 +19,7 @@ function wrap(el, wrapper) {
 for (const el of document.getElementsByTagName('table')) {
   const wrapper = document.createElement('section');
   wrapper.style.overflowX = 'auto';
-  wrapper.style.filter = 'drop-shadow(0 0 2px #0002)';
+  wrapper.style.filter = 'drop-shadow(0 0 2px #0000001c)';
   wrap(el, wrapper);
 }
 
