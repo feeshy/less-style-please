@@ -303,6 +303,14 @@ webmanifest: "/site.webmanifest" # icon config file path for Chrome
 
 请阅读jekyll-pwa-workbox文档[^pwa]
 
+### 中文网字
+
+默认启用，如果希望大幅度降低流量消耗、提升响应速度，可以关闭。
+
+```yml
+chinese_webfonts: true
+```
+
 ### 文章列表
 
 在 `/category/index.md` 创建每个分类的文章列表，使用以下front matter：
@@ -639,6 +647,14 @@ webmanifest: "/site.webmanifest" # icon config file path for Chrome
 #### Service-Worker.js
 
 read docs of jekyll-pwa-workbox[^pwa]
+
+### Chinese webfonts
+
+enabled by default. The loading speed of pages with a lot of Chinese characters will increase significantly if set to false.
+
+```yml
+chinese_webfonts: true
+```
 
 ### Archive Page
 
