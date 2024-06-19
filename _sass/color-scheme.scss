@@ -23,4 +23,5 @@ html { color-scheme: light dark; }
 a { color: inherit; }
 a:hover { color: lightslategray; }
 mark { color: white; background-color: lightslategray;}
-:target { background-color: #7f7f7f10; }
+:target { background-color: #7f7f7f1c; }
+ul#toc, blockquote, div>pre, img { filter: drop-shadow(0 0 2px #0000001c); }
