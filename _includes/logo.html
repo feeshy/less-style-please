@@ -1,14 +1,14 @@
 {%-if site.show_logo-%}
-<img id="logo" src="{{ site.favicon.svg | relative_url }}" style="height: 1.5em; width: 1.5em; display: none;">
-<object id="logo_safari" type="image/svg+xml" data="{{ site.favicon.svg | relative_url }}" style="height: 1.5em; width: 1.5em; display: none;"></object>
-&nbsp;
+<img id="logo" src="{{ site.favicon.svg | relative_url }}" style="height: 1.5em; width: 1.5em; display: none;"><object id="logo_safari" type="image/svg+xml" data="{{ site.favicon.svg | relative_url }}" style="height: 1.5em; width: 1.5em; display: none;"></object>&nbsp;
 <script>
-if (navigator.userAgent.includes('Mac OS X')) {
-  document.getElementById('logo').style.display = 'none';
-  document.getElementById('logo_safari').style.display = 'unset';
-} else {
-  document.getElementById('logo').style.display = 'unset';
-  document.getElementById('logo_safari').style.display = 'none';
-}
+  const logo = document.getElementById('logo');
+  const logo_safari = document.getElementById('logo_safari')
+  if (navigator.userAgent.includes('Mac OS X')) {
+    logo.style.display = 'none';
+    logo_safari.style.display = 'unset';
+  } else {
+    logo.style.display = 'unset';
+    logo_safari.style.display = 'none';
+  }
 </script>
 {%-endif-%}
