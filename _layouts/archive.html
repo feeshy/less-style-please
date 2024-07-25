@@ -13,7 +13,9 @@ noindex: true
   <main class="page-content" aria-label="Content">
     <header>
       <h1 style="display: inline-flex; flex-direction: row; align-items: center;">
+        {%-if site.show_logo-%}
         {%-include logo.html-%}
+        {%-endif-%}
         <span>
           {%- if page.title.size >0 -%}
           {{ page.title }}

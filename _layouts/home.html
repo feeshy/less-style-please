@@ -9,7 +9,9 @@
   <main class="page-content" aria-label="Content">
     <header>
       <h1 style="display: inline-flex; flex-direction: row; align-items: center;">
+        {%-if site.show_logo-%}
         {%-include logo.html-%}
+        {%-endif-%}
         <span>{{ page.title | default: site.title }}</span>
       </h1>
       {%-if site.show_description-%}
