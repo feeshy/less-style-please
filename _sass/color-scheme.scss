@@ -18,6 +18,7 @@ html { color-scheme: light dark; }
   blockquote { border-left-color: #101010; }
   code { color: springgreen; }
   code, div>pre { background-color: black; }
+  img { filter: brightness(0.875); }
 }
 
 a { color: inherit; }
