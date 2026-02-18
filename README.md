@@ -588,7 +588,7 @@ locale: zh-yue_HK
 
 standard [language codes](https://www.w3schools.com/tags/ref_language_codes.asp) & [territory codes](https://www.w3schools.com/tags/ref_country_codes.asp)
 
-And you may define the language of a span with html syntax. The browser will hide Chinese content for English users, and hide non-Chinese content for Chinese users.
+And you may define the language of a span with html syntax. The browser will hide Chinese content for non-Chinese users, and hide non-Chinese content for Chinese users.
 
 ``` html
 <span lang="zh">对中文用户显示的内容</span><span lang="en">displaying content for English users</span>
