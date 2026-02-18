@@ -8,11 +8,11 @@ Docs Language: 中文 | [English](#en)
 
 ## 安装
 
-| | 远程主题 | 本地主题 |
-|-|-|-|
-| 运行环境 | Github Actions | 不限 |
-| 主题更新 | 编译时自动 | 手动 |
-| 修改定制 | 限于_config.yml | 完全 |
+|          | 远程主题        | 本地主题 |
+| -------- | --------------- | -------- |
+| 运行环境 | Github Actions  | 不限     |
+| 主题更新 | 编译时自动      | 手动     |
+| 修改定制 | 限于_config.yml | 完全     |
 
 ### 作为远程主题
 
@@ -50,12 +50,12 @@ Docs Language: 中文 | [English](#en)
 
 字体搭配分为四个层次：
 
-|                 | 首选字体                                                                                      | 候补字体                                                                                                                                                                            |
-| --------------- | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 通用内容            | Avenir Next<br>苹方                                                                         | Segoe UI, HarmonyOS Sans, [Clear Sans🌐](https://github.com/intel/clear-sans)<br>思源黑体 (Noto Sans CJK SC), 思源黑体 CN (Noto Sans SC), 更纱黑体, sans-serif                              |
-| 文学性内容           | [EB Garamond🌐](https://github.com/octaviopardo/EBGaramond12)<br>思源宋体 (Noto Serif CJK SC) | Adobe Garamond Pro, Garamond, Palatino<br>[思源宋体 CN🌐](https://github.com/adobe-fonts/source-han-serif) (Noto Serif SC), serif                                                   |
-| 元数据<br>引用<br>注释 | [Ysabeau🌐](https://github.com/CatharsisFonts/Ysabeau)<br>霞鹜文楷                            | [霞鹜文楷轻便版🌐](https://github.com/lxgw/LxgwWenKai-Lite), 华文细黑, 冬青黑体, sans-serif                                                                                                    |
-| 表格<br>代码        | 等距更纱黑体                                                                                    | Ubuntu Mono🌐, Inconsolata, Iosevka, JetBrains Mono, Monaco, Source Code Pro, 思源黑体HW (Noto Sans Mono CJK), 文泉驿等宽微米黑, monopace |
+|                        | 首选字体                                                                                     | 候补字体                                                                                                                                                      |
+| ---------------------- | -------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 通用内容               | Avenir Next<br>苹方                                                                          | Segoe UI, HarmonyOS Sans, [Clear Sans🌐](https://github.com/intel/clear-sans)<br>思源黑体 (Noto Sans CJK SC), 思源黑体 CN (Noto Sans SC), 更纱黑体, sans-serif |
+| 文学性内容             | [EB Garamond🌐](https://github.com/octaviopardo/EBGaramond12)<br>思源宋体 (Noto Serif CJK SC) | Adobe Garamond Pro, Garamond, Palatino<br>[思源宋体 CN🌐](https://github.com/adobe-fonts/source-han-serif) (Noto Serif SC), serif                              |
+| 元数据<br>引用<br>注释 | [Ysabeau🌐](https://github.com/CatharsisFonts/Ysabeau)<br>霞鹜文楷                            | [霞鹜文楷轻便版🌐](https://github.com/lxgw/LxgwWenKai-Lite), 华文细黑, 冬青黑体, sans-serif                                                                    |
+| 表格<br>代码           | 等距更纱黑体                                                                                 | Ubuntu Mono🌐, Inconsolata, Iosevka, JetBrains Mono, Monaco, Source Code Pro, 思源黑体HW (Noto Sans Mono CJK), 文泉驿等宽微米黑, monopace                      |
 
 标🌐的字体使用[cn-font-split](https://github.com/KonghaYao/cn-font-split)切割为细粒度webfont并托管在`/assets/OpenFonts`目录，以期获得稳定的跨平台效果。
 
@@ -237,6 +237,12 @@ locale: zh-yue_HK
 ```
 标准 [language codes](https://www.w3schools.com/tags/ref_language_codes.asp) & [territory codes](https://www.w3schools.com/tags/ref_country_codes.asp)
 
+此外，可以用 html 语法指定特定区块的语言，浏览器会自动对中文用户隐藏非中文的内容，对非中文用户隐藏中文内容。
+
+``` html
+<span lang="zh">对中文用户显示的内容</span><span lang="en">displaying content for English users</span>
+```
+
 ### 版权协议
 
 主题会自动在页面底部渲染文章的版权声明。如果文章使用的版权协议不是 `_config.yml` 中默认的协议，可以在 front matter 定义本文章所使用的 copyright：
@@ -371,11 +377,11 @@ A pure text Jekyll blog theme forked from rigggraz's no_style_please[^riggraz], 
 
 ## Install
 
-| | remotely | locally |
-|-|-|-|
-| Operating environment | Github Actions | Unlimited |
-| Theme updates | Automatically at building | manually |
-| mods on source codes | limited to _config.yml | Full |
+|                       | remotely                  | locally   |
+| --------------------- | ------------------------- | --------- |
+| Operating environment | Github Actions            | Unlimited |
+| Theme updates         | Automatically at building | manually  |
+| mods on source codes  | limited to _config.yml    | Full      |
 
 ### Install as a Remote Theme on Github Pages
 
@@ -581,6 +587,12 @@ locale: zh-yue_HK
 ```
 
 standard [language codes](https://www.w3schools.com/tags/ref_language_codes.asp) & [territory codes](https://www.w3schools.com/tags/ref_country_codes.asp)
+
+And you may define the language of a span with html syntax. The browser will hide Chinese content for English users, and hide non-Chinese content for Chinese users.
+
+``` html
+<span lang="zh">对中文用户显示的内容</span><span lang="en">displaying content for English users</span>
+```
 
 ### Copyright Disclaimer
 

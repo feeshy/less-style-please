@@ -23,6 +23,25 @@ for (const el of document.getElementsByTagName('table')) {
   wrap(el, wrapper);
 }
 
+// bilingual displaying
+
+document.addEventListener('DOMContentLoaded', () => {
+  const userLang = navigator.language || navigator.userLanguage;
+  const isChinese = userLang.toLowerCase().startsWith('zh');
+  const updateLanguageDisplay = (showChinese) => {
+    const zhElements = document.querySelectorAll('[lang="zh"]');
+    const enElements = document.querySelectorAll('[lang="en"]');
+    if (showChinese) {
+      zhElements.forEach(el => el.style.display = '');
+      enElements.forEach(el => el.style.display = 'none');
+    } else {
+      zhElements.forEach(el => el.style.display = 'none');
+      enElements.forEach(el => el.style.display = '');
+    }
+  };
+  updateLanguageDisplay(isChinese);
+})
+
 // copyright disclaimer
 
 document.addEventListener('copy', function (event) {
