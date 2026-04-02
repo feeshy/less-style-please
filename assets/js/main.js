@@ -29,8 +29,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const userLang = navigator.language || navigator.userLanguage;
   const isChinese = userLang.toLowerCase().startsWith('zh');
   const updateLanguageDisplay = (showChinese) => {
-    const zhElements = document.querySelectorAll('[lang="zh"]');
-    const enElements = document.querySelectorAll('[lang="en"]');
+    const zhElements = document.querySelectorAll('[lang="zh"]:not(html):not(body)');
+    const enElements = document.querySelectorAll('[lang="en"]:not(html):not(body)');
     if (showChinese) {
       zhElements.forEach(el => el.style.display = '');
       enElements.forEach(el => el.style.display = 'none');
