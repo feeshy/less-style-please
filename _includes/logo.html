@@ -1,12 +1,1 @@
-<img id="logo" src="{{ site.favicon.svg | relative_url }}" style="height: 1.5em; width: 1.5em; display: none;"><object id="logo_safari" type="image/svg+xml" data="{{ site.favicon.svg | relative_url }}" style="height: 1.5em; width: 1.5em; display: none;"></object>&nbsp;
-<script>
-  const logo = document.getElementById('logo');
-  const logo_safari = document.getElementById('logo_safari')
-  if (navigator.userAgent.includes('Mac OS X')) {
-    logo.style.display = 'none';
-    logo_safari.style.display = 'unset';
-  } else {
-    logo.style.display = 'unset';
-    logo_safari.style.display = 'none';
-  }
-</script>
+<object id="logo_safari" type="image/svg+xml" data="{{ site.favicon.svg | relative_url }}" style="height: 1.5em; width: 1.5em; display: none;"></object>&nbsp;
