@@ -1,16 +1,27 @@
 <header class="post-meta">
-
-  {%- if page.tags.size > 0 -%}
-  🏷️
-  {%- for tag in page.tags -%}
-  <span>&nbsp;<a href='{{ site.baseurl }}/tag/{{ tag }}'>{{ tag }}</a></span>
-  {%- endfor -%}
+  {% if page.tags.size > 0 -%}
+    🏷️
+    {%- for tag in page.tags -%}
+      <span>&nbsp;<a href='{{ site.baseurl }}/tag/{{ tag }}'>{{ tag }}</a></span>
+    {%- endfor -%}
   {%- endif -%}
   <br>
-  {%- if page.last_modified_at and page.last_modified_at != blank -%}
-  <span>✏️&nbsp;<a href="{{ site.baseurl }}/{{ page.date | date: '%Y' }}/"><time datetime="{{ page.last_modified_at }}" title="updated on">{{ page.last_modified_at | date: site.date_format }}</time></a></span>
-  {%- else -%}
-  <span>📅&nbsp;<a href="{{ site.baseurl }}/{{ page.date | date: '%Y' }}/"><time datetime="{{ page.date }}" title="published on">{{ page.date | date: site.date_format }}</time></a></span>
-  {%- endif -%}
-
+  📅<span>&nbsp;<a href="{{ site.baseurl }}/{{ page.date | date: '%Y' }}/"><time datetime="{{ page.date | date: '%Y-%m-%d' }}" itemprop="datePublished">{{ page.date | date: "%Y-%-m-%-d" }}</time></a></span>
+    {%- if page.last_modified_at and page.last_modified_at != blank and page.last_modified_at != page.date -%}
+    <span>&nbsp;~&nbsp;<time datetime="{{ page.last_modified_at | date: '%Y-%m-%d' }}" itemprop="dateModified">
+      {%- assign pub_year_month = page.date | date: "%Y-%m" -%}
+      {%- assign mod_year_month = page.last_modified_at | date: "%Y-%m" -%}
+      {%- if pub_year_month == mod_year_month -%}
+        {{ page.last_modified_at | date: "%-d" }}
+      {%- else -%}
+        {%- assign pub_year = page.date | date: "%Y" -%}
+        {%- assign mod_year = page.last_modified_at | date: "%Y" -%}
+        {%- if pub_year == mod_year -%}
+          {{ page.last_modified_at | date: "%-m-%-d" }}
+        {%- else -%}
+          {{ page.last_modified_at | date: "%Y-%-m-%-d" }}
+        {%- endif -%}
+      {%- endif -%}
+    </time></span>
+    {%- endif %}
 </header>
