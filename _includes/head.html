@@ -8,13 +8,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-{%- if site.favicon.size > 0 -%}
+{%- if site.favicon.ios.size > 0 -%}
 <link rel="apple-touch-icon" sizes="180x180" href="{{ site.favicon.ios | relative_url }}">
-<link rel="icon" sizes="32x32" href="{{ site.favicon.ico | relative_url }}">
-<link rel="icon" type="image/svg+xml" href="{{ site.favicon.svg | relative_url }}">
-<link rel="manifest" href="{{ site.webmanifest | relative_url }}">
-<meta name="msapplication-TileColor" content="{{ site.ms_tile_color | default: '#888888' }}">
 {%- endif -%}
+{%- if site.favicon.ico.size > 0 -%}
+<link rel="icon" sizes="32x32" href="{{ site.favicon.ico | relative_url }}">
+{%- endif -%}
+{%- if site.favicon.svg.size > 0 -%}
+<link rel="icon" type="image/svg+xml" href="{{ site.favicon.svg | relative_url }}">
+{%- endif -%}
+{%- if site.webmanifest.size > 0 -%}
+<link rel="manifest" href="{{ site.webmanifest | relative_url }}">
+{%- endif -%}
+{%- if site.ms_tile_color.size > 0 -%}
+<meta name="msapplication-TileColor" content="{{ site.ms_tile_color }}">
+{%- else -%}
+<meta name="msapplication-TileColor" content="#888888">
+{%- endif -%}
+
 
 {% seo %}
 
