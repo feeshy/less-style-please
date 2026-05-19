@@ -20,18 +20,18 @@ noindex: true
     </header>
 
     {%- if site.tags.size > 0 -%}
-    <ul class="post-list">
+    <div class="tag-cloud">
       {%- assign sorted_tags = site.tags | sort -%}
 
       {%- for tag in sorted_tags -%}
+      {%- assign tag_count = tag[1] | size -%}
 
-      <li>
-        <a href="{{ site.baseurl }}/tag/{{ tag[0] }}">
-          {{ tag[0] }}<sup>[{{ tag[1] | size }}]</sup>
+      {%- if tag_count <= 5 -%} {%- assign font_size=tag_count | minus: 1 | times: 0.12 | plus: 0.8 -%} {%- elsif tag_count <=15 -%} {%- assign font_size=tag_count | minus: 5 | times: 0.05 | plus: 1.28 -%} {%- else -%} {%- assign font_size=tag_count | minus: 15 | times: 0.02 | plus: 1.78 | at_most: 2.5 -%} {%- endif -%} <a class="tag-item" href="{{ site.baseurl }}/tag/{{ tag[0] }}" style="font-size: {{ font_size }}em;">
+        {{ tag[0] }} <span class="tag-count">[{{ tag_count }}]</span>
         </a>
-      </li>
-      {%- endfor -%}
-    </ul>
+
+        {%- endfor -%}
+    </div>
     {%- endif -%}
   </main>
 

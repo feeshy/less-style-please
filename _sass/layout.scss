@@ -86,3 +86,21 @@ span img, img.sticker {
   display: inline-block;
   height: 1em;
 }
+
+.tag-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8em 1.5em;
+  margin-top: 1.5em;
+  align-items: baseline;
+}
+
+.tag-item {
+  text-decoration: none;
+  color: inherit;
+}
+
+.tag-count {
+  font-size: 0.7em;
+  opacity: 0.6;
+}
