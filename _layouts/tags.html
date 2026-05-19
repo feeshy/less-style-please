@@ -18,16 +18,23 @@ noindex: true
       </h1>
       {{ content }}
     </header>
+
     {%- if site.tags.size > 0 -%}
     <ul class="post-list">
-      {%- for tag in site.tags -%}
-      {%- assign taglist = site.tags | map: first | sort_natural -%}
-      <li><a href="{{ site.baseurl }}/tag/{{ tag[0] }}">{{ tag[0] }}<sup>[{{ tag[1] | size }}]</sup></a></span>
+      {%- assign sorted_tags = site.tags | sort -%}
+
+      {%- for tag in sorted_tags -%}
+
+      <li>
+        <a href="{{ site.baseurl }}/tag/{{ tag[0] }}">
+          {{ tag[0] }}<sup>[{{ tag[1] | size }}]</sup>
+        </a>
+      </li>
       {%- endfor -%}
-      {% assign fruits = "orange,apple,peach" | split: ',' %}
     </ul>
     {%- endif -%}
   </main>
+
   {%-if site.goat_counter and jekyll.environment == "production"-%}
   {% include goat_counter.html %}
   {%-endif-%}
