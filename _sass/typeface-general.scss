@@ -8,8 +8,12 @@ blockquote, q, footer, .post-meta, .footnotes {
   font-family: "CCSymbols", "Ysabeau", "LXGW WenKai", "LXGW Bright", "LXGW WenKai Lite", "STXihei", "Hiragino Sans GB", sans-serif;
 }
 
-code, th, td {
-  font-family: "CCSymbols", "Sarasa Mono SC", "Ubuntu Mono", "Inconsolata", "Iosevka", "JetBrains Mono", "Monaco", "Source Code Pro", "Source Han Sans HW SC", "Noto Sans Mono CJK SC", "Wenquanyi Micro Hei Mono", monospace;
+code, {
+  font-family: "CCSymbols", "NeoXiHei Code", "Sarasa Mono SC", "Maple Mono CN", "Ubuntu Mono", "Inconsolata", "JetBrains Mono", "Monaco", "Source Code Pro", "Source Han Sans HW SC", "Noto Sans Mono CJK SC", "Wenquanyi Micro Hei Mono", monospace;
+}
+
+th,td {
+  font-family: "CCSymbols", "SF Pro Condensed", "SF Condensed", "Segoe UI Condensed", "HarmonyOS Sans Condensed", "Roboto Condensed", "Helvetica Neue Condensed", "Ubuntu Condensed", "Ubuntu Mono", "Inconsolata", sans-serif-condensed, system-ui, sans-serif;
   font-variant-numeric: tabular-nums lining-nums slashed-zero;
 }
 
