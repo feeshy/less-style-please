@@ -1,3 +1,17 @@
+---
+---
+// import webfonts
+
+@import "ccsymbols";
+@import "ysabeau";
+{%- if site.chinese_webfonts -%}
+@import "lxgw";
+{%- endif -%}
+@import "ubuntu-mono";
+@import "roboto-condensed";
+
+// font styles
+
 body {
   font-family: "CCSymbols", "Avenir Next", "Segoe UI", "HarmonyOS Sans", "Clear Sans", "PingFang SC", "Source Han Sans SC VF", "Noto Sans CJK SC", "Source Han Sans SC", "Source Han Sans CN VF", "Noto Sans SC", "Source Han Sans CN", "Sarasa Gothic SC", sans-serif;
   font-synthesis: weight;
