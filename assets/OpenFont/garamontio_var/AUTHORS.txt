@@ -1,0 +1,10 @@
+"EB Garamond" (file: AUTHORS.txt, repository: https://github.com/octaviopardo/EBGaramond12)
+- Georg Duffner <g.duffner@gmail.com>
+- Octavio Pardo <octaviopardo@gmail.com>
+
+"Garamond Math" (repository: https://github.com/YuanshengZhao/Garamond-Math)
+- Yuansheng Zhao
+- Xiangdong Zeng 
+
+"Garamontio" (additions and modifications)
+- Michele Casanova

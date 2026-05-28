@@ -55,7 +55,8 @@
 
 {% if page.fonts == "serif" -%}
 <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/literature.css">
-<link rel="preload" href="{{ site.baseurl }}/assets/OpenFont/EBGaramond-VariableFont_wght/result.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="{{ site.baseurl }}/assets/OpenFont/EBGaramond-VariableFont_wght/result.css"></noscript>
+
+<link rel="preload" href="{{ site.baseurl }}/assets/OpenFont/garamontio_var/garamontio.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="{{ site.baseurl }}/assets/OpenFont/garamontio_var/garamontio.css"></noscript>
 {%- if site.chinese_webfonts -%}
 <link rel="preload" href="{{ site.baseurl }}/assets/OpenFont/SourceHanSerifCN-VF_wght/result.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="{{ site.baseurl }}/assets/OpenFont/SourceHanSerifCN-VF_wght/result.css"></noscript>
 {%- endif -%}
