@@ -48,7 +48,11 @@
   {%- assign target_post = posts | where: "url", target_url | first -%}
 
   {%- if target_post -%}
-  <li><a href="{{ target_post.url | relative_url }}">{{ target_post.title }}</a></li>
+
+  {%- assign is_redirect = target_post.redirect.to != nil -%}
+  {%- assign link_href = target_post.redirect.to | default: target_post.url -%}
+  <li><a href="{{ link_href | relative_url }}"{% if is_redirect %} target="_blank"{% endif %}>{{ target_post.title }}</a></li>
+
   {%- endif -%}
 
   {%- endfor -%}
