@@ -16,10 +16,10 @@ function wrap(el, wrapper) {
   el.parentNode.insertBefore(wrapper, el);
   wrapper.appendChild(el);
 }
+
 for (const el of document.getElementsByTagName('table')) {
   const wrapper = document.createElement('section');
-  wrapper.style.overflowX = 'auto';
-  wrapper.style.filter = 'drop-shadow(0 0 2px #0000001c)';
+  wrapper.classList.add('table-wrapper');
   wrap(el, wrapper);
 }
 

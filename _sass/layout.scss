@@ -119,8 +119,17 @@ div>pre {
   padding: 1rem;
 }
 
+.table-wrapper {
+  overflow-x: auto;
+  filter: drop-shadow(0 0 2px #0000001c);
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
 table {
-  width: 100%;
+  width: max-content;
+  max-width: 640px;
   border-collapse: collapse;
 }
 
