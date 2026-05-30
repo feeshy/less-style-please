@@ -4,13 +4,13 @@
 
 @import "garamontio";
 {%- if site.chinese_webfonts -%}
-@import "source-han-serif";
+@import "noto-serif-sc";
 {%- endif -%}
 
 // font styles
 
 body {
-  font-family: "CCSymbols", "Garamontio", "EB Garamond", "Adobe Garamond Pro", "Garamond", "Palatino", "Palatino Linotype", "Songti SC", "Source Han Serif SC VF", "Source Han Serif SC", "Noto Serif CJK SC", "Noto Serif SC", "Source Han Serif CN", "Source Han Serif CN VF", serif;
+  font-family: "CCSymbols", "Garamontio", "EB Garamond", "Adobe Garamond Pro", "Garamond", "Palatino", "Palatino Linotype", "Songti SC", "Source Han Serif SC VF", "Source Han Serif SC", "Source Han Serif CN", "Source Han Serif CN VF", "Noto Serif CJK SC", "Noto Serif SC", serif;
   font-variant: discretionary-ligatures oldstyle-nums;
 }
 

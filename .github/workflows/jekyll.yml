@@ -42,6 +42,15 @@ jobs:
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
+      - name: Conditionally remove Chinese webfonts before build
+        run: |
+          if ! grep -q "^[[:space:]]*chinese_webfonts:[[:space:]]*true" _config.yml; then
+            echo "未检测到 chinese_webfonts: true，正在删除中文字体目录..."
+            rm -rf ./assets/OpenFont/NotoSerifSC-v35
+            rm -rf ./assets/OpenFont/LXGWWenKaiLite-Regular
+          else
+            echo "检测到 chinese_webfonts: true，保留字体目录进行构建。"
+          fi
       - name: Build with Jekyll
         # Outputs to the './_site' directory by default
         run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
