@@ -167,11 +167,13 @@ canonical_url: https://www.example.com/destination/url/here
 ---
 ```
 
-还可搭配permalink语法
+还可搭配permalink语法，例如一个跳转回主页的404页面：
 
 ```yml
 ---
-permalink: /url/to/redirect/from
+layout: redirect
+permalink: /404.html
+redirect_to: /
 ---
 ```
 
@@ -240,10 +242,10 @@ locale: zh-yue_HK
 ```
 标准 [language codes](https://www.w3schools.com/tags/ref_language_codes.asp) & [territory codes](https://www.w3schools.com/tags/ref_country_codes.asp)
 
-此外，可以用 html 语法指定特定区块的语言，浏览器会自动对中文用户隐藏非中文的内容，对非中文用户隐藏中文内容。
+此外，在`_config.yml`中设置`bilingual: true;`后，还可以用 html 语法指定特定区块的语言，浏览器会自动对中文用户隐藏非中文的内容，对非中文用户隐藏中文内容。
 
 ``` html
-<span lang="zh">对中文用户显示的内容</span><span lang="en">displaying content for English users</span>
+<span lang="zh">对中文用户显示的内容</span><span lang="en">displaying content for non Chinese visitors</span>
 ```
 
 ### 版权协议
@@ -311,6 +313,20 @@ webmanifest: "/site.webmanifest" # icon config file path for Chrome
 #### Service-Worker.js
 
 请阅读jekyll-pwa-workbox文档[^pwa]
+
+### 双语显示
+
+默认不启用。
+
+```yml
+bilingual: false
+```
+
+需要配合在帖子中用 html 语法标记特定区块的语言。启用后，浏览器会自动对中文用户隐藏非中文的内容，对非中文用户隐藏中文内容。
+
+``` html
+<span lang="zh">对中文用户显示的内容</span><span lang="en">displaying content for non Chinese visitors</span>
+```
 
 ### 中文网字
 
@@ -519,13 +535,14 @@ canonical_url: https://www.example.com/destination/url/here
 ---
 ```
 
-can also be used with the permalink syntax
+can also be used with the permalink syntax, this an example of a 404 redirecting to the homepage:
 
 ```yml
 ---
-permalink: /url/to/redirect/from
+layout: redirect
+permalink: /404.html
+redirect_to: /
 ---
-```
 ```
 
 Considering server-side 301 redirecting is not supported by github pages, three alternative ways to redirect is provided:
@@ -591,10 +608,10 @@ locale: zh-yue_HK
 
 standard [language codes](https://www.w3schools.com/tags/ref_language_codes.asp) & [territory codes](https://www.w3schools.com/tags/ref_country_codes.asp)
 
-And you may define the language of a span with html syntax. The browser will hide Chinese content for non-Chinese users, and hide non-Chinese content for Chinese users.
+After setting `bilingual: true` in `_config.yml`, you may define the language of a span with html syntax. The browser will hide Chinese content for non-Chinese users, and hide non-Chinese content for Chinese users.
 
 ``` html
-<span lang="zh">对中文用户显示的内容</span><span lang="en">displaying content for English users</span>
+<span lang="zh">对中文用户显示的内容</span><span lang="en">displaying content for non Chinese visitors</span>
 ```
 
 ### Copyright Disclaimer
@@ -669,6 +686,20 @@ enabled by default. The loading speed of pages with a lot of Chinese characters 
 
 ```yml
 chinese_webfonts: true
+```
+
+### Bilingual Display
+
+disabled by default
+
+```yml
+bilingual: false
+```
+
+It requires marking the language of specific sections in posts using HTML syntax. Once enabled, the browser will automatically hide non-Chinese content for Chinese users, and hide Chinese content for non-Chinese users.
+
+``` html
+<span lang="zh">对中文用户显示的内容</span><span lang="en">displaying content for non Chinese visitors</span>
 ```
 
 ### Archive Page
