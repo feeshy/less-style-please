@@ -52,7 +52,7 @@ pwa:
 
 # theme config
 
-theme: less-style-please # if you use it as a local theme
+# theme: less-style-please # if you use it as a local theme
 remote_theme: feeshy/less-style-please # if you use it as a remote theme on github
 show_logo: false # show the svg favicon in home page and archive page
 show_description: false # show blog description in home page
