@@ -1,0 +1,88 @@
+name: Sync lite branch and trigger demo rebuild
+
+on:
+  push:
+    branches:
+      - main   # 当 main 分支有推送时运行
+
+permissions:
+  contents: write   # 允许推送代码到 lite 和 gh-pages 分支
+
+jobs:
+  sync-lite-and-trigger-demo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # 获取完整历史，以便合并
+
+      - name: Setup Git user
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "actions@github.com"
+
+      # ================== 同步并清理 lite 分支 ==================
+      - name: Sync to lite branch and remove excluded items
+        run: |
+          # 切换到 lite 分支（如果不存在则从当前 commit 创建）
+          git checkout -b lite origin/lite 2>/dev/null || git checkout -b lite
+          # 合并 main 分支（使用 -X theirs 自动接受 main 的修改，避免冲突）
+          git merge -X theirs main --no-edit
+
+          # 读取 .lite-excluded 并删除所有列出的文件/目录
+          if [ -f .lite-excluded ]; then
+            echo "Deleting excluded files/directories..."
+            while IFS= read -r item; do
+              # 跳过空行和注释
+              [[ -z "$item" || "$item" =~ ^# ]] && continue
+              rm -rf "$item"
+              echo "  Removed: $item"
+            done < .lite-excluded
+
+            # 清理 SCSS 中 @import 被删除文件的语句
+            echo "Cleaning @import statements for removed .scss files..."
+            while IFS= read -r item; do
+              [[ -z "$item" || "$item" =~ ^# ]] && continue
+              # 只处理 .scss 文件
+              if [[ "$item" == *.scss ]]; then
+                # 提取文件名（不含路径和扩展名）
+                base=$(basename "$item" .scss)
+                # 在所有 .scss 文件中删除包含 @import 该文件的行
+                # 匹配模式：@import "base" 或 @import 'base'
+                find . -name "*.scss" -type f -exec sed -i "/@import\s+[\"']${base}[\"']/d" {} \;
+                echo "    Removed imports for: $base"
+              fi
+            done < .lite-excluded
+          else
+            echo "Warning: .lite-excluded not found, skip deletion and import cleaning."
+          fi
+
+          # 提交更改（如果没有更改则跳过）
+          git add -u
+          if git diff --cached --quiet; then
+            echo "No changes to commit in lite branch."
+          else
+            git commit -m "Sync from main and remove lite-excluded items"
+          fi
+
+          # 强制推送 lite 分支（确保远程 lite 分支与本地一致）
+          git push origin lite --force-with-lease
+
+      # ================== 触发 gh-pages 重新构建 ==================
+      - name: Trigger gh-pages rebuild
+        run: |
+          # 切换到 gh-pages 分支
+          git checkout gh-pages 2>/dev/null || git checkout --orphan gh-pages
+          # 拉取远程更新（如果分支已存在）
+          git pull origin gh-pages --rebase || true
+          # 更新一个时间戳文件，确保有新的提交
+          echo "Last rebuilt: $(date -u)" > .build-timestamp
+          git add .build-timestamp
+          # 如果有更改，提交并推送
+          if git diff --cached --quiet && git diff --quiet; then
+            echo "No changes to commit in gh-pages."
+          else
+            git commit -m "Trigger rebuild after main branch update [skip ci]"
+            git push origin gh-pages --force-with-lease
+          fi

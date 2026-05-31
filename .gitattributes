@@ -1,0 +1,3 @@
+# 排除文档和许可证
+README.md export-ignore
+LICENSE.txt export-ignore
