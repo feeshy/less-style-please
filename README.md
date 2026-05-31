@@ -18,23 +18,44 @@
   - PWA支持
   - 自托管的中文webfont（仅限完整版）
 
-字体搭配分为五个层次：
+## 使用方法
 
-|                        | 首选字体                                                                                    | 候补字体                                                                                                                                                               |
-| ---------------------- | ------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 通用内容               | Avenir Next<br>苹方-简                                                                      | Segoe UI, [Clear Sans🌐](https://github.com/intel/clear-sans), HarmonyOS Sans,<br>思源黑体 (Noto Sans CJK SC), 思源黑体 CN (Noto Sans SC), 更纱黑体, sans-serif         |
-| 文学性内容             | [Garamontio🌐](https://github.com/octaviopardo/EBGaramond12)<br>思源宋体 (Noto Serif CJK SC) | EB Garamond, Adobe Garamond Pro, Garamond, Palatino<br>[思源宋体 CN / Noto Serif SC🌐](https://github.com/notofonts/noto-cjk), 宋体-简, 冬青明朝体, serif               |
-| 元数据<br>引用<br>注释 | [Ysabeau🌐](https://github.com/CatharsisFonts/Ysabeau)<br>霞鹜文楷                           | [霞鹜文楷轻便版🌐](https://github.com/lxgw/LxgwWenKai-Lite), 华文细黑, 冬青黑体, sans-serif                                                                             |
-| 表格                   | Bahnschrift                                                                                 | SF Pro Condensed, Helvetica Neue Condensed, HarmonyOS Sans Condensed, Roboto Condensed🌐, Ubuntu Sans Condensed, Ubuntu Condensed, Inconsolata, Ubuntu Mono, sans-serif |
-| 代码                   | 等距更纱黑体                                                                                | Ubuntu Mono🌐, Inconsolata, Iosevka, JetBrains Mono, Monaco, Source Code Pro, 思源黑体HW (Noto Sans Mono CJK), 文泉驿等宽微米黑, monopace                               |
+```mermaid
+flowchart LR
+A[创建仓库] --> A1[下载模板ZIP包] --> A2[解压到本地] --> C
+B[使用本仓库作为模板]--> B1[删除远程分支] --> B2[拉取仓库到本地] --> C
+C[按需修改] --> C1[选择部署方式] --> C2[推送修改到仓库]
+```
 
+### 1. 创建仓库并获取模板
 
+- 方法一
+  - 登录 GitHub，[用本仓库作为模板](https://github.com/new?template_name=less-style-please&template_owner=feeshy)创建一个名为 `你的用户名.github.io`的仓库，勾选 `Include all branches` 并创建
+  - 访问 `https://github.com/你的用户名/你的用户名.github.io/branches`，将 `gh-pages` 设为默认分支，删除 `main` 和 `lite` 分支。
+  - 使用 git 工具将仓库拉取到本地
+- 方法二
+  - 登录 GitHub，[新建一个仓库](https://github.com/new)，命名为 `你的用户名.github.io`
+  - 下载主题 [模板 ZIP 包](https://github.com/feeshy/less-style-please/archive/refs/heads/gh-pages.zip)
+  - 解压 ZIP 包
 
-标🌐的字体切割为细粒度webfont并托管在`/assets/OpenFont`目录，以期获得稳定的跨平台显示效果。
+### 2. 设置 remote theme 分支
 
-> 💡 如您的博客不需要使用「霞鹜文楷」与「思源宋体」的 webfont，则强烈建议选择本主题的 lite 分支构建，将极大降低网站的流量消耗。
+- 编辑 `_config.yml` 文件，修改 `title`、`description`、`author` 等基本信息。设置 `remote_theme` 启用对应分支：
+  - **完整版**：```remote_theme: feeshy/less-style-please```
+    - 体积约 15 MB，内置了霞鹜文楷和思源宋体的 webfont
+    - 适合对中文字重有较高要求的站点（主要影响宋体类帖子的标题层级、加粗等格式）
+  - **精简版**：```remote_theme: feeshy/less-style-please@lite```
+    - 体积约 2.6 MB，相比完整版去除了中文 webfont
+    - 以牺牲中文显示效果为代价，大幅度降低流量消耗、提升载入速度。
+- 将 `general`、`literature` 目录重命名为符合你需求的文章分类（也可自行创建更多分类），在每个分类的 `_posts` 目录中添加或修改文章
+- 编辑 `_data/menu.yml`，设置站点首页的树形层级
+- 详细使用方法请参阅wiki https://github.com/feeshy/less-style-please/wiki/
 
-考虑到流量消耗，各大系统均预装的黑体并未托管webfont。安卓Droid Sans Fallback缺字重的问题通过浏览器font-synthesis合成解决。Safari似乎有可变Webfont重复合成字重的bug，考虑到iOS预装的苹方不缺字重，干脆禁用了macOS与iOS的font-synthesis。
+### 3. 部署到 GitHub Pages
+
+网页访问你的仓库，进入 **Settings → Pages → Build and deployment**，选择通过 GitHub Actions 部署
+
+完成以上配置后，推送代码到对应分支，GitHub Pages 会自动构建并发布你的站点。
 
 <hr id="en"></hr>
 
@@ -51,6 +72,47 @@ A pure text Jekyll blog theme forked from rigggraz's [no_style_please](https://g
   - Intelligent Post Sorting Based on Publication and Modification Dates
   - PWA Ready
   - Self hosting web fonts for Simplified Chinese
+
+## Usage
+
+```mermaid
+flowchart TD
+A[Create a repo] --> A1[Download the template] --> A2[Extract locally] --> C
+B[Use this repo as template]--> B1[Delete remote branches] --> B2[Pull repository locally] --> C
+C[Modify on your need] --> C1[Select deployment method] --> C2[Push changes to github]
+
+```
+
+### 1. Create a Repository and Get the Template
+
+* Method 1
+  * Log in to GitHub, [use this template to create a repository](https://github.com/feeshy/less-style-please/fork) named as `your-username.github.io`, check `Include all branches`, and click Create.
+  * Visit `https://github.com/your-username/your-username.github.io/branches`, set `gh-pages` as the default branch, and delete the `main` and `lite` branches.
+  * Use git tools to pull the repository to your local machine.
+
+* Method 2
+  * Log in to GitHub, [create a new repository](https://github.com/new), and name it `your-username.github.io`.
+  * Download the theme [template ZIP file](https://github.com/feeshy/less-style-please/archive/refs/heads/gh-pages.zip).
+  * Extract the ZIP file.
+
+### 2. Set Up the Remote Theme Branch
+
+* Edit the `_config.yml` file to modify basic information such as `title`, `description`, and `author`. Set `remote_theme` to enable the corresponding branch:
+  * **Full Version**: `remote_theme: feeshy/less-style-please`
+    * Approx. 15 MB, with built-in Chinese webfonts for 霞鹜文楷 and 思源宋体.
+    * Suitable for sites with higher requirements for Chinese font weights (mainly affects heading levels, bolding, and other formatting in Serif-styled posts).
+  * **Lite Version**: `remote_theme: feeshy/less-style-please@lite` 👈 **recommend for non-Chinese writers**
+    * Approx. 2.6 MB, removing the Chinese webfonts compared to the full version.
+    * Significantly reduces traffic consumption and improves loading speed at the expense of Chinese display quality.
+* Rename the `general` and `literature` directories to post categories that meet your needs (you can also create more categories yourself), and add or modify posts in the `_posts` directory of each category.
+* Edit `_data/menu.yml` to set the tree hierarchy for the site's homepage.
+* For detailed instructions, please refer to the wiki https://github.com/feeshy/less-style-please/wiki/
+
+### 3. Deploy to GitHub Pages
+
+Visit your repository on the web, go to **Settings → Pages → Build and deployment**, and select to deploy via **GitHub Actions**.
+
+After completing the above configurations, push the code to the corresponding branch, and GitHub Pages will automatically build and deploy your static site.
 
 <hr id="wiki"></hr>
 
