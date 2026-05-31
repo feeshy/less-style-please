@@ -30,20 +30,35 @@ jobs:
           # 合并 master 分支（使用 -X theirs 自动接受 master 的修改，避免冲突）
           git merge -X theirs master --no-edit
 
-          # 读取 .lite-excluded 并删除所有列出的文件/目录
+          # 先读取排除列表到数组（避免文件自删除导致读取中断）
+          excluded_items=()
           if [ -f .lite-excluded ]; then
-            echo "Deleting excluded files/directories..."
-            while IFS= read -r item; do
+            echo "Reading .lite-excluded..."
+            # 使用 mapfile 读取所有行（兼容 Bash 4+，GitHub Actions 环境满足）
+            mapfile -t lines < .lite-excluded
+            for line in "${lines[@]}"; do
               # 跳过空行和注释
-              [[ -z "$item" || "$item" =~ ^# ]] && continue
+              if [[ -z "$line" || "$line" =~ ^[[:space:]]*# ]]; then
+                continue
+              fi
+              excluded_items+=("$line")
+            done
+            echo "Found ${#excluded_items[@]} items to exclude."
+          else
+            echo "Warning: .lite-excluded not found, skip deletion and import cleaning."
+          fi
+
+          # 删除文件和目录
+          if [ ${#excluded_items[@]} -gt 0 ]; then
+            echo "Deleting excluded files/directories..."
+            for item in "${excluded_items[@]}"; do
               rm -rf "$item"
               echo "  Removed: $item"
-            done < .lite-excluded
+            done
 
             # 清理 SCSS 中 @import 被删除文件的语句
             echo "Cleaning @import statements for removed .scss files..."
-            while IFS= read -r item; do
-              [[ -z "$item" || "$item" =~ ^# ]] && continue
+            for item in "${excluded_items[@]}"; do
               # 只处理 .scss 文件
               if [[ "$item" == *.scss ]]; then
                 # 提取文件名（不含路径和扩展名）
@@ -53,9 +68,7 @@ jobs:
                 find . -name "*.scss" -type f -exec sed -i "/@import\s+[\"']${base}[\"']/d" {} \;
                 echo "    Removed imports for: $base"
               fi
-            done < .lite-excluded
-          else
-            echo "Warning: .lite-excluded not found, skip deletion and import cleaning."
+            done
           fi
 
           # 提交更改（如果没有更改则跳过）
