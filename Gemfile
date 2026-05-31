@@ -4,7 +4,7 @@ gem "jekyll", "~> 3.9"
 
 group :jekyll_plugins do
   gem "redcarpet"
-  # gem "jekyll-remote-theme" # enable this if you use it as a remote theme
+  gem "jekyll-remote-theme" # enable this if you use it as a remote theme
   gem "jekyll-seo-tag"
   gem "jekyll-toc"
   gem "jekyll-target-blank"
@@ -15,4 +15,4 @@ group :jekyll_plugins do
   gem "jekyll-redirect-from"
 end
 
-gemspec # disable this if you use it as a remote theme
+# gemspec # disable this if you use it as a remote theme
