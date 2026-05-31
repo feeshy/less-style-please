@@ -14,7 +14,30 @@
         }
     ],
     "start_url": "/",
-    "theme_color": "#ffffff",
     "background_color": "#ffffff",
-    "display": "standalone"
+    "display": "standalone",
+    "shortcuts": [
+        {
+            "name": "Tags",
+            "url": "/tags",
+            "icons": [
+                {
+                    "src": "/favicon.svg",
+                    "sizes": "any",
+                    "type": "image/svg+xml"
+                }
+            ]
+        },
+        {
+            "name": "Recent",
+            "url": "/recent",
+            "icons": [
+                {
+                    "src": "/favicon.svg",
+                    "sizes": "any",
+                    "type": "image/svg+xml"
+                }
+            ]
+        }
+    ]
 }

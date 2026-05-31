@@ -11,7 +11,7 @@ description: > # description of the site (multiple lines allowed)
   Write an awesome description for your new site here. You can edit
   this line in _config.yml. It will appear in your document head meta
   (for Google search results) and in your feed.xml site description.
-url: https://feeshy.github.io # the base hostname & protocol for your site
+url: https://feeshy.top # the base hostname & protocol for your site
 baseurl: "/less-style-please" # subpath of the site, e.g. "/blog" (leave it blank "" if you're site shouldn't use a subpath)
 # webmaster_verifications: # verify ownership with several search services
 #   google: 1234
@@ -31,8 +31,7 @@ favicon:
   ico: "/favicon.ico" # legacy 'favicon.ico' at the root folder of your site, it is highly recommended not changing this name
   svg: "/favicon.svg" # name+extension of modern vector favicon
   ios: "/maskable-180x180.png" # icon for Safari
-ms_tile_color: "#da532c" # hex background for windows 8.1~10 tile
-webmanifest: "/site.webmanifest" # icon config file path for Chrome
+webmanifest: "/site.webmanifest" # icon config file path for PWA
 
 # pwa
 

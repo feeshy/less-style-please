@@ -18,16 +18,24 @@ noindex: true
         {%-endif-%}
         <span>
           {%- if page.title.size >0 -%}
-          {{ page.title }}
-          {%-else-%}
-          {{ page.date | date: "%Y" }}年
-          {%-endif-%}
+            {{ page.title }}
+          {%- else -%}
+            {%- if page.type == "year" -%}{{ page.date | date: "%Y" }}
+            {%- elsif page.type == "month" -%}{{ page.date | date: "%Y-%-m" }}
+            {%- else -%}{{ page.date | date: "%Y-%-m-%-d" }}
+            {%- endif -%}
+          {%- endif -%}
         </span>
       </h1>
       {{ content }}
     </header>
-    {%-assign which_catagory = page.categories.last | default: page.categories-%}
-    {% include post_list.html category=which_catagory %}
+
+    {%- if page.type == "year" or page.type == "month" or page.type == "day" -%}
+      {% include post_list_date.html %}
+    {%- else -%}
+      {%- assign which_category = page.categories.last | default: page.categories -%}
+      {% include post_list.html category=which_category %}
+    {%- endif -%}
   </main>
   {%-if site.goat_counter and jekyll.environment == "production"-%}
   {% include goat_counter.html %}

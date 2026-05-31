@@ -1,0 +1,81 @@
+{%- if page.type == "year" -%}{%- assign date_format = "%Y" -%}
+{%- elsif page.type == "month" -%}{%- assign date_format = "%Y-%m" -%}
+{%- elsif page.type == "day" -%}{%- assign date_format = "%Y-%m-%d" -%}
+{%- endif -%}
+{%- assign target_date_str = page.date | date: date_format -%}
+
+{%- assign created_posts_str = "" -%}
+{%- assign modified_posts_str = "" -%}
+
+{%- assign lang_prefix = site.lang | slice: 0, 2 -%}
+
+{%- for post in site.posts -%}
+  {%- assign p_created_date = post.date | date: date_format -%}
+  {%- assign p_modified_date = post.last_modified_at | date: date_format -%}
+
+  {%- if p_created_date == target_date_str -%}
+    {%- if created_posts_str == "" -%}{%- assign created_posts_str = post.url -%}{%- else -%}{%- assign created_posts_str = created_posts_str | append: "," | append: post.url -%}{%- endif -%}
+  {%- endif -%}
+
+  {%- if post.last_modified_at and p_modified_date == target_date_str and p_created_date != target_date_str -%}
+    {%- if modified_posts_str == "" -%}{%- assign modified_posts_str = post.url -%}{%- else -%}{%- assign modified_posts_str = modified_posts_str | append: "," | append: post.url -%}{%- endif -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{%- assign lang_prefix = site.lang | slice: 0, 2 -%}
+{%- assign created_urls = created_posts_str | split: "," -%}
+{%- assign modified_urls = modified_posts_str | split: "," -%}
+
+<ul class="post-list">
+  <li>{%- if lang_prefix == "zh" -%}发布{%- else -%}Published{%- endif -%}</li>
+  <ul class="post-list">
+    {%- if created_posts_str != "" and created_urls.size > 0 -%}
+      {%- assign sortable_str = "" -%}
+      {%- for t_url in created_urls -%}
+        {%- assign post = site.posts | where: "url", t_url | first -%}
+        {%- assign created_ts = post.date | date: "%s" | plus: 0 -%}
+        {%- assign mod_ts = post.last_modified_at | date: "%s" | plus: 0 | default: 0 -%}
+        {%- if mod_ts > created_ts -%}{%- assign final_ts = mod_ts -%}{%- else -%}{%- assign final_ts = created_ts -%}{%- endif -%}
+        {%- assign post_record = final_ts | append: "::" | append: post.url -%}
+        {%- if sortable_str == "" -%}{%- assign sortable_str = post_record -%}{%- else -%}{%- assign sortable_str = sortable_str | append: "," | append: post_record -%}{%- endif -%}
+      {%- endfor -%}
+      {%- assign sorted_keys = sortable_str | split: "," | sort | reverse -%}
+
+      {%- for key in sorted_keys -%}
+        {%- assign target_url = key | split: "::" | last -%}
+        {%- assign target_post = site.posts | where: "url", target_url | first -%}
+        {%- if target_post -%}
+          {%- assign is_redirect = target_post.redirect.to != nil -%}
+          {%- assign link_href = target_post.redirect.to | default: target_post.url -%}
+          <li><a href="{{ link_href | relative_url }}"{% if is_redirect %} target="_blank"{% endif %}>{{ target_post.date | date: "%Y-%m-%d" }}&nbsp;{{ target_post.title }}</a></li>
+        {%- endif -%}
+      {%- endfor -%}
+    {%- endif -%}
+  </ul>
+  <li>{%- if lang_prefix == "zh" -%}更新{%- else -%}Updated{%- endif -%}</li>
+  <ul class="post-list">
+    {%- if modified_posts_str != "" and modified_urls.size > 0 -%}
+      {%- assign sortable_str = "" -%}
+      {%- for t_url in modified_urls -%}
+        {%- assign post = site.posts | where: "url", t_url | first -%}
+        {%- assign created_ts = post.date | date: "%s" | plus: 0 -%}
+        {%- assign mod_ts = post.last_modified_at | date: "%s" | plus: 0 | default: 0 -%}
+        {%- if mod_ts > created_ts -%}{%- assign final_ts = mod_ts -%}{%- else -%}{%- assign final_ts = created_ts -%}{%- endif -%}
+        {%- assign post_record = final_ts | append: "::" | append: post.url -%}
+        {%- if sortable_str == "" -%}{%- assign sortable_str = post_record -%}{%- else -%}{%- assign sortable_str = sortable_str | append: "," | append: post_record -%}{%- endif -%}
+      {%- endfor -%}
+      {%- assign sorted_keys = sortable_str | split: "," | sort | reverse -%}
+
+      {%- for key in sorted_keys -%}
+        {%- assign target_url = key | split: "::" | last -%}
+        {%- assign target_post = site.posts | where: "url", target_url | first -%}
+        {%- if target_post -%}
+          {%- assign is_redirect = target_post.redirect.to != nil -%}
+          {%- assign link_href = target_post.redirect.to | default: target_post.url -%}
+          <li><a href="{{ link_href | relative_url }}"{% if is_redirect %} target="_blank"{% endif %}>{{ target_post.last_modified_at | date: "%Y-%m-%d" }}&nbsp;{{ target_post.title }}</a></li>
+        {%- endif -%}
+      {%- endfor -%}
+    {%- endif -%}
+  </ul>
+
+</ul>

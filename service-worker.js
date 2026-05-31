@@ -12,14 +12,23 @@ workbox.core.setCacheNameDetails({
 workbox.core.skipWaiting();
 workbox.core.clientsClaim();
 
-// 3. 预缓存规则
+// 3. 拦截 manifest shortcut 请求，动态跳转至当前年份 URL
+workbox.routing.registerRoute(
+    ({ url }) => url.pathname === '/recent',
+    ({ url }) => {
+        const currentYear = new Date().getFullYear();
+        const targetUrl = `${url.origin}/${currentYear}`;
+
+        return Response.redirect(targetUrl, 302);
+    }
+);
+
+// 4. 预缓存规则
 workbox.precaching.precacheAndRoute(self.__precacheManifest);
 
-// =========================================================================
-// 4. 运行时全自动缓存路由（按第一个 sw 的高级策略重构）
-// =========================================================================
+// 5. 运行时缓存规则
 
-// 【网页切片字体】使用 CacheFirst 策略（应用第二个 sw 的扩展名匹配规则）
+// 【网页切片字体】使用 CacheFirst 策略
 workbox.routing.registerRoute(
     /\.(?:woff2|woff|ttf|eot)$/,
     new workbox.strategies.CacheFirst({
@@ -33,14 +42,14 @@ workbox.routing.registerRoute(
     })
 );
 
-// 【图片与对象 SVG】使用 CacheFirst 策略（保留第二个 sw 的本地目录，融合第一个 sw 的 SVG 及 Image 请求判断）
+// 【图片与对象 SVG】使用 CacheFirst 策略
 workbox.routing.registerRoute(
     ({ request, url }) => request.destination === 'image' || /assets\/(img|background)/.test(url.pathname) || /\.(?:svg)$/i.test(url.pathname),
     new workbox.strategies.CacheFirst({
         cacheName: 'less-style-please-images-cache',
         plugins: [
             new workbox.expiration.ExpirationPlugin({
-                maxAgeSeconds: 365 * 24 * 60 * 60, // 1 年
+                maxAgeSeconds: 60 * 24 * 60 * 60, // 60 天
                 maxEntries: 200
             }),
             new workbox.cacheableResponse.CacheableResponsePlugin({
@@ -50,7 +59,7 @@ workbox.routing.registerRoute(
     })
 );
 
-// 【CSS & JS 核心资产】从原 NetworkFirst 升级为 Stale-While-Revalidate 策略，实现瞬间加载
+// 【CSS & JS 核心资产】Stale-While-Revalidate 策略
 workbox.routing.registerRoute(
     ({ request, url }) => request.destination === 'style' || request.destination === 'script' || /\.(?:js|css)$/.test(url.pathname),
     new workbox.strategies.StaleWhileRevalidate({
@@ -64,7 +73,7 @@ workbox.routing.registerRoute(
     })
 );
 
-// 【网页 HTML 页面】使用 Network First 策略，确保离线可用且内容最新
+// 【网页 HTML 页面】使用 Network First 策略
 workbox.routing.registerRoute(
     ({ request, url }) => request.mode === 'navigate' || /\.(?:html)$/.test(url.pathname),
     new workbox.strategies.NetworkFirst({
@@ -79,9 +88,8 @@ workbox.routing.registerRoute(
     })
 );
 
-// =========================================================================
-// 5. 清理不在白名单的缓存
-// =========================================================================
+// 6. 清理不在白名单的缓存
+
 self.addEventListener('activate', (event) => {
     event.waitUntil(
         caches.keys().then((cacheNames) => {
