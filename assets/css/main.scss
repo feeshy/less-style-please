@@ -1,5 +1,9 @@
 ---
 ---
+{%- if site.bilingual -%}
+@import "bilingual";
+{%- endif -%}
+
 @import "color-scheme";
 
 {%- if site.background_image.light.size > 0 -%}

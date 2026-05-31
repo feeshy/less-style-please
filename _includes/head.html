@@ -4,7 +4,6 @@
 <meta http-equiv="refresh" content="1; url={{ page.redirect.to }}">
 {%- endif -%}
 
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -20,12 +19,6 @@
 {%- if site.webmanifest.size > 0 -%}
 <link rel="manifest" href="{{ site.webmanifest | relative_url }}">
 {%- endif -%}
-{%- if site.ms_tile_color.size > 0 -%}
-<meta name="msapplication-TileColor" content="{{ site.ms_tile_color }}">
-{%- else -%}
-<meta name="msapplication-TileColor" content="#888888">
-{%- endif -%}
-
 
 {% seo %}
 
@@ -36,6 +29,13 @@
 {% feed_meta %}
 
 <script type="text/javascript" src="{{ site.baseurl }}/assets/js/main.js" defer></script>
+{%- if site.bilingual -%}
+<script>
+document.documentElement.classList.add(
+  (navigator.language || navigator.userLanguage).startsWith('zh') ? 'visitor-zh' : 'visitor-not-zh'
+);
+</script>
+{%- endif -%}
 
 {%- if page.custom_js -%}
 {%- for js_url in page.custom_js -%}

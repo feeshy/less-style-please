@@ -1,0 +1,7 @@
+html.visitor-zh body [lang]:not([lang^="zh"]) {
+  display: none;
+}
+
+html.visitor-not-zh body [lang^="zh"] {
+  display: none;
+}
