@@ -80,11 +80,11 @@ jobs:
           git push origin lite --force-with-lease
 
       # 触发 master 分支的主构建脚本
-      - name: Trigger Master Build Workflow
+      - name: Trigger Master Jekyll Build via Repository Dispatch
         run: |
-          echo "Sync complete. Triggering Jekyll build on master branch via GitHub API..."
+          echo "Sync complete. Emitting repository dispatch event to master..."
           curl -X POST \
             -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
             -H "Accept: application/vnd.github.v3+json" \
-            https://api.github.com/repos/${{ github.repository }}/actions/workflows/Jekyll.yml/dispatches \
-            -d '{"ref":"master"}'
+            https://api.github.com/repos/${{ github.repository }}/dispatches \
+            -d '{"event_type": "build_web"}'
