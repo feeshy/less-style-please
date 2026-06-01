@@ -1,10 +1,6 @@
-# lite 分支需要删除
+# files to be excluded in lite branch
 .lite-excluded
 .github/
-README.md
-LICENSE.txt
-
-# 中文字体
 assets/OpenFont/NotoSerifSC-v35
 _sass/noto-serif-sc.scss
 assets/OpenFont/LXGWWenKaiLite-Regular

@@ -3,7 +3,7 @@ name: Sync lite branch
 on:
   push:
     branches:
-      - master   # 当 master 分支有推送时运行
+      - full   # 当 full 分支有推送时运行
 
 permissions:
   contents: write   # 允许推送代码到 lite 分支
@@ -12,7 +12,7 @@ jobs:
   sync-lite:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout master branch
+      - name: Checkout full branch
         uses: actions/checkout@v4
         with:
           fetch-depth: 0   # 获取完整历史，以便切换分支
@@ -24,9 +24,9 @@ jobs:
 
       - name: Sync to lite branch (one-way overwrite) and remove excluded items
         run: |
-          # 强制将 lite 分支指向 master 的当前 commit（单向同步）
+          # 强制将 lite 分支指向 full 的当前 commit（单向同步）
           git checkout -b lite origin/lite 2>/dev/null || git checkout -b lite
-          git reset --hard master
+          git reset --hard full
 
           # 先读取排除列表到数组（避免文件自删除导致读取中断）
           excluded_items=()
@@ -73,7 +73,7 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes to commit in lite branch."
           else
-            git commit -m "One-way sync from master and remove lite-excluded items"
+            git commit -m "One-way sync from full and remove lite-excluded items"
           fi
 
           # 强制推送 lite 分支（确保远程 lite 分支与本地一致）
