@@ -1,6 +1,6 @@
 # less style, please!
 
-<img src="https://github.com/feeshy/less-style-please/wiki/master.png" style="max-width:640px;">
+<img src="assets/img/example.png" style="max-width:640px;">
 
 <hr id="zh"></hr>
 
