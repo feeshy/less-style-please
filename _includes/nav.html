@@ -1,11 +1,16 @@
 <nav id="top" style="position: absolute; left: 5vw; top: 5vh;"><a href="{{ site.baseurl | default: '/' }}">{{ site.nav.back_home | default: "home" }}</a>
   {%-if page.categories.size > 0 -%}
-  &nbsp;&gt;&nbsp;
-  {%- assign hierarchy = '/' -%}
-  {%-for category in page.categories-%}
-  {%-assign hierarchy = hierarchy | append: category | append: '/' -%}
-  <a href="{{ hierarchy | relative_url }}">{{ category }}</a>&nbsp;&gt;&nbsp;
-  {%-endfor-%}
+    &nbsp;&gt;&nbsp;
+    {%- assign hierarchy = '/' -%}
+    {%-for category in page.categories-%}
+      {%-assign hierarchy = hierarchy | append: category | append: '/' -%}
+      <a href="{{ hierarchy | relative_url }}">{{ category }}</a>&nbsp;&gt;&nbsp;
+    {%-endfor-%}
+  {%-elif page.layout == "tag" or page.layout == "tags"-%}
+    {%-unless page.url == "/tags/" or page.url == "/tags/index.html"-%}
+    &nbsp;&gt;&nbsp;
+    <a href="{{ site.baseurl | default: '/' }}/tags/">{{ site.nav.tags | default: "tags" }}</a>
+    {%-endunless-%}
   {%-endif-%}
 </nav>
 
