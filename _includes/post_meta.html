@@ -8,7 +8,7 @@
   <br>
   📅<span>&nbsp;<a href="{{ site.baseurl }}/{{ page.date | date: '%Y' }}/"><time datetime="{{ page.date | date: '%Y-%m-%d' }}" itemprop="datePublished">{{ page.date | date: "%Y-%-m-%-d" }}</time></a></span>
     {%- if page.last_modified_at and page.last_modified_at != blank and page.last_modified_at != page.date -%}
-    <span>&nbsp;~&nbsp;<time datetime="{{ page.last_modified_at | date: '%Y-%m-%d' }}" itemprop="dateModified">
+    <span>&nbsp;~&nbsp;<a href="{{ site.baseurl }}/{{ page.last_modified_at | date: '%Y' }}/"><time datetime="{{ page.last_modified_at | date: '%Y-%m-%d' }}" itemprop="dateModified">
       {%- assign pub_year_month = page.date | date: "%Y-%m" -%}
       {%- assign mod_year_month = page.last_modified_at | date: "%Y-%m" -%}
       {%- if pub_year_month == mod_year_month -%}
@@ -22,6 +22,6 @@
           {{ page.last_modified_at | date: "%Y-%-m-%-d" }}
         {%- endif -%}
       {%- endif -%}
-    </time></span>
+    </time></a></span>
     {%- endif %}
 </header>
