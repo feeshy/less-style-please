@@ -8,7 +8,7 @@ on:
   push:
     branches:
       - master
-      - gh-pages
+      - example
   workflow_dispatch:
 
 permissions:
