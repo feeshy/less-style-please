@@ -1,18 +1,17 @@
 <nav id="top" style="position: absolute; left: 5vw; top: 5vh;"><a href="{{ site.baseurl | default: '/' }}">{{ site.nav.back_home | default: "home" }}</a>
-  {%-if page.categories.size > 0 -%}
+  {%- if page.categories.size > 0 -%}
   &nbsp;&gt;&nbsp;
   {%- assign hierarchy = '/' -%}
-  {%-for category in page.categories-%}
-  {%-assign hierarchy = hierarchy | append: category | append: '/' -%}
+  {%- for category in page.categories -%}
+  {%- assign hierarchy = hierarchy | append: category | append: '/' -%}
   <a href="{{ hierarchy | relative_url }}">{{ category }}</a>&nbsp;&gt;&nbsp;
-  {%-endfor-%}
-  {%-endif-%}
-  {%-if page.layout == "tag" or page.layout == "tags"-%}
-  {%-unless page.url == "/tags/" or page.url == "/tags/index.html"-%}
+  {%- endfor -%}
+  {%- endif -%}
+
+  {%- if page.url contains '/tag/' and page.url contains 'tags' == false -%}
   &nbsp;&gt;&nbsp;
-  <a href="{{ site.baseurl | default: '/' }}/tags/">{{ site.nav.tags | default: "tags" }}</a>
-  {%-endunless-%}
-  {%-endif-%}
+  <a href="{{ '/tags.html' | relative_url }}">{{ site.nav.tags | default: "tags" }}</a>
+  {%- endif -%}
 </nav>
 
 <nav id="gototop" style="position: fixed; right: 5vw; bottom: 5vh; visibility: hidden;">{{ site.nav.go_to_top | default:
