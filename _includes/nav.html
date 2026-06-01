@@ -7,11 +7,6 @@
   <a href="{{ hierarchy | relative_url }}">{{ category }}</a>&nbsp;&gt;&nbsp;
   {%- endfor -%}
   {%- endif -%}
-
-  {%- if page.url contains '/tag/' and page.url contains 'tags' == false -%}
-  &nbsp;&gt;&nbsp;
-  <a href="{{ '/tags.html' | relative_url }}">{{ site.nav.tags | default: "tags" }}</a>
-  {%- endif -%}
 </nav>
 
 <nav id="gototop" style="position: fixed; right: 5vw; bottom: 5vh; visibility: hidden;">{{ site.nav.go_to_top | default:
