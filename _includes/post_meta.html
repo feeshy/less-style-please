@@ -2,7 +2,7 @@
   {% if page.tags.size > 0 -%}
   🏷️
   {%- for tag in page.tags -%}
-  <span>&nbsp;<a href='{{ site.baseurl }}/tag/{{ tag }}'>{{ tag }}</a></span>
+  <span>&nbsp;<a href='{{ site.baseurl }}/tag/{{ tag }}/'>{{ tag }}</a></span>
   {%- endfor -%}
   {%- endif -%}
   <br>

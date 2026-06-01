@@ -4,7 +4,7 @@
   <summary>Tags</summary>
   {%- assign taglist = site.tags | map: first | sort_natural -%}
   {% for tag in taglist -%}
-  <span>&nbsp;<a href="{{ site.baseurl }}/tag/{{ tag[0] }}">{{ tag[0] }}&nbsp;[{{ tag[1] | size }}]</a></span>
+  <span>&nbsp;<a href="{{ site.baseurl }}/tag/{{ tag[0] }}/">{{ tag[0] }}&nbsp;[{{ tag[1] | size }}]</a></span>
   {%- endfor %}
 </details>
 
