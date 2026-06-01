@@ -27,35 +27,35 @@ baseurl: "/" # subpath of the site, e.g. "/blog" (leave it blank "" if you're si
 # generate png icons pack at https://realfavicongenerator.net/
 # generate maskable chrome icons at https://maskable.app/editor/
 
-favicon:
-  ico: "/favicon.ico" # legacy 'favicon.ico' at the root folder of your site, it is highly recommended not changing this name
-  svg: "/favicon.svg" # name+extension of modern vector favicon
-  ios: "/maskable-180x180.png" # icon for Safari
-webmanifest: "/site.webmanifest" # icon config file path for PWA
+# favicon:
+#  ico: "/favicon.ico" # legacy 'favicon.ico' at the root folder of your site, it is highly recommended not changing this name
+#  svg: "/favicon.svg" # name+extension of modern vector favicon
+#  ios: "/maskable-180x180.png" # icon for Safari
+# webmanifest: "/site.webmanifest" # icon config file path for PWA
 
 # pwa
 
-pwa:
-  enabled: false # set false to temporarily disable this plugin
-  sw_src_filepath: service-worker.js # Optional
-  sw_dest_filename: service-worker.js # Optional
-  dest_js_directory: assets/js # Required
-  precache_recent_posts_num: 0 # Optional
-  precache_glob_directory: / # Optional
-  precache_glob_patterns: # Optional
-    - "assets/background/*.{png,svg,gif}"
-    - "assets/css/*.{css}"
-    - "assets/js/*.{js}"
-    - "assets/OpenFont/**/*.{eot,ttf,woff,woff2}"
-  precache_glob_ignores: # Optional
-    - index.html
+# pwa:
+#   enabled: false # set false to temporarily disable this plugin
+#   sw_src_filepath: service-worker.js # Optional
+#   sw_dest_filename: service-worker.js # Optional
+#   dest_js_directory: assets/js # Required
+#   precache_recent_posts_num: 0 # Optional
+#   precache_glob_directory: / # Optional
+#   precache_glob_patterns: # Optional
+#     - "assets/background/*.{png,svg,gif}"
+#     - "assets/css/*.{css}"
+#     - "assets/js/*.{js}"
+#     - "assets/OpenFont/**/*.{eot,otf,ttf,woff,woff2}"
+#   precache_glob_ignores: # Optional
+#     - index.html
 
 # theme config
 
 # theme: less-style-please # if you use it as a local theme
-remote_theme: feeshy/less-style-please # if you use it as a remote theme on github
-show_logo: false # show the svg favicon in home page and archive page
-show_description: false # show blog description in home page
+remote_theme: feeshy/less-style-please@full # if you use it as a remote theme on github
+# show_logo: true # show the svg favicon in home page and archive page
+show_description: true # show blog description in home page
 bilingual: false # auto hide lang="zh" elements for non-chinese visitors
 # background_image: # path to background images for light and dark mode
 #   light: ""
@@ -63,7 +63,7 @@ bilingual: false # auto hide lang="zh" elements for non-chinese visitors
 nav:
   back_home: "home" # customize text for homepage link
   go_to_top: "🔝" # customize text for go to top button
-date_format: "%Y-%m-%d" # customize how date is formatted at https://strftime.net/
+date_format: "%Y-%-m-%-d" # customize how date is formatted at https://strftime.net/
 copyright: "by" # available values: "all-rights-reserved", "by-nc-nd", "by-nd", "by-nc-sa", "by-nc", "by-sa", "by", "public-domain". choose here https://chooser-beta.creativecommons.org/
 # goat_counter: "yoursitename" # put your GoatCounter name if you want to use GoatCounter analytics
 
@@ -73,7 +73,7 @@ permalink: /:categories/:title
 jekyll-archives:
   enabled: [year, tags]
   layout: archive
-  permalinks: # if you changed this, don't forget to change the codes in '_includes/post_meta.html' as well
+  permalinks: # if you changed these, don't forget to change the codes in '_includes/post_meta.html' as well
     year: '/:year/'
     month: '/:year/:month/'
     day: '/:year/:month/:day/'
@@ -124,6 +124,12 @@ sass:
   style: compressed
 feed:
   posts_limit: 10 # max number of posts on feed
+
+# excluded files from building
+
+exclude:
+  - README.md
+  - LICENSE.txt
 
 # plugins
 

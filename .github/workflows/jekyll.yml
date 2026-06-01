@@ -1,6 +1,6 @@
 # This workflow builds and deploys a Jekyll site to GitHub Pages.
-# It always builds from the `gh-pages` branch, regardless of which branch was pushed.
-# Triggers: pushes to `master` or `gh-pages`.
+# It always builds from the `master` branch, regardless of which branch was pushed.
+# Triggers: pushes to `master` or `full`.
 
 name: Deploy Jekyll site to Pages
 
@@ -8,7 +8,7 @@ on:
   push:
     branches:
       - master
-      - gh-pages
+      - full
   workflow_dispatch:
 
 permissions:
@@ -24,10 +24,10 @@ jobs:
   build:
     runs-on: ubuntu-22.04
     steps:
-      - name: Checkout gh-pages branch (always)
+      - name: Checkout master branch (always)
         uses: actions/checkout@v4
         with:
-          ref: gh-pages
+          ref: master
 
       - name: Setup Ruby
         uses: ruby/setup-ruby@8575951200e472d5f2d95c625da0c7bec8217c42 # v1.161.0
