@@ -31,11 +31,11 @@ C[按需修改] --> C1[选择部署方式] --> C2[推送修改到仓库]
 
 - 方法一
   - 登录 GitHub，[用本仓库作为模板](https://github.com/new?template_name=less-style-please&template_owner=feeshy)创建一个名为 `你的用户名.github.io`的仓库，勾选 `Include all branches` 并创建
-  - 访问 `https://github.com/你的用户名/你的用户名.github.io/branches`，将 `gh-pages` 设为默认分支，删除 `main` 和 `lite` 分支。
+  - 访问 `https://github.com/你的用户名/你的用户名.github.io/branches`，将 `example` 设为默认分支，删除 `main` 和 `lite` 分支。
   - 使用 git 工具将仓库拉取到本地
 - 方法二
   - 登录 GitHub，[新建一个仓库](https://github.com/new)，命名为 `你的用户名.github.io`
-  - 下载主题 [模板 ZIP 包](https://github.com/feeshy/less-style-please/archive/refs/heads/gh-pages.zip)
+  - 下载主题 [模板 ZIP 包](https://github.com/feeshy/less-style-please/archive/refs/heads/example.zip)
   - 解压 ZIP 包
 
 ### 2. 设置 remote theme 分支
@@ -86,13 +86,13 @@ C[Modify on your need] --> C1[Select deployment method] --> C2[Push changes to g
 ### 1. Create a Repository and Get the Template
 
 * Method 1
-  * Log in to GitHub, [use this template to create a repository](https://github.com/feeshy/less-style-please/fork) named as `your-username.github.io`, check `Include all branches`, and click Create.
-  * Visit `https://github.com/your-username/your-username.github.io/branches`, set `gh-pages` as the default branch, and delete the `main` and `lite` branches.
+  * Log in to GitHub, [use this template to create a repository](https://github.com/new?template_name=less-style-please&template_owner=feeshy) named as `your-username.github.io`, check `Include all branches`, and click Create.
+  * Visit `https://github.com/your-username/your-username.github.io/branches`, set `example` as the default branch, and delete the `main` and `lite` branches.
   * Use git tools to pull the repository to your local machine.
 
 * Method 2
   * Log in to GitHub, [create a new repository](https://github.com/new), and name it `your-username.github.io`.
-  * Download the theme [template ZIP file](https://github.com/feeshy/less-style-please/archive/refs/heads/gh-pages.zip).
+  * Download the theme [template ZIP file](https://github.com/feeshy/less-style-please/archive/refs/heads/example.zip).
   * Extract the ZIP file.
 
 ### 2. Set Up the Remote Theme Branch
