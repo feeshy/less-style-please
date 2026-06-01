@@ -14,9 +14,7 @@
         {%-endif-%}
         <span>{{ page.title | default: site.title }}</span>
       </h1>
-      {%-if site.show_description-%}
-      {{ site.description }}
-      {%-endif-%}
+      <p>{%-if site.show_description-%}{{ site.description }}{%-endif-%}</p>
     </header>
     {%-include menu_item.html collection=site.data.menu.entries-%}
   </main>
