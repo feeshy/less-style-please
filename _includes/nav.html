@@ -6,7 +6,8 @@
   {%-assign hierarchy = hierarchy | append: category | append: '/' -%}
   <a href="{{ hierarchy | relative_url }}">{{ category }}</a>&nbsp;&gt;&nbsp;
   {%-endfor-%}
-  {%-elsif page.layout == "tag" or page.layout == "tags"-%}
+  {%-endif-%}
+  {%-if page.layout == "tag" or page.layout == "tags"-%}
   {%-unless page.url == "/tags/" or page.url == "/tags/index.html"-%}
   &nbsp;&gt;&nbsp;
   <a href="{{ site.baseurl | default: '/' }}/tags/">{{ site.nav.tags | default: "tags" }}</a>
