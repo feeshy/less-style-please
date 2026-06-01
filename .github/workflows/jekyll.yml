@@ -8,7 +8,8 @@ on:
   push:
     branches:
       - master
-      - full
+  repository_dispatch:
+    types: [build_web]
   workflow_dispatch:
 
 permissions:
