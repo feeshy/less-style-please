@@ -2,6 +2,7 @@
   {%- assign author = page.author | default: site.author -%}
   {%- if author -%}
   ✍️<span>&nbsp;{{ author }}</span>
+  {%- endif -%}
   <br>
   📅<span>&nbsp;<a href="{{ site.baseurl }}/{{ page.date | date: '%Y' }}/"><time datetime="{{ page.date | date: '%Y-%m-%d' }}" itemprop="datePublished">{{ page.date | date: "%Y-%-m-%-d" }}</time></a></span>
   {%- if page.last_modified_at and page.last_modified_at != blank -%}
