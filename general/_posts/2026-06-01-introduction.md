@@ -1,9 +1,11 @@
 ---
+lang: en
 layout: post
-title: less style please
+title: Introduction
 tags: 
   - introduction
 description: A minimalist Jekyll theme with an archival hierarchy and nested lists for writers, poets, and thinkers, delivering literature typography with Chinese and Latin webfonts.
+permalink: /intro
 ---
 
 > A minimalist Jekyll theme built for writers, poets, and thinkers who organize their work through an archival hierarchy and nested lists. It brings paper-like, distraction-free literature typography to the web, offering seamless, out-of-the-box support for optimized Chinese and Latin webfont pairing.
@@ -51,4 +53,4 @@ remote_theme: "feeshy/less-style-please@lite" # Or @full
 
 Detailed documentation and usage instructions can be found on the [wiki](https://github.com/feeshy/less-style-please/wiki)
 
-![](https://raw.githubusercontent.com/wiki/feeshy/less-style-please/example.png)
+![](/assets/img/example.png)

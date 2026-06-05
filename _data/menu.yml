@@ -10,31 +10,31 @@ entries:
     - title: no-style-please (riggraz's theme)
       url: https://github.com/riggraz/no-style-please
 
-  - title: 最新
+  - title: Recent
     post_list:
-      limit: 5
-      show_more: false
-      show_more_text: feed
-      show_more_url: feed.xml
+      limit: 3
+      show_more: true
+      show_more_text: ...
+      show_more_url: recent
    
-  - title: 分类
+  - title: Categories
     entries:
-    - title: 默认分类
+    - title: General
       url: general
       post_list:
         limit: 3
         category: general
         show_more: false
-    - title: 文学分类
+    - title: Literature
       url: literature
       post_list:
         limit: 3
         category: literature
         show_more: false
 
-  - title: 归档
+  - title: Archives
     entries: 
-    - title: 标签
+    - title: Tags
       url: tags
     - title: RSS
       url: feed.xml

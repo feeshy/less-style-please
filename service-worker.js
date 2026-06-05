@@ -12,21 +12,10 @@ workbox.core.setCacheNameDetails({
 workbox.core.skipWaiting();
 workbox.core.clientsClaim();
 
-// 3. 拦截 manifest shortcut 请求，动态跳转至当前年份 URL
-workbox.routing.registerRoute(
-    ({ url }) => url.pathname === '/recent',
-    ({ url }) => {
-        const currentYear = new Date().getFullYear();
-        const targetUrl = `${url.origin}/${currentYear}`;
-
-        return Response.redirect(targetUrl, 302);
-    }
-);
-
-// 4. 预缓存规则
+// 3. 预缓存规则
 workbox.precaching.precacheAndRoute(self.__precacheManifest);
 
-// 5. 运行时缓存规则
+// 4. 运行时缓存规则
 
 // 【网页切片字体】使用 CacheFirst 策略
 workbox.routing.registerRoute(
@@ -88,7 +77,7 @@ workbox.routing.registerRoute(
     })
 );
 
-// 6. 清理不在白名单的缓存
+// 5. 清理不在白名单的缓存
 
 self.addEventListener('activate', (event) => {
     event.waitUntil(
