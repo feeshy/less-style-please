@@ -1,31 +1,35 @@
 <header class="post-meta">
+  {%- assign author = page.author | default: site.author -%}
+  {%- if author -%}
+  ✍️<span>&nbsp;{{ author }}</span>
+  <br>
+  📅<span>&nbsp;<a href="{{ site.baseurl }}/{{ page.date | date: '%Y' }}/"><time datetime="{{ page.date | date: '%Y-%m-%d' }}" itemprop="datePublished">{{ page.date | date: "%Y-%-m-%-d" }}</time></a></span>
+  {%- if page.last_modified_at and page.last_modified_at != blank -%}
+    {%- assign pub_date = page.date | date: "%Y-%m-%d" -%}
+    {%- assign mod_date = page.last_modified_at | date: "%Y-%m-%d" -%}
+    {%- if mod_date != pub_date -%}
+    <span>&nbsp;~&nbsp;<a href="{{ site.baseurl }}/{{ page.last_modified_at | date: '%Y' }}/"><time datetime="{{ page.last_modified_at | date: '%Y-%m-%d' }}" itemprop="dateModified">
+        {%- assign pub_year_month = page.date | date: "%Y-%m" -%}
+        {%- assign mod_year_month = page.last_modified_at | date: "%Y-%m" -%}
+        {%- if pub_year_month == mod_year_month -%}
+          {{ page.last_modified_at | date: "%-d" }}
+        {%- else -%}
+          {%- assign pub_year = page.date | date: "%Y" -%}
+          {%- assign mod_year = page.last_modified_at | date: "%Y" -%}
+          {%- if pub_year == mod_year -%}
+            {{ page.last_modified_at | date: "%-m-%-d" }}
+          {%- else -%}
+            {{ page.last_modified_at | date: "%Y-%-m-%-d" }}
+          {%- endif -%}
+        {%- endif -%}
+      </time></a></span>
+    {%- endif %}
+  {%- endif %}
+  <br>
   {% if page.tags.size > 0 -%}
   🏷️
   {%- for tag in page.tags -%}
   <span>&nbsp;<a href='{{ site.baseurl }}/tag/{{ tag }}/'>{{ tag }}</a></span>
   {%- endfor -%}
   {%- endif -%}
-  <br>
-  📅<span>&nbsp;<a href="{{ site.baseurl }}/{{ page.date | date: '%Y' }}/"><time datetime="{{ page.date | date: '%Y-%m-%d' }}" itemprop="datePublished">{{ page.date | date: "%Y-%-m-%-d" }}</time></a></span>
-{%- if page.last_modified_at and page.last_modified_at != blank -%}
-  {%- assign pub_date = page.date | date: "%Y-%m-%d" -%}
-  {%- assign mod_date = page.last_modified_at | date: "%Y-%m-%d" -%}
-  {%- if mod_date != pub_date -%}
-  <span>&nbsp;~&nbsp;<a href="{{ site.baseurl }}/{{ page.last_modified_at | date: '%Y' }}/"><time datetime="{{ page.last_modified_at | date: '%Y-%m-%d' }}" itemprop="dateModified">
-      {%- assign pub_year_month = page.date | date: "%Y-%m" -%}
-      {%- assign mod_year_month = page.last_modified_at | date: "%Y-%m" -%}
-      {%- if pub_year_month == mod_year_month -%}
-        {{ page.last_modified_at | date: "%-d" }}
-      {%- else -%}
-        {%- assign pub_year = page.date | date: "%Y" -%}
-        {%- assign mod_year = page.last_modified_at | date: "%Y" -%}
-        {%- if pub_year == mod_year -%}
-          {{ page.last_modified_at | date: "%-m-%-d" }}
-        {%- else -%}
-          {{ page.last_modified_at | date: "%Y-%-m-%-d" }}
-        {%- endif -%}
-      {%- endif -%}
-    </time></a></span>
-  {%- endif %}
-{%- endif %}
 </header>
