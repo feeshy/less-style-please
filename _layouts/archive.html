@@ -30,7 +30,7 @@ noindex: true
       {{ content }}
     </header>
 
-    {%- if page.type == "year" or page.type == "month" or page.type == "day" -%}
+    {%- if page.type == "recent" or page.type == "year" or page.type == "month" or page.type == "day" -%}
       {% include post_list_date.html %}
     {%- else -%}
       {%- assign which_category = page.categories.last | default: page.categories -%}
