@@ -10,7 +10,7 @@
 </nav>
 
 <div id="nav-toolbar" role="toolbar" aria-label="Navigation tools">
-  <button id="gototop" aria-label="Scroll to top">{{ site.nav.go_to_top | default: "🔝" }}</button>
+  <button id="gototop" aria-label="Scroll to top" style="visibility: hidden;">{{ site.nav.go_to_top | default: "🔝" }}</button>
   {%- if page.toc -%}
   <button id="toc-toggle" aria-label="Toggle table of contents" aria-expanded="false">{{ site.nav.toc | default: "📖" }}</button>
   <div id="toc-panel" aria-hidden="true">
@@ -60,18 +60,13 @@
       panel.setAttribute('aria-hidden', String(expanded));
     });
 
-    function autoHide() {
+    document.addEventListener('click', function (e) {
       if (isWideScreen()) return;
       if (toggleBtn.getAttribute('aria-expanded') !== 'true') return;
+      if (e.target.closest('#nav-toolbar')) return;
       toggleBtn.setAttribute('aria-expanded', 'false');
       panel.setAttribute('aria-hidden', 'true');
-    }
-
-    var mainElement = document.querySelector('main.page-content');
-    if (mainElement) {
-      mainElement.addEventListener('click', autoHide);
-      mainElement.addEventListener('touchstart', autoHide);
-    }
+    });
 
     var resizeTimer;
     window.addEventListener('resize', function () {

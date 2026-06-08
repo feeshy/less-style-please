@@ -76,6 +76,13 @@ html {
   }
 }
 
+@media print {
+  body {
+    background-color: white !important;
+    color: black !important;
+  }
+}
+
 a {
   color: inherit;
 }
@@ -94,8 +101,9 @@ mark {
 }
 
 #toc-panel,
+.table-wrapper,
 blockquote,
 div>pre,
 img {
-  filter: drop-shadow(0 0 2px #0000001c);
+  filter: drop-shadow(0 0 2px #00000022);
 }

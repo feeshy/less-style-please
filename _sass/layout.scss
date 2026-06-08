@@ -46,11 +46,11 @@ main {
   position: absolute;
   bottom: 100%;
   right: 0;
-  width: 320px;
-  max-height: 50vh;
+  width: 18em;
+  max-height: calc(80vh - 4em);
   overflow-y: auto;
   border-radius: 8px;
-  padding: 1rem 1.5rem;
+  padding: 1em 1em;
   transition: opacity 0.2s, visibility 0.2s;
 
   // 默认隐藏（小屏幕）
@@ -177,7 +177,6 @@ div>pre {
 
 .table-wrapper {
   overflow-x: auto;
-  filter: drop-shadow(0 0 2px #0000001c);
   width: fit-content;
   max-width: 100%;
   margin: 0 auto;
@@ -242,4 +241,49 @@ img.sticker {
 .tag-count {
   font-size: 0.7em;
   opacity: 0.6;
+}
+
+@media print {
+
+  #nav-toolbar button {
+    display: none;
+  }
+
+  #toc-panel {
+    position: static !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    max-height: none !important;
+    overflow: visible !important;
+    box-shadow: none;
+    margin: 1em 0;
+    padding: 0.5em 1em;
+    border: 1px solid #ccc;
+  }
+
+  #toc-panel[aria-hidden="true"] {
+    display: block !important;
+  }
+
+  #toc ul {
+    list-style: none;
+    padding-left: 1.5em;
+  }
+
+  #nav-toolbar {
+    display: block;
+  }
+
+  main.page-content {
+    max-width: none !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.9em;
+    font-weight: normal;
+  }
 }
