@@ -46,7 +46,7 @@ main {
   position: absolute;
   bottom: 100%;
   right: 0;
-  min-width: 240px;
+  width: 320px;
   max-height: 50vh;
   overflow-y: auto;
   border-radius: 8px;
@@ -75,28 +75,7 @@ main {
   padding-left: 1em;
 }
 
-// 大屏幕（>1440px）下，toc 固定到 main 右侧，不盖住主内容
-@media (min-width: 1441px) {
-  #nav-toolbar {
-    left: calc(50% + 360px + 5vw);
-  }
 
-  #toc-panel {
-    position: static;
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-    max-height: 60vh;
-  }
-
-  #toc-toggle[aria-expanded="false"]+#toc-panel {
-    display: none;
-  }
-
-  #toc-toggle[aria-expanded="true"]+#toc-panel {
-    display: block;
-  }
-}
 
 h1 {
   margin-top: 3rem;
