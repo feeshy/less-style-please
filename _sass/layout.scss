@@ -10,7 +10,8 @@ body {
 }
 
 main {
-  max-width: 640px;
+  width: fit-content;
+  max-width: 720px;
   margin: 0 auto;
   padding: 4rem 2rem calc(4rem + 5vh);
 }
