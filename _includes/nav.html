@@ -9,20 +9,28 @@
   {%- endif -%}
 </nav>
 
-<nav id="gototop" style="position: fixed; right: 5vw; bottom: 5vh; visibility: hidden;">{{ site.nav.go_to_top | default:
-  "🔝" }}</nav>
+{%- if page.toc -%}
+<div id="toc-toolbar" role="toolbar" aria-label="Table of contents">
+  <button id="toc-toggle" aria-label="Toggle table of contents" aria-expanded="false">{{ site.nav.toc | default: "📖" }}</button>
+  <div id="toc-panel" aria-hidden="true">
+    {% toc %}
+  </div>
+  <button id="gototop" aria-label="Scroll to top">{{ site.nav.go_to_top | default: "🔝" }}</button>
+</div>
+{%- else -%}
+<button id="gototop" aria-label="Scroll to top" style="position: fixed; right: 5vw; bottom: 5vh; visibility: hidden;">{{ site.nav.go_to_top | default: "🔝" }}</button>
+{%- endif -%}
+
 <script>
-  window.addEventListener('scroll', function () {
-    if (window.scrollY > 200) {
-      document.getElementById('gototop').style.visibility = 'visible';
-    } else {
-      document.getElementById('gototop').style.visibility = 'hidden';
-    }
-  })
-  document.getElementById('gototop').addEventListener('click', function () {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    })
-  })
+  function initGototop() {
+    var btn = document.getElementById('gototop');
+    if (!btn) return;
+    window.addEventListener('scroll', function () {
+      btn.style.visibility = window.scrollY > 200 ? 'visible' : 'hidden';
+    });
+    btn.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+  initGototop();
 </script>

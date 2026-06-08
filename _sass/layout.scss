@@ -16,10 +16,91 @@ main {
   padding: 4rem 2rem calc(4rem + 5vh);
 }
 
-ul#toc {
-  max-height: 40vh;
-  overflow: auto;
-  padding: 1rem 3rem;
+// 固定工具栏: 右下角，竖排，出现在有 toc 的页面
+#toc-toolbar {
+  position: fixed;
+  right: 5vw;
+  bottom: 5vh;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  gap: 0.5rem;
+  z-index: 999;
+}
+
+// 工具栏按钮通用样式
+#toc-toggle,
+#gototop {
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  padding: 0;
+  line-height: 1;
+}
+
+// toc 面板容器（悬浮于按钮上方）
+#toc-panel {
+  position: absolute;
+  bottom: 100%;
+  right: 0;
+  min-width: 240px;
+  max-height: 50vh;
+  overflow-y: auto;
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  transition: opacity 0.2s, visibility 0.2s;
+
+  // 默认隐藏（小屏幕）
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+#toc-panel[aria-hidden="false"] {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+#toc-panel ul {
+  list-style: none;
+  padding-left: 1.2em;
+  margin: 0;
+}
+
+#toc-panel ul ul {
+  padding-left: 1em;
+}
+
+// 大屏幕（>1440px）下，toc 固定到 main 右侧，不盖住主内容
+@media (min-width: 1441px) {
+  #toc-toolbar {
+    right: auto;
+    left: calc(50% + 360px + 2rem);
+    bottom: auto;
+    top: 20vh;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  #toc-panel {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    max-height: 60vh;
+  }
+
+  #toc-toggle[aria-expanded="false"]+#toc-panel {
+    display: none;
+  }
+
+  #toc-toggle[aria-expanded="true"]+#toc-panel {
+    display: block;
+  }
 }
 
 h1 {
