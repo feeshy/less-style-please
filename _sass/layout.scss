@@ -16,14 +16,14 @@ main {
   padding: 4rem 2rem calc(4rem + 5vh);
 }
 
-// 固定工具栏: 右下角，竖排，出现在有 toc 的页面
-#toc-toolbar {
+// 固定工具栏: 右下角，竖排
+#nav-toolbar {
   position: fixed;
   right: 5vw;
   bottom: 5vh;
   display: flex;
   flex-direction: column-reverse;
-  align-items: center;
+  align-items: flex-end;
   gap: 0.5rem;
   z-index: 999;
 }
@@ -77,13 +77,8 @@ main {
 
 // 大屏幕（>1440px）下，toc 固定到 main 右侧，不盖住主内容
 @media (min-width: 1441px) {
-  #toc-toolbar {
-    right: auto;
-    left: calc(50% + 360px + 2rem);
-    bottom: auto;
-    top: 20vh;
-    flex-direction: column;
-    align-items: flex-start;
+  #nav-toolbar {
+    left: calc(50% + 360px + 5vw);
   }
 
   #toc-panel {

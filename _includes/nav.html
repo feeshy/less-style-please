@@ -9,28 +9,77 @@
   {%- endif -%}
 </nav>
 
-{%- if page.toc -%}
-<div id="toc-toolbar" role="toolbar" aria-label="Table of contents">
+<div id="nav-toolbar" role="toolbar" aria-label="Navigation tools">
+  <button id="gototop" aria-label="Scroll to top">{{ site.nav.go_to_top | default: "🔝" }}</button>
+  {%- if page.toc -%}
   <button id="toc-toggle" aria-label="Toggle table of contents" aria-expanded="false">{{ site.nav.toc | default: "📖" }}</button>
   <div id="toc-panel" aria-hidden="true">
     {% toc %}
   </div>
-  <button id="gototop" aria-label="Scroll to top">{{ site.nav.go_to_top | default: "🔝" }}</button>
+  {%- endif -%}
 </div>
-{%- else -%}
-<button id="gototop" aria-label="Scroll to top" style="position: fixed; right: 5vw; bottom: 5vh; visibility: hidden;">{{ site.nav.go_to_top | default: "🔝" }}</button>
-{%- endif -%}
 
 <script>
-  function initGototop() {
-    var btn = document.getElementById('gototop');
-    if (!btn) return;
+  (function () {
+    var gototop = document.getElementById('gototop');
+    if (!gototop) return;
     window.addEventListener('scroll', function () {
-      btn.style.visibility = window.scrollY > 200 ? 'visible' : 'hidden';
+      gototop.style.visibility = window.scrollY > 200 ? 'visible' : 'hidden';
     });
-    btn.addEventListener('click', function () {
+    gototop.addEventListener('click', function () {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
-  }
-  initGototop();
+  })();
 </script>
+
+{%- if page.toc -%}
+<script>
+  (function () {
+    var toggleBtn = document.getElementById('toc-toggle');
+    var panel = document.getElementById('toc-panel');
+    if (!toggleBtn || !panel) return;
+
+    function isWideScreen() {
+      return window.innerWidth > 1440;
+    }
+
+    function updateState() {
+      if (isWideScreen()) {
+        toggleBtn.setAttribute('aria-expanded', 'true');
+        panel.setAttribute('aria-hidden', 'false');
+      } else {
+        toggleBtn.setAttribute('aria-expanded', 'false');
+        panel.setAttribute('aria-hidden', 'true');
+      }
+    }
+
+    toggleBtn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var expanded = toggleBtn.getAttribute('aria-expanded') === 'true';
+      toggleBtn.setAttribute('aria-expanded', String(!expanded));
+      panel.setAttribute('aria-hidden', String(expanded));
+    });
+
+    function autoHide() {
+      if (isWideScreen()) return;
+      if (toggleBtn.getAttribute('aria-expanded') !== 'true') return;
+      toggleBtn.setAttribute('aria-expanded', 'false');
+      panel.setAttribute('aria-hidden', 'true');
+    }
+
+    var mainElement = document.querySelector('main.page-content');
+    if (mainElement) {
+      mainElement.addEventListener('click', autoHide);
+      mainElement.addEventListener('touchstart', autoHide);
+    }
+
+    var resizeTimer;
+    window.addEventListener('resize', function () {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(updateState, 200);
+    });
+
+    updateState();
+  })();
+</script>
+{%- endif -%}
