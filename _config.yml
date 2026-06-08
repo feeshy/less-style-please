@@ -63,6 +63,7 @@ nav:
   back_home: "home" # customize text for homepage link
   tags: "tags" # customize text for tags page link
   go_to_top: "🔝" # customize text for go to top button
+  toc: "📖" # customize text for go to top button
 copyright: "by" # available values: "all-rights-reserved", "by-nc-nd", "by-nd", "by-nc-sa", "by-nc", "by-sa", "by", "public-domain". choose here https://chooser-beta.creativecommons.org/
 # goat_counter: "yoursitename" # put your GoatCounter name if you want to use GoatCounter analytics
 
