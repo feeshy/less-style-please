@@ -78,6 +78,14 @@
       // 点击 toc 空白区域 → 不隐藏
     });
 
+    // 页面滚动时自动隐藏 TOC
+    window.addEventListener('scroll', function () {
+      if (isWideScreen()) return;
+      if (toggleBtn.getAttribute('aria-expanded') !== 'true') return;
+      toggleBtn.setAttribute('aria-expanded', 'false');
+      panel.setAttribute('aria-hidden', 'true');
+    });
+
     var resizeTimer;
     window.addEventListener('resize', function () {
       clearTimeout(resizeTimer);
