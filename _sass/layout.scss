@@ -256,25 +256,38 @@ img.sticker {
 }
 
 @media print {
-  #nav-toolbar {
-    position: static; // 恢复文档流
-    display: block; // 块级排列
+  nav#top {
+    position: static;
+    left: auto;
+    top: auto;
+  }
+
+  footer#copyright {
+    position: static;
+    left: auto;
     right: auto;
     bottom: auto;
-    flex-direction: initial; // 移除竖排
+  }
+
+  #nav-toolbar {
+    position: static;
+    display: block;
+    right: auto;
+    bottom: auto;
+    flex-direction: initial;
     align-items: initial;
     gap: initial;
   }
 
   #nav-toolbar button {
-    display: none; // 隐藏按钮
+    display: none;
   }
 
   #toc-panel {
-    position: static; // 已在，确保覆盖
-    bottom: auto; // 清除定位
+    position: static;
+    bottom: auto;
     right: auto;
-    width: auto; // 自适应宽度
+    width: auto;
     max-height: none;
     overflow: visible;
     opacity: 1 !important;
@@ -286,22 +299,14 @@ img.sticker {
     padding: 0.5em 1em;
   }
 
-  // 打印时无视 aria-hidden，强制显示 TOC
   #toc-panel[aria-hidden="true"] {
     display: block !important;
   }
 
-  // 以下保留原有的打印布局调整
   main.page-content {
     max-width: none !important;
     width: 100% !important;
     padding: 0 !important;
     margin: 0 !important;
-  }
-
-  a[href]::after {
-    content: " (" attr(href) ")";
-    font-size: 0.9em;
-    font-weight: normal;
   }
 }
