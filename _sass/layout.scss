@@ -16,6 +16,19 @@ main {
   padding: 4rem 2rem calc(4rem + 5vh);
 }
 
+nav#top {
+  position: absolute;
+  left: 5vw;
+  top: 5vh;
+}
+
+footer#copyright {
+  position: absolute;
+  bottom: 5vh;
+  left: 5vw;
+  right: 5vw;
+}
+
 // 固定工具栏: 右下角，竖排
 #nav-toolbar {
   position: fixed;
@@ -75,8 +88,6 @@ main {
 #toc-panel ul ul {
   padding-left: 1em;
 }
-
-
 
 h1 {
   margin-top: 3rem;
