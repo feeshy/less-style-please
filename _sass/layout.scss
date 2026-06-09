@@ -11,7 +11,7 @@ body {
 
 main {
   width: fit-content;
-  max-width: 720px;
+  max-width: min(100%,720px);
   margin: 0 auto;
   padding: 4rem 2rem calc(4rem + 5vh);
 }
@@ -49,6 +49,7 @@ main {
   width: 18em;
   max-height: calc(80vh - 4em);
   overflow-y: auto;
+  overscroll-behavior: contain;
   border-radius: 8px;
   padding: 1em 1em;
   transition: opacity 0.2s, visibility 0.2s;
@@ -184,7 +185,7 @@ div>pre {
 
 table {
   width: max-content;
-  max-width: 640px;
+  max-width: 720px;
   border-collapse: collapse;
 }
 

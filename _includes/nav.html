@@ -63,9 +63,19 @@
     document.addEventListener('click', function (e) {
       if (isWideScreen()) return;
       if (toggleBtn.getAttribute('aria-expanded') !== 'true') return;
-      if (e.target.closest('#nav-toolbar')) return;
-      toggleBtn.setAttribute('aria-expanded', 'false');
-      panel.setAttribute('aria-hidden', 'true');
+      var toolbar = e.target.closest('#nav-toolbar');
+      // 点击外部 → 隐藏
+      if (!toolbar) {
+        toggleBtn.setAttribute('aria-expanded', 'false');
+        panel.setAttribute('aria-hidden', 'true');
+        return;
+      }
+      // 点击 toc 内部的链接 → 隐藏
+      if (e.target.tagName === 'A' && toolbar.querySelector('#toc-panel')) {
+        toggleBtn.setAttribute('aria-expanded', 'false');
+        panel.setAttribute('aria-hidden', 'true');
+      }
+      // 点击 toc 空白区域 → 不隐藏
     });
 
     var resizeTimer;
