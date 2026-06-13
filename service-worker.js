@@ -67,7 +67,7 @@ workbox.routing.registerRoute(
     ({ request, url }) => request.mode === 'navigate' || /\.(?:html)$/.test(url.pathname),
     new workbox.strategies.NetworkFirst({
         cacheName: 'less-style-please-pages-cache',
-        networkTimeoutSeconds: 2, // 2秒网络未响应则降级调用缓存
+        networkTimeoutSeconds: 3, // 3秒网络未响应则降级调用缓存
         plugins: [
             new workbox.expiration.ExpirationPlugin({
                 maxAgeSeconds: 60 * 24 * 60 * 60, // 60 天
