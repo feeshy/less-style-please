@@ -14,6 +14,7 @@ main {
   max-width: min(100%, 720px);
   margin: 0 auto;
   padding: 4rem 2rem calc(4rem + 5vh);
+  box-sizing: border-box;
 }
 
 nav#top {
