@@ -11,7 +11,7 @@ body {
 
 main {
   width: fit-content;
-  max-width: min(100%, 720px);
+  max-width: min(100%, 800px);
   margin: 0 auto;
   padding: 4rem 2rem calc(4rem + 5vh);
   box-sizing: border-box;
@@ -241,9 +241,10 @@ img.sticker {
 .tag-cloud {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.2em 2em;
+  gap: 0.5em 1em;
   margin-top: 1.5em;
   align-items: baseline;
+  justify-content: center;
 }
 
 .tag-item {
@@ -252,7 +253,7 @@ img.sticker {
 }
 
 .tag-count {
-  font-size: 0.7em;
+  font-size: 0.5em;
   opacity: 0.6;
 }
 
