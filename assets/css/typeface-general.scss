@@ -26,13 +26,18 @@ code, {
   font-family: "CCSymbols", "NeoXiHei Code", "Sarasa Mono SC", "Maple Mono CN", "Ubuntu Mono", "Inconsolata", "JetBrains Mono", "Monaco", "Source Code Pro", "Source Han Sans HW SC", "Noto Sans Mono CJK SC", "Wenquanyi Micro Hei Mono", monospace;
 }
 
-th,td {
+th,td,#top,#nav-toolbar {
   font-family: "CCSymbols", "Bahnschrift", -apple-system, BlinkMacSystemFont, sans-serif-condensed, "HarmonyOS Sans Condensed", "Roboto Condensed", "Ubuntu Sans Condensed", "Ubuntu Condensed", "Inconsolata", "Ubuntu Mono", sans-serif;
+  font-stretch: condensed;
   font-variant-numeric: tabular-nums lining-nums slashed-zero;
 }
 
+article {
+  font-variant-numeric: lining-nums;
+}
+
 .post-list { 
-  font-variant-numeric: tabular-nums;
+  font-variant-numeric: tabular-nums lining-nums;
 }
 
 time {
