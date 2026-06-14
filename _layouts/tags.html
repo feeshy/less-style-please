@@ -23,20 +23,26 @@ noindex: true
     <div class="tag-cloud">
       {%- assign sorted_tags = site.tags | sort_natural -%}
 
-    {%- for tag in sorted_tags -%}
-    
-    {%- assign tag_name = tag[0] | strip -%}
-    {%- assign tag_count = tag[1] | size -%}
-    
-    {%- if tag_name != empty and tag_count > 0 -%}
-      {%- if tag_count <= 5 -%} {%- assign font_size = tag_count | minus: 1 | times: 0.12 | plus: 1.0 -%}
-      {%- elsif tag_count <= 15 -%} {%- assign font_size = tag_count | minus: 5 | times: 0.05 | plus: 1.48 -%}
-      {%- else -%} {%- assign font_size = tag_count | minus: 15 | times: 0.02 | plus: 1.98 | at_most: 2.5 -%}
-      {%- endif -%}
-      <a class="tag-item" href="{{ site.baseurl }}/tag/{{ tag_name | downcase | uri_escape }}/" style="font-size: {{ font_size }}em;">{{ tag_name }} <span class="tag-count">[{{ tag_count }}]</span></a>
-    {%- endif -%}
+      {%- for tag in sorted_tags -%}
 
-    {%- endfor -%}
+        {%- assign tag_name = tag[0] | strip -%}
+        {%- assign tag_count = tag[1] | size -%}
+
+        {%- if tag_name == empty or tag_name == "[]" or tag_count < 1 -%}
+          {%- continue -%}
+        {%- endif -%}
+
+        {%- if tag_count <= 5 -%}
+          {%- assign font_size = tag_count | minus: 1 | times: 0.12 | plus: 1.0 -%}
+        {%- elsif tag_count <= 15 -%}
+          {%- assign font_size = tag_count | minus: 5 | times: 0.05 | plus: 1.48 -%}
+        {%- else -%}
+          {%- assign font_size = tag_count | minus: 15 | times: 0.02 | plus: 1.98 | at_most: 2.5 -%}
+        {%- endif -%}
+
+        <a class="tag-item" href="{{ site.baseurl }}/tag/{{ tag_name | downcase | uri_escape }}/" style="font-size: {{ font_size }}em;">{{ tag_name }} <span class="tag-count">[{{ tag_count }}]</span></a>
+
+      {%- endfor -%}
     </div>
     {%- endif -%}
   </main>
