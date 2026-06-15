@@ -7,6 +7,7 @@ body {
   position: relative;
   min-height: 100%;
   overflow-wrap: break-word;
+  line-height: 1.5;
 }
 
 main {
@@ -15,6 +16,9 @@ main {
   margin: 0 auto;
   padding: 4rem 2rem calc(4rem + 5vh);
   box-sizing: border-box;
+}
+
+article {
   line-height: 1.6;
 }
 
@@ -255,8 +259,9 @@ img.sticker {
 }
 
 .tag-count {
-  font-size: 0.5em;
-  opacity: 0.6;
+  font-size: 0.8rem;
+  opacity: 0.5;
+  vertical-align: super;
 }
 
 @media print {
