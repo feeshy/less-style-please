@@ -10,7 +10,7 @@
 {%- if copyright == "by" or copyright == "by-sa" or copyright == "by-nc" or copyright == "by-nc-sa" or copyright == "by-nd" or copyright == "by-nc-nd" -%}
   <span>🅭&nbsp;{%- if page.redirect_from.size > 0 -%}<a href="{{ page.redirect_from.first | default: page.redirect_from | relative_url }}">{%- endif -%}{{ page.date | date: "%Y" }}{%- if page.redirect_from.size > 0 -%}</a>{%- endif -%}-<a href="{{ page.canonical_url }}">{{ "now" | date: "%Y" }}</a>&nbsp;{{ page.author | default: site.author }}. </span>
   <span>Some Rights Reserved. </span>
-  <span>Licensed Under <a href="https://creativecommons.org/licenses/{{ copyright | downcase }}/4.0/deed.{{ page.lang | default:site.lang }}" target="_blank">CC {{ copyright | upcase }} 4.0</a></span>
+  <span>Licensed Under <a xmlns:cc="http://creativecommons.org/ns#" href="https://creativecommons.org/licenses/{{ copyright | downcase }}/4.0/deed.{{ page.lang | default:site.lang }}" rel="cc:license noopener noreferrer" target="_blank">CC {{ copyright | upcase }} 4.0</a></span>
 {%- endif -%}
 
 {%- if copyright == "public-domain" -%}
