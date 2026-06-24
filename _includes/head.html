@@ -26,7 +26,9 @@
 <meta name='robots' content='noindex'>
 {%- endif -%}
 
-{%- if site.plugins contains 'jekyll-feed' -%}{% feed_meta %}{%- endif -%}
+{%- if site.plugins contains 'jekyll-feed' -%}
+<link rel="alternate" type="application/atom+xml" title="{{ site.title }}" href="{{ '/feed.xml' | relative_url }}">
+{%- endif -%}
 
 <script type="text/javascript" src="{{ site.baseurl }}/assets/js/main.js" defer></script>
 {%- if site.bilingual -%}
