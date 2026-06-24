@@ -115,7 +115,7 @@ defaults:
 
 markdown: redcarpet
 redcarpet:
-  extensions: ["tables", "autolink", "strikethrough", "highlight", "footnotes", "with_toc_data"]
+  extensions: ["tables", "autolink", "strikethrough", "highlight", "footnotes"]
 toc:
   min_level: 2 # value: 1-6
   max_level: 3 # value: 1-6
