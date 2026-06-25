@@ -16,6 +16,22 @@
   <div id="toc-panel" aria-hidden="true">
     {% toc %}
   </div>
+  <script>
+    (function () {
+      var headings = document.querySelectorAll('h2, h3, h4, h5, h6');
+      var usedIds = {};
+      headings.forEach(function (h) {
+        var id = h.textContent.trim();
+        var safeId = id;
+        var i = 1;
+        while (usedIds[safeId]) {
+          safeId = id + '-' + (++i);
+        }
+        usedIds[safeId] = true;
+        h.id = safeId;
+      });
+    })();
+  </script>
   {%- endif -%}
 </div>
 
