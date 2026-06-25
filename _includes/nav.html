@@ -16,22 +16,6 @@
   <div id="toc-panel" aria-hidden="true">
     {% toc %}
   </div>
-  <script>
-    (function () {
-      var headings = document.querySelectorAll('h2, h3, h4, h5, h6');
-      var usedIds = {};
-      headings.forEach(function (h) {
-        var id = h.textContent.trim();
-        var safeId = id;
-        var i = 1;
-        while (usedIds[safeId]) {
-          safeId = id + '-' + (++i);
-        }
-        usedIds[safeId] = true;
-        h.id = safeId;
-      });
-    })();
-  </script>
   {%- endif -%}
 </div>
 
@@ -55,10 +39,7 @@
     var panel = document.getElementById('toc-panel');
     if (!toggleBtn || !panel) return;
 
-    function isWideScreen() {
-      return window.innerWidth > 1700;
-    }
-
+    function isWideScreen() { return window.innerWidth > 1700; }
     function updateState() {
       if (isWideScreen()) {
         toggleBtn.setAttribute('aria-expanded', 'true');
@@ -80,21 +61,17 @@
       if (isWideScreen()) return;
       if (toggleBtn.getAttribute('aria-expanded') !== 'true') return;
       var toolbar = e.target.closest('#nav-toolbar');
-      // 点击外部 → 隐藏
       if (!toolbar) {
         toggleBtn.setAttribute('aria-expanded', 'false');
         panel.setAttribute('aria-hidden', 'true');
         return;
       }
-      // 点击 toc 内部的链接 → 隐藏
       if (e.target.tagName === 'A' && toolbar.querySelector('#toc-panel')) {
         toggleBtn.setAttribute('aria-expanded', 'false');
         panel.setAttribute('aria-hidden', 'true');
       }
-      // 点击 toc 空白区域 → 不隐藏
     });
 
-    // 页面滚动时自动隐藏 TOC
     window.addEventListener('scroll', function () {
       if (isWideScreen()) return;
       if (toggleBtn.getAttribute('aria-expanded') !== 'true') return;
@@ -107,8 +84,22 @@
       clearTimeout(resizeTimer);
       resizeTimer = setTimeout(updateState, 200);
     });
-
     updateState();
+
+    document.addEventListener('DOMContentLoaded', function () {
+      var headings = document.querySelectorAll('h2, h3, h4, h5, h6');
+      var usedIds = {};
+      headings.forEach(function (h) {
+        var id = h.textContent.trim();
+        var safeId = id;
+        var i = 1;
+        while (usedIds[safeId]) {
+          safeId = id + '-' + (++i);
+        }
+        usedIds[safeId] = true;
+        h.id = safeId;
+      });
+    });
   })();
 </script>
 {%- endif -%}
