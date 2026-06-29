@@ -28,9 +28,9 @@
   {%- endfor -%}
 
   {%- comment -%}
-    2. Parse custom URLs from page Front Matter or site _config.yml (strictly named for sitemap).
+    2. Parse custom URLs from _data/sitemaps.yml (custom_pages key).
   {%- endcomment -%}
-  {%- assign custom_urls = page.sitemap_urls | default: site.sitemap_custom_urls | default: site.sitemap.custom_urls -%}
+  {%- assign custom_urls = site.data.sitemaps.custom_pages -%}
   {%- if custom_urls -%}
     {%- for item in custom_urls -%}
       {%- assign url_loc = nil -%}

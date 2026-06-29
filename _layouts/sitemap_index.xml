@@ -2,11 +2,24 @@
 <!-- Generated on: {{ site.time | date_to_xmlschema }} -->
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   {%- comment -%}
-    Read custom sitemap URLs from _data/sitemaps.yml (safe fallback if file is missing or empty).
+    1. Include the main site's own content sitemap (dynamically lookup the page with layout: sitemap_content).
   {%- endcomment -%}
-  {%- assign yml_sitemaps = site.data.sitemaps -%}
-  {%- if yml_sitemaps -%}
-    {%- for item in yml_sitemaps -%}
+  {%- assign main_sitemap_pages = site.pages | where: "layout", "sitemap_content" -%}
+  {%- assign main_sitemap = main_sitemap_pages.first -%}
+  {%- if main_sitemap -%}
+  <sitemap>
+    <loc>{{ main_sitemap.url | absolute_url }}</loc>
+    {%- assign main_lastmod = main_sitemap.last_modified_at | default: main_sitemap.date | default: site.time -%}
+    <lastmod>{{ main_lastmod | date_to_xmlschema }}</lastmod>
+  </sitemap>
+  {%- endif -%}
+
+  {%- comment -%}
+    2. Read custom subdomain sitemap URLs from _data/sitemaps.yml under 'sub_sitemaps' key.
+  {%- endcomment -%}
+  {%- assign sub_sitemaps = site.data.sitemaps.sub_sitemaps -%}
+  {%- if sub_sitemaps -%}
+    {%- for item in sub_sitemaps -%}
       {%- assign url_loc = nil -%}
       {%- assign lastmod = nil -%}
       
