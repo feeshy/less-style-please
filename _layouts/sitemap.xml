@@ -2,6 +2,11 @@
 <!-- Generated on: {{ site.time | date_to_xmlschema }} -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   {%- comment -%}
+    Determine the default lastmod based on the referencing page's modification time.
+  {%- endcomment -%}
+  {%- assign default_lastmod = page.last_modified_at | default: page.date | default: site.time -%}
+
+  {%- comment -%}
     1. Parse custom URLs from the page content (plain text URLs written line by line).
   {%- endcomment -%}
   {%- capture newline %}
@@ -16,7 +21,7 @@
       {%- if first_four == "http" or first_char == "/" -%}
         <url>
           <loc>{{ url_loc | absolute_url }}</loc>
-          <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
+          <lastmod>{{ default_lastmod | date_to_xmlschema }}</lastmod>
         </url>
       {%- endif -%}
     {%- endif -%}
@@ -44,7 +49,7 @@
       
       {%- if url_loc -%}
         {%- if lastmod == nil or lastmod == "" -%}
-          {%- assign lastmod = site.time -%}
+          {%- assign lastmod = default_lastmod -%}
         {%- endif -%}
         <url>
           <loc>{{ url_loc | absolute_url }}</loc>
@@ -92,22 +97,7 @@
     {%- endif -%}
 
     {%- if include_item and item.url -%}
-      {%- assign lastmod = nil -%}
-      
-      {%- comment -%} Priority 1: last_modified_at in front matter {%- endcomment -%}
-      {%- if item.last_modified_at -%}
-        {%- assign lastmod = item.last_modified_at -%}
-      {%- elsif item.data.last_modified_at -%}
-        {%- assign lastmod = item.data.last_modified_at -%}
-      {%- comment -%} Priority 2: date in front matter (or filename date) {%- endcomment -%}
-      {%- elsif item.date -%}
-        {%- assign lastmod = item.date -%}
-      {%- endif -%}
-
-      {%- comment -%} Priority 3: site.time fallback {%- endcomment -%}
-      {%- if lastmod == nil or lastmod == "" -%}
-        {%- assign lastmod = site.time -%}
-      {%- endif -%}
+      {%- assign lastmod = item.last_modified_at | default: item.data.last_modified_at | default: item.date | default: site.time -%}
 
       <url>
         <loc>{{ item.url | absolute_url }}</loc>
