@@ -9,7 +9,6 @@ group :jekyll_plugins do
   gem "jekyll-toc"
   gem "jekyll-target-blank"
   gem "jekyll-archives"
-  gem "jekyll-sitemap"
   gem "jekyll-feed"
   gem "jekyll-pwa-workbox"
   gem "jekyll-redirect-from"
