@@ -44,7 +44,12 @@
         {%- assign changefreq = item.changefreq -%}
         {%- assign priority = item.priority -%}
       {%- else -%}
-        {%- assign url_loc = item -%}
+        {%- assign first_char = item | slice: 0 -%}
+        {%- if first_char == "/" or item contains "http" -%}
+          {%- assign url_loc = item -%}
+        {%- else -%}
+          {%- assign url_loc = nil -%}
+        {%- endif -%}
       {%- endif -%}
       
       {%- if url_loc -%}

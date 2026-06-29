@@ -27,7 +27,12 @@
         {%- assign url_loc = item.url | default: item.loc -%}
         {%- assign lastmod = item.lastmod | default: item.last_modified_at | default: item.date -%}
       {%- else -%}
-        {%- assign url_loc = item -%}
+        {%- assign first_char = item | slice: 0 -%}
+        {%- if first_char == "/" or item contains "http" -%}
+          {%- assign url_loc = item -%}
+        {%- else -%}
+          {%- assign url_loc = nil -%}
+        {%- endif -%}
       {%- endif -%}
       
       {%- if url_loc -%}
