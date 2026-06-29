@@ -1,0 +1,10 @@
+User-agent: *
+
+# Disallow pure archive attachments
+Disallow: /*.zip$
+Disallow: /*.rar$
+Disallow: /*.7z$
+Disallow: /*.tar.gz$
+Disallow: /*.tgz$
+
+Sitemap: https://less-style-please.feeshy.top/sitemap.xml

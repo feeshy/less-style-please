@@ -12,6 +12,7 @@ group :jekyll_plugins do
   gem "jekyll-feed"
   gem "jekyll-pwa-workbox"
   gem "jekyll-redirect-from"
+  gem "jekyll-last-modified-at"
 end
 
 # gemspec # disable this if you use it as a remote theme

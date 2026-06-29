@@ -146,3 +146,4 @@ plugins:
   - jekyll-toc
   - jekyll-pwa-workbox
   - jekyll-redirect-from
+  - jekyll-last-modified-at
