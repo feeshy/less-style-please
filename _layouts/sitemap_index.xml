@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated on: {{ site.time | date_to_xmlschema }} -->
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  {%- comment -%}
+    Read custom sitemap URLs from _data/sitemaps.yml (safe fallback if file is missing or empty).
+  {%- endcomment -%}
+  {%- assign yml_sitemaps = site.data.sitemaps -%}
+  {%- if yml_sitemaps -%}
+    {%- for item in yml_sitemaps -%}
+      {%- assign url_loc = nil -%}
+      {%- assign lastmod = nil -%}
+      
+      {%- if item.url or item.loc -%}
+        {%- assign url_loc = item.url | default: item.loc -%}
+        {%- assign lastmod = item.lastmod | default: item.last_modified_at | default: item.date -%}
+      {%- else -%}
+        {%- assign url_loc = item -%}
+      {%- endif -%}
+      
+      {%- if url_loc -%}
+        <sitemap>
+          <loc>{{ url_loc | absolute_url }}</loc>
+          {%- if lastmod -%}
+          <lastmod>{{ lastmod | date_to_xmlschema }}</lastmod>
+          {%- endif -%}
+        </sitemap>
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endif -%}
+</sitemapindex>
