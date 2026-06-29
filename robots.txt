@@ -1,6 +1,7 @@
 User-agent: *
 
 # Disallow pure archive attachments
+Disallow: /assets/OpenFont/
 Disallow: /*.zip$
 Disallow: /*.rar$
 Disallow: /*.7z$

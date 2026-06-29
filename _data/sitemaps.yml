@@ -1,6 +1,14 @@
-# Sitemap Index Configurations
-# Put absolute URLs for your subdomains' sitemaps here.
+# Sitemaps Configurations
 # Note: 'lastmod' is optional and can be omitted.
 
-- loc: 
-  lastmod:
+# Put absolute URLs for your subdomains' sitemaps here.
+
+sub_sitemaps:
+  - loc: 
+    lastmod:
+
+# Put absolute URLs for your custom pages here.
+
+custom_pages:
+  - loc: 
+    lastmod:
