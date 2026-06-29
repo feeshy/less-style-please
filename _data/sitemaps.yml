@@ -1,0 +1,6 @@
+# Sitemap Index Configurations
+# Put absolute URLs for your subdomains' sitemaps here.
+# Note: 'lastmod' is optional and can be omitted.
+
+- loc: 
+  lastmod:
