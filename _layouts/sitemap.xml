@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated on: {{ site.time | date_to_xmlschema }} -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  {%- comment -%}
+    1. Parse custom URLs from the page content (plain text URLs written line by line).
+  {%- endcomment -%}
+  {%- capture newline %}
+{% endcapture -%}
+  {%- assign content_lines = page.content | split: newline -%}
+  {%- for line in content_lines -%}
+    {%- assign url_loc = line | strip -%}
+    {%- if url_loc != "" -%}
+      {%- comment -%} Verify if it's a URL (starts with http or /) {%- endcomment -%}
+      {%- assign first_char = url_loc | slice: 0 -%}
+      {%- assign first_four = url_loc | slice: 0, 4 -%}
+      {%- if first_four == "http" or first_char == "/" -%}
+        <url>
+          <loc>{{ url_loc | absolute_url }}</loc>
+          <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
+        </url>
+      {%- endif -%}
+    {%- endif -%}
+  {%- endfor -%}
+
+  {%- comment -%}
+    2. Parse custom URLs from page Front Matter or site _config.yml (strictly named for sitemap).
+  {%- endcomment -%}
+  {%- assign custom_urls = page.sitemap_urls | default: site.sitemap_custom_urls | default: site.sitemap.custom_urls -%}
+  {%- if custom_urls -%}
+    {%- for item in custom_urls -%}
+      {%- assign url_loc = nil -%}
+      {%- assign lastmod = nil -%}
+      {%- assign changefreq = nil -%}
+      {%- assign priority = nil -%}
+      
+      {%- if item.url or item.loc -%}
+        {%- assign url_loc = item.url | default: item.loc -%}
+        {%- assign lastmod = item.lastmod | default: item.last_modified_at | default: item.date -%}
+        {%- assign changefreq = item.changefreq -%}
+        {%- assign priority = item.priority -%}
+      {%- else -%}
+        {%- assign url_loc = item -%}
+      {%- endif -%}
+      
+      {%- if url_loc -%}
+        {%- if lastmod == nil or lastmod == "" -%}
+          {%- assign lastmod = site.time -%}
+        {%- endif -%}
+        <url>
+          <loc>{{ url_loc | absolute_url }}</loc>
+          <lastmod>{{ lastmod | date_to_xmlschema }}</lastmod>
+          {%- if changefreq -%}
+          <changefreq>{{ changefreq }}</changefreq>
+          {%- endif -%}
+          {%- if priority -%}
+          <priority>{{ priority }}</priority>
+          {%- endif -%}
+        </url>
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endif -%}
+
+  {%- comment -%}
+    3. Loop through all pages and posts in the Jekyll site.
+  {%- endcomment -%}
+  {%- assign collections = site.pages | concat: site.posts -%}
+  {%- for item in collections -%}
+    {%- assign include_item = true -%}
+
+    {%- comment -%} Exclude items explicitly marked as sitemap: false or noindex: true {%- endcomment -%}
+    {%- if item.sitemap == false or item.data.sitemap == false -%}
+      {%- assign include_item = false -%}
+    {%- elsif item.noindex == true or item.data.noindex == true -%}
+      {%- assign include_item = false -%}
+    {%- endif -%}
+
+    {%- comment -%} Whitelist layouts: home, page, poetry, post. Exclude archive, redirect, sitemap, tags etc. {%- endcomment -%}
+    {%- assign layout_name = item.layout | default: item.data.layout -%}
+    {%- if layout_name != "home" and layout_name != "page" and layout_name != "poetry" and layout_name != "post" -%}
+      {%- assign include_item = false -%}
+    {%- endif -%}
+
+    {%- comment -%} Exclude specific non-HTML/feed files or formats {%- endcomment -%}
+    {%- assign ext = item.url | split: '.' | last -%}
+    {%- if ext == "xml" or ext == "json" or ext == "txt" or ext == "css" or ext == "js" or ext == "webmanifest" -%}
+      {%- assign include_item = false -%}
+    {%- endif -%}
+
+    {%- comment -%} Exclude 404 page {%- endcomment -%}
+    {%- if item.url == "/404.html" or item.url == "/404" or item.url == "/404/" -%}
+      {%- assign include_item = false -%}
+    {%- endif -%}
+
+    {%- if include_item and item.url -%}
+      {%- assign lastmod = nil -%}
+      
+      {%- comment -%} Priority 1: last_modified_at in front matter {%- endcomment -%}
+      {%- if item.last_modified_at -%}
+        {%- assign lastmod = item.last_modified_at -%}
+      {%- elsif item.data.last_modified_at -%}
+        {%- assign lastmod = item.data.last_modified_at -%}
+      {%- comment -%} Priority 2: date in front matter (or filename date) {%- endcomment -%}
+      {%- elsif item.date -%}
+        {%- assign lastmod = item.date -%}
+      {%- endif -%}
+
+      {%- comment -%} Priority 3: site.time fallback {%- endcomment -%}
+      {%- if lastmod == nil or lastmod == "" -%}
+        {%- assign lastmod = site.time -%}
+      {%- endif -%}
+
+      <url>
+        <loc>{{ item.url | absolute_url }}</loc>
+        <lastmod>{{ lastmod | date_to_xmlschema }}</lastmod>
+        {%- if item.sitemap.changefreq -%}
+        <changefreq>{{ item.sitemap.changefreq }}</changefreq>
+        {%- elsif item.changefreq -%}
+        <changefreq>{{ item.changefreq }}</changefreq>
+        {%- endif -%}
+        {%- if item.sitemap.priority -%}
+        <priority>{{ item.sitemap.priority }}</priority>
+        {%- elsif item.priority -%}
+        <priority>{{ item.priority }}</priority>
+        {%- endif -%}
+      </url>
+    {%- endif -%}
+  {%- endfor -%}
+</urlset>

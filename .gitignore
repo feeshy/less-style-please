@@ -1,9 +1,24 @@
+# macOS & Editors
+.DS_Store
+.obsidian
+
+# Jekyll & Ruby Dependencies / Build Outputs
 *.gem
 .bundle
 .jekyll-cache
-.obsidian
 .sass-cache
-_site
-vendor
+_site/
+vendor/
 Gemfile.lock
-.DS_Store
+
+# Site Content (copied from master branch for local testing)
+Gemfile
+_config.yml
+_data/
+general/
+literature/
+site.webmanifest
+service-worker.js
+sitemap-test.xml
+robots.txt
+/*.md
