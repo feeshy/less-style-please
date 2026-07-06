@@ -19,3 +19,9 @@
 {%- endif -%}
 
 @import "layout";
+
+{%- assign search_engine_downcase = site.search_engine | downcase -%}
+{%- assign allowed_engines = "google|bing|duckduckgo|baidu" | split: "|" -%}
+{%- if allowed_engines contains search_engine_downcase -%}
+@import "search";
+{%- endif -%}

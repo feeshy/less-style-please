@@ -9,6 +9,87 @@
   {%- endif -%}
 </nav>
 
+{%- assign search_engine_downcase = site.search_engine | downcase -%}
+{%- assign allowed_engines = "google|bing|duckduckgo|baidu" | split: "|" -%}
+{%- if allowed_engines contains search_engine_downcase -%}
+<nav id="top-search" class="top-search">
+  <div id="search-wrapper" class="search-wrapper">
+    <input type="search" id="search-input" class="search-input" placeholder="……" aria-label="Search site" autocomplete="off" />
+    <a href="javascript:void(0)" id="search-trigger" class="search-trigger" role="button">
+      {{ site.nav.search | default: "search" }}
+    </a>
+  </div>
+</nav>
+
+<script>
+  (function () {
+    var wrapper = document.getElementById('search-wrapper');
+    var input = document.getElementById('search-input');
+    var trigger = document.getElementById('search-trigger');
+    if (!wrapper || !input || !trigger) return;
+
+    function performSearch() {
+      var query = input.value.trim();
+      if (query === '') return;
+
+      var engine = "{{ site.search_engine }}".toLowerCase();
+      var siteUrl = "{{ site.url }}";
+      var encodedQuery = encodeURIComponent(query);
+      var encodedSite = encodeURIComponent(siteUrl);
+
+      var urlPattern = '';
+      if (engine === 'google') {
+        urlPattern = 'https://www.google.com.hk/search?q=%s+site%3A' + encodedSite;
+      } else if (engine === 'bing') {
+        urlPattern = 'https://www.bing.com/search?q=%s+site%3A' + encodedSite;
+      } else if (engine === 'duckduckgo') {
+        urlPattern = 'https://duckduckgo.com/?q=%s+site%3A' + encodedSite;
+      } else if (engine === 'baidu') {
+        urlPattern = 'https://www.baidu.com/s?wd=%s+site%3A' + encodedSite;
+      } else {
+        urlPattern = 'https://www.google.com.hk/search?q=%s+site%3A' + encodedSite;
+      }
+
+      var finalUrl = urlPattern.replace('%s', encodedQuery);
+      window.open(finalUrl, '_blank');
+    }
+
+    trigger.addEventListener('click', function (e) {
+      e.preventDefault();
+      var isActive = wrapper.classList.contains('active');
+      if (!isActive) {
+        wrapper.classList.add('active');
+        input.focus();
+      } else {
+        var query = input.value.trim();
+        if (query === '') {
+          wrapper.classList.remove('active');
+        } else {
+          performSearch();
+        }
+      }
+    });
+
+    input.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        performSearch();
+      }
+    });
+
+    // Close search box if clicking outside and it's empty
+    document.addEventListener('click', function (e) {
+      if (!wrapper.contains(e.target)) {
+        if (input.value.trim() === '') {
+          wrapper.classList.remove('active');
+        }
+      }
+    });
+  })();
+</script>
+{%- endif -%}
+
+
 <div id="nav-toolbar" role="toolbar" aria-label="Navigation tools">
   <button id="gototop" aria-label="Scroll to top" style="visibility: hidden;">{{ site.nav.go_to_top | default: "🔝" }}</button>
   {%- if page.toc -%}
