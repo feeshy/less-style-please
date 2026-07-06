@@ -1,4 +1,4 @@
-.top-search {
+.search {
   position: absolute;
   right: 5vw;
   top: 5vh;
@@ -44,7 +44,7 @@
 }
 
 @media print {
-  .top-search {
+  .search {
     display: none;
   }
 }

@@ -12,7 +12,7 @@
 {%- assign search_engine_downcase = site.search_engine | downcase -%}
 {%- assign allowed_engines = "google|bing|duckduckgo|baidu" | split: "|" -%}
 {%- if allowed_engines contains search_engine_downcase -%}
-<nav id="top-search" class="top-search">
+<nav id="search" class="search">
   <div id="search-wrapper" class="search-wrapper">
     <input type="search" id="search-input" class="search-input" placeholder="…" aria-label="Search site" autocomplete="off" />
     <a href="javascript:void(0)" id="search-trigger" class="search-trigger" role="button">
