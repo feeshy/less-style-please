@@ -59,11 +59,13 @@ bilingual: false # auto hide lang="zh" elements for non-chinese visitors
 # background_image: # path to background images for light and dark mode
 #   light: ""
 #   dark: ""
+search_engine: duckduckgo # available values: google, bing, duckduckgo, baidu
 nav:
   back_home: "home" # customize text for homepage link
   tags: "tags" # customize text for tags page link
   go_to_top: "🔝" # customize text for go to top button
   toc: "📖" # customize text for go to top button
+  search: "search" # customize text for search page link
 copyright: "by" # available values: "all-rights-reserved", "by-nc-nd", "by-nd", "by-nc-sa", "by-nc", "by-sa", "by", "public-domain". choose here https://chooser-beta.creativecommons.org/
 # goat_counter: "yoursitename" # put your GoatCounter name if you want to use GoatCounter analytics
 
