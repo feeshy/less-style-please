@@ -1,3 +1,4 @@
+{%- if page.layout != 'home' -%}
 <nav id="top"><a href="{{ site.baseurl | default: '/' }}">{{ site.nav.back_home | default: "home" }}</a>
   {%- if page.categories.size > 0 -%}
   &nbsp;&gt;&nbsp;
@@ -8,6 +9,7 @@
   {%- endfor -%}
   {%- endif -%}
 </nav>
+{%- endif -%}
 
 {%- assign search_engine_downcase = site.search_engine | downcase -%}
 {%- assign allowed_engines = "google|bing|duckduckgo|baidu" | split: "|" -%}
@@ -19,168 +21,154 @@
       {{ site.nav.search | default: "search" }}
     </a>
   </div>
-</nav>
+  {%- assign site_url_encoded = site.url | url_encode -%}
+  {%- if search_engine_downcase == 'google' -%}
+    {%- assign search_url_pattern = 'https://www.google.com.hk/search?q=%s+site%3A' | append: site_url_encoded -%}
+  {%- elsif search_engine_downcase == 'bing' -%}
+    {%- assign search_url_pattern = 'https://www.bing.com/search?q=%s+site%3A' | append: site_url_encoded -%}
+  {%- elsif search_engine_downcase == 'duckduckgo' -%}
+    {%- assign search_url_pattern = 'https://duckduckgo.com/?q=%s+site%3A' | append: site_url_encoded -%}
+  {%- elsif search_engine_downcase == 'baidu' -%}
+    {%- assign search_url_pattern = 'https://www.baidu.com/s?wd=%s+site%3A' | append: site_url_encoded -%}
+  {%- endif -%}
+  <script>
+    (function () {
+      var wrapper = document.getElementById('search-wrapper');
+      var input = document.getElementById('search-input');
+      var trigger = document.getElementById('search-trigger');
+      if (!wrapper || !input || !trigger) return;
 
-<script>
-  (function () {
-    var wrapper = document.getElementById('search-wrapper');
-    var input = document.getElementById('search-input');
-    var trigger = document.getElementById('search-trigger');
-    if (!wrapper || !input || !trigger) return;
+      function performSearch() {
+        var query = input.value.trim();
+        if (query === '') return;
 
-    function performSearch() {
-      var query = input.value.trim();
-      if (query === '') return;
-
-      var engine = "{{ site.search_engine }}".toLowerCase();
-      var siteUrl = "{{ site.url }}";
-      var encodedQuery = encodeURIComponent(query);
-      var encodedSite = encodeURIComponent(siteUrl);
-
-      var urlPattern = '';
-      if (engine === 'google') {
-        urlPattern = 'https://www.google.com.hk/search?q=%s+site%3A' + encodedSite;
-      } else if (engine === 'bing') {
-        urlPattern = 'https://www.bing.com/search?q=%s+site%3A' + encodedSite;
-      } else if (engine === 'duckduckgo') {
-        urlPattern = 'https://duckduckgo.com/?q=%s+site%3A' + encodedSite;
-      } else if (engine === 'baidu') {
-        urlPattern = 'https://www.baidu.com/s?wd=%s+site%3A' + encodedSite;
-      } else {
-        urlPattern = 'https://www.google.com.hk/search?q=%s+site%3A' + encodedSite;
+        var urlPattern = "{{ search_url_pattern }}";
+        var finalUrl = urlPattern.replace('%s', encodeURIComponent(query));
+        window.open(finalUrl, '_blank');
       }
 
-      var finalUrl = urlPattern.replace('%s', encodedQuery);
-      window.open(finalUrl, '_blank');
-    }
-
-    trigger.addEventListener('click', function (e) {
-      e.preventDefault();
-      var isActive = wrapper.classList.contains('active');
-      if (!isActive) {
-        wrapper.classList.add('active');
-        input.focus();
-      } else {
-        var query = input.value.trim();
-        if (query === '') {
-          wrapper.classList.remove('active');
+      trigger.addEventListener('click', function (e) {
+        e.preventDefault();
+        var isActive = wrapper.classList.contains('active');
+        if (!isActive) {
+          wrapper.classList.add('active');
+          input.focus();
         } else {
+          var query = input.value.trim();
+          if (query === '') {
+            wrapper.classList.remove('active');
+          } else {
+            performSearch();
+          }
+        }
+      });
+
+      input.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') {
+          e.preventDefault();
           performSearch();
         }
-      }
-    });
-
-    input.addEventListener('keydown', function (e) {
-      if (e.key === 'Enter') {
-        e.preventDefault();
-        performSearch();
-      }
-    });
-
-    // Close search box if clicking outside and it's empty
-    document.addEventListener('click', function (e) {
-      if (!wrapper.contains(e.target)) {
-        if (input.value.trim() === '') {
-          wrapper.classList.remove('active');
+      });
+      // Close search box if clicking outside and it's empty
+      document.addEventListener('click', function (e) {
+        if (!wrapper.contains(e.target)) {
+          if (input.value.trim() === '') {
+            wrapper.classList.remove('active');
+          }
         }
-      }
-    });
-  })();
-</script>
+      });
+    })();
+  </script>
+</nav>
 {%- endif -%}
-
 
 <div id="nav-toolbar" role="toolbar" aria-label="Navigation tools">
   <button id="gototop" aria-label="Scroll to top" style="visibility: hidden;">{{ site.nav.go_to_top | default: "🔝" }}</button>
+  <script>
+    (function () {
+      var gototop = document.getElementById('gototop');
+      if (!gototop) return;
+      window.addEventListener('scroll', function () {
+        gototop.style.visibility = window.scrollY > 200 ? 'visible' : 'hidden';
+      });
+      gototop.addEventListener('click', function () {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    })();
+  </script>
   {%- if page.toc -%}
   <button id="toc-toggle" aria-label="Toggle table of contents" aria-expanded="false">{{ site.nav.toc | default: "📖" }}</button>
   <div id="toc-panel" aria-hidden="true">
     {% toc %}
   </div>
+  <script>
+    (function () {
+      var toggleBtn = document.getElementById('toc-toggle');
+      var panel = document.getElementById('toc-panel');
+      if (!toggleBtn || !panel) return;
+
+      function isWideScreen() { return window.innerWidth > 1700; }
+      function updateState() {
+        if (isWideScreen()) {
+          toggleBtn.setAttribute('aria-expanded', 'true');
+          panel.setAttribute('aria-hidden', 'false');
+        } else {
+          toggleBtn.setAttribute('aria-expanded', 'false');
+          panel.setAttribute('aria-hidden', 'true');
+        }
+      }
+
+      toggleBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var expanded = toggleBtn.getAttribute('aria-expanded') === 'true';
+        toggleBtn.setAttribute('aria-expanded', String(!expanded));
+        panel.setAttribute('aria-hidden', String(expanded));
+      });
+
+      document.addEventListener('click', function (e) {
+        if (isWideScreen()) return;
+        if (toggleBtn.getAttribute('aria-expanded') !== 'true') return;
+        var toolbar = e.target.closest('#nav-toolbar');
+        if (!toolbar) {
+          toggleBtn.setAttribute('aria-expanded', 'false');
+          panel.setAttribute('aria-hidden', 'true');
+          return;
+        }
+        if (e.target.tagName === 'A' && toolbar.querySelector('#toc-panel')) {
+          toggleBtn.setAttribute('aria-expanded', 'false');
+          panel.setAttribute('aria-hidden', 'true');
+        }
+      });
+
+      window.addEventListener('scroll', function () {
+        if (isWideScreen()) return;
+        if (toggleBtn.getAttribute('aria-expanded') !== 'true') return;
+        toggleBtn.setAttribute('aria-expanded', 'false');
+        panel.setAttribute('aria-hidden', 'true');
+      });
+
+      var resizeTimer;
+      window.addEventListener('resize', function () {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(updateState, 200);
+      });
+      updateState();
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var headings = document.querySelectorAll('h2, h3, h4, h5, h6');
+        var usedIds = {};
+        headings.forEach(function (h) {
+          var id = h.textContent.trim();
+          var safeId = id;
+          var i = 1;
+          while (usedIds[safeId]) {
+            safeId = id + '-' + (++i);
+          }
+          usedIds[safeId] = true;
+          h.id = safeId;
+        });
+      });
+    })();
+  </script>
   {%- endif -%}
 </div>
-
-<script>
-  (function () {
-    var gototop = document.getElementById('gototop');
-    if (!gototop) return;
-    window.addEventListener('scroll', function () {
-      gototop.style.visibility = window.scrollY > 200 ? 'visible' : 'hidden';
-    });
-    gototop.addEventListener('click', function () {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  })();
-</script>
-
-{%- if page.toc -%}
-<script>
-  (function () {
-    var toggleBtn = document.getElementById('toc-toggle');
-    var panel = document.getElementById('toc-panel');
-    if (!toggleBtn || !panel) return;
-
-    function isWideScreen() { return window.innerWidth > 1700; }
-    function updateState() {
-      if (isWideScreen()) {
-        toggleBtn.setAttribute('aria-expanded', 'true');
-        panel.setAttribute('aria-hidden', 'false');
-      } else {
-        toggleBtn.setAttribute('aria-expanded', 'false');
-        panel.setAttribute('aria-hidden', 'true');
-      }
-    }
-
-    toggleBtn.addEventListener('click', function (e) {
-      e.stopPropagation();
-      var expanded = toggleBtn.getAttribute('aria-expanded') === 'true';
-      toggleBtn.setAttribute('aria-expanded', String(!expanded));
-      panel.setAttribute('aria-hidden', String(expanded));
-    });
-
-    document.addEventListener('click', function (e) {
-      if (isWideScreen()) return;
-      if (toggleBtn.getAttribute('aria-expanded') !== 'true') return;
-      var toolbar = e.target.closest('#nav-toolbar');
-      if (!toolbar) {
-        toggleBtn.setAttribute('aria-expanded', 'false');
-        panel.setAttribute('aria-hidden', 'true');
-        return;
-      }
-      if (e.target.tagName === 'A' && toolbar.querySelector('#toc-panel')) {
-        toggleBtn.setAttribute('aria-expanded', 'false');
-        panel.setAttribute('aria-hidden', 'true');
-      }
-    });
-
-    window.addEventListener('scroll', function () {
-      if (isWideScreen()) return;
-      if (toggleBtn.getAttribute('aria-expanded') !== 'true') return;
-      toggleBtn.setAttribute('aria-expanded', 'false');
-      panel.setAttribute('aria-hidden', 'true');
-    });
-
-    var resizeTimer;
-    window.addEventListener('resize', function () {
-      clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(updateState, 200);
-    });
-    updateState();
-
-    document.addEventListener('DOMContentLoaded', function () {
-      var headings = document.querySelectorAll('h2, h3, h4, h5, h6');
-      var usedIds = {};
-      headings.forEach(function (h) {
-        var id = h.textContent.trim();
-        var safeId = id;
-        var i = 1;
-        while (usedIds[safeId]) {
-          safeId = id + '-' + (++i);
-        }
-        usedIds[safeId] = true;
-        h.id = safeId;
-      });
-    });
-  })();
-</script>
-{%- endif -%}
