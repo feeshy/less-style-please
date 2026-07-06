@@ -97,7 +97,10 @@
     })();
   </script>
   {%- if page.toc -%}
-  <button id="toc-toggle" aria-label="Toggle table of contents" aria-expanded="false">{{ site.nav.toc | default: "📖" }}</button>
+    {%- capture toc_icon -%}
+      <svg width="1em" height="1em" viewBox="0 0 1000 1000"><circle cx="500" cy="500" r="400" fill="{{ site.ms_tile_color | default: '#888' }}"/><g fill="#fff"><circle cx="320" cy="350" r="54"/><rect x="413" y="314" width="320" height="72" rx="36"/><circle cx="320" cy="500" r="54"/><rect x="413" y="464" width="320" height="72" rx="36"/><circle cx="320" cy="650" r="54"/><rect x="413" y="614" width="320" height="72" rx="36"/></g></svg>
+    {%- endcapture -%}
+  <button id="toc-toggle" aria-label="Toggle table of contents" aria-expanded="false">{{ site.nav.toc | default: toc_icon }}</button>
   <div id="toc-panel" aria-hidden="true">
     {% toc %}
   </div>
