@@ -1,7 +1,0 @@
-# files to be excluded in lite branch
-.lite-excluded
-.github/
-assets/OpenFont/NotoSerifSC-v35
-_sass/noto-serif-sc.scss
-assets/OpenFont/LXGWWenKaiLite-Regular
-_sass/lxgw.scss
