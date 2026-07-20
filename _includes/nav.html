@@ -21,7 +21,8 @@
       {{ site.nav.search | default: "search" }}
     </a>
   </div>
-  {%- assign site_url_encoded = site.url | url_encode -%}
+  {%- assign site_url_clean = site.url | remove: "https://" | remove: "http://" -%}
+  {%- assign site_url_encoded = site_url_clean | url_encode -%}
   {%- if search_engine_downcase == 'google' -%}
     {%- assign search_url_pattern = 'https://www.google.com.hk/search?q=%s+site%3A' | append: site_url_encoded -%}
   {%- elsif search_engine_downcase == 'bing' -%}
